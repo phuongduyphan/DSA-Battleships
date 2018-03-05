@@ -1,26 +1,32 @@
 package gameBoard;
 
-import gui.IClickable;
+public abstract class Cell {
 
-public class Cell implements IClickable{
-    private Coordinate coordinate;
-    private ShipPart shipPart;
+	protected Coordinate coor;
+	protected Ship ship;
+	protected boolean canChangeWhenIsShot;
+	protected boolean canChangeWhenIsSelected;
+	
+	public Cell(Coordinate coor) {
+		this.coor = coor;
+	}
+	
+	public Coordinate getCoor() {
+		return coor;
+	}
 
-    public Cell(Coordinate coordinate, ShipPart shipPart) {
-        this.coordinate = coordinate;
-        this.shipPart = shipPart;
-    }
+	public Ship getShip() {
+		return ship;
+	}
 
-    @Override
-    public void onClick() {
-        // TODO: Implement
-    }
+	public void setShip(Ship ship) {
+		this.ship = ship;
+	}
 
-    public Coordinate getCoordinate() {
-        return coordinate;
-    }
+	public void setCoor(Coordinate coor) {
+		this.coor = coor;
+	}
 
-    public ShipPart getShipPart() {
-        return shipPart;
-    }
+	public abstract boolean actWhenIsSelected();
+	public abstract boolean actWhenIsShot();
 }

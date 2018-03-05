@@ -1,14 +1,23 @@
 package gameBoard;
-
 import java.util.ArrayList;
 
 public abstract class Ship {
+	private Coordinate startCoor;
+	private ArrayList<Coordinate> listOfCoors = new ArrayList<>();
+	
+	public Ship(Coordinate startCoor) {
+		this.startCoor = startCoor;
+		appendCoorToList();
+	}	
+	
+	public void damage(Coordinate coor) {
+		listOfCoors.remove(coor);
+		//GUI SOMETHING
+	}
+	
+	public ArrayList<Coordinate> getListOfCoors() {
+		return listOfCoors;
+	}
 
-    private Integer numberOfShipParts;
-    private ArrayList<ShipPart> shipParts;
-
-    public abstract ArrayList<Coordinate> getRelativeCoordinates(Coordinate coordinate);
-    public void addShipPart(ShipPart o) {
-        shipParts.add(o);
-    }
+	public abstract void appendCoorToList();
 }
