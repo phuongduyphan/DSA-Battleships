@@ -24,9 +24,23 @@ public class Board {
 		}
 	}
 	
+	public List<Ship> getListOfShips() {
+		return listOfShips;
+	}
+
+
 	public void setCellAsType(Coordinate coor, CellEnum type) {
 		Cell cell = getCellAt(coor);
 		cell = cellFactory.create(coor, type);
+	}
+	
+	public void shootAt(Coordinate coor) {
+		Cell shotCell = getCellAt(coor);
+		shotCell.actWhenIsShot();
+	
+		if (shotCell.getCanChangeWhenIsShot()) {
+			setCellAsType(coor, CellEnum.EXPLODED);
+		}
 	}
 	
 //	public void setExplodedCell(Coordinate coor) {

@@ -1,4 +1,5 @@
 package gameBoard;
+import java.awt.Image;
 import java.util.ArrayList;
 
 public abstract class Ship {
@@ -6,7 +7,7 @@ public abstract class Ship {
 	private int direction;
 	private ArrayList<Coordinate> listOfCoors = new ArrayList<>();
 	//TODO verify data type of listOfShipParts
-	private ArrayList<Image> listOfShipParts = new ArrayList<>();
+	private ArrayList<Image> listOfShipParts;
 	
 	public Ship(Coordinate startCoor, int direction) {
 		this.startCoor = startCoor;
@@ -15,13 +16,19 @@ public abstract class Ship {
 	}	
 	
 	public void damage(Coordinate coor) {
-		listOfCoors.remove(coor);
-		//GUI SOMETHING
+		
+		int indexToRemove = listOfCoors.indexOf(coor);
+		
+		listOfCoors.remove(indexToRemove);
+//		listOfShipParts.remove(indexToRemove);
+		
+		//TODO GUI
 	}
 	
 	public ArrayList<Coordinate> getListOfCoors() {
 		return listOfCoors;
 	}
 
+	public abstract void setListOfShipParts();
 	public abstract void appendCoorToList();
 }
