@@ -1,12 +1,12 @@
 package gameBoard;
 import java.util.List;
-import java.util.Observable;
 
-public class Board extends Observable {
+public class Board {
 	private Cell grid[][];
 	private Integer row, col;
 	private List<Ship> listOfShips;
-	private CellFactory cellFactory = new CellFactory();
+	private CellFactory cellFactory = CellFactory.getInstance();
+	private ShipFactory shipFactory = ShipFactory.getInstance();
 	
 	public Board(Integer row, Integer col) {
 		this.row = row;
@@ -14,34 +14,27 @@ public class Board extends Observable {
 		grid = new Cell[row][col];
 	}
 	
-	public void boardChanged() {
-		setChanged();
-		notifyObservers();
-	}
 	
-	public void placeShip(Ship ship) {
+	public void placeShipToBoard(Ship ship) {
 		listOfShips.add(ship);
 		
 		for (Coordinate coor : ship.getListOfCoors()) {
-			setCellAsType(coor, "SHIP");
+			setCellAsType(coor, CellEnum.SHIP);
 			((ShipCell) getCellAt(coor)).setShip(ship);
 		}
 	}
 	
-	public void setCellAsType(Coordinate coor, String type) {
+	public void setCellAsType(Coordinate coor, CellEnum type) {
 		Cell cell = getCellAt(coor);
 		cell = cellFactory.create(coor, type);
-		boardChanged();
 	}
 	
 //	public void setExplodedCell(Coordinate coor) {
 //		grid[coor.getRow()][coor.getCol()] = new ExplodedCell(coor);
-//		boardChanged();
 //	}
 //	
 //	public void setShipCell(Coordinate coor, Ship ship) {
 //		grid[coor.getRow()][coor.getCol()] = new ShipCell(coor, ship);
-//		boardChanged();
 //	}
 //	
 //	public void setShipCell(List<Coordinate> listOfCoors, Ship ship) {
@@ -53,20 +46,23 @@ public class Board extends Observable {
 		return grid[coor.getRow()][coor.getCol()];
 	}
 	
-	public boolean createShip(Coordinate startCoor, String type) {
+	public boolean createShip(Coordinate startCoor, int direction, ShipEnum type) {
 		
-		Ship ship = ShipFactory.create(startCoor, type);
+		Ship ship = ShipFactory.create(startCoor, direction, type);
 		
 		for (Coordinate coor : ship.getListOfCoors()) {
-			boolean canChangeWhenIsSelected = getCellAt(coor).actWhenIsSelected();
-			if (!canChangeWhenIsSelected) {
+			Cell cell = getCellAt(coor);
+			cell.actWhenIsSelected();
+			
+			if (!cell.getCanChangeWhenIsSelected()) {
 				System.out.println("Cannot place ship here");
 				ship = null;
 				return false;
 			}
+			
 		}
 		
-		placeShip(ship);
+		placeShipToBoard(ship);
 		return true;
 	}
 }

@@ -10,15 +10,15 @@ public class ExplodedCell extends Cell {
 	}
 
 	@Override
-	public boolean actWhenIsSelected() {
+	public void actWhenIsSelected() {
+		//TODO GUI
 		System.out.println("Cell" + coor + "cannot be selected");
-		return canChangeWhenIsSelected;
 	}
 
 	@Override
-	public boolean actWhenIsShot() {
+	public void actWhenIsShot() {
+		//TODO GUI
 		System.out.println("Cell" + coor + "cannot be shot");
-		return canChangeWhenIsShot;
 	}
 
 }

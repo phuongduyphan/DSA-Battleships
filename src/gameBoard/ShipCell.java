@@ -14,16 +14,15 @@ public class ShipCell extends Cell {
 	}
 
 	@Override
-	public boolean actWhenIsSelected() {
+	public void actWhenIsSelected() {
+		//TODO GUI
 		System.out.println("Ship has already placed on cell" + coor);
-		return canChangeWhenIsSelected;
 	}
 
 	@Override
-	public boolean actWhenIsShot() {
+	public void actWhenIsShot() {
+		//TODO GUI
 		ship.damage(coor);
-		
-		return canChangeWhenIsShot;
 	}
 
 	public Ship getShip() {

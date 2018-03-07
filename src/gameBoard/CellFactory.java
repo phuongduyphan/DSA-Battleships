@@ -2,19 +2,30 @@ package gameBoard;
 
 public class CellFactory {
 
+	private static CellFactory instance;
 
-	public CellFactory() {
+	private CellFactory() {
+		
 	}
 	
-	public Cell create(Coordinate coor, String type) {
+	public static CellFactory getInstance() {
 		
-		if (type == "SHIP")
+		if (instance == null)
+			instance = new CellFactory();
+		
+		return instance;
+	}
+	
+	public Cell create(Coordinate coor, CellEnum type) {
+		
+		switch (type) {
+		case SHIP:
 			return new ShipCell(coor);
-		else if (type == "UNOCCUPIED")
-			return new UnoccupiedCell(coor);
-		else if (type == "EXPLODED")
+		case EXPLODED:
 			return new ExplodedCell(coor);
-		
+		case UNOCCUPIED:
+			return new UnoccupiedCell(coor);
+		}
 		
 		return null;
 	}

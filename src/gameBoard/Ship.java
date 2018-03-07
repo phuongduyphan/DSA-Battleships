@@ -3,10 +3,14 @@ import java.util.ArrayList;
 
 public abstract class Ship {
 	private Coordinate startCoor;
+	private int direction;
 	private ArrayList<Coordinate> listOfCoors = new ArrayList<>();
+	//TODO verify data type of listOfShipParts
+	private ArrayList<Image> listOfShipParts = new ArrayList<>();
 	
-	public Ship(Coordinate startCoor) {
+	public Ship(Coordinate startCoor, int direction) {
 		this.startCoor = startCoor;
+		this.direction = direction;
 		appendCoorToList();
 	}	
 	

@@ -27,6 +27,16 @@ public abstract class Cell {
 		this.coor = coor;
 	}
 
-	public abstract boolean actWhenIsSelected();
-	public abstract boolean actWhenIsShot();
+	
+	public boolean getCanChangeWhenIsShot() {
+		return canChangeWhenIsShot;
+	}
+
+	public boolean getCanChangeWhenIsSelected() {
+		return canChangeWhenIsSelected;
+	}
+
+	public abstract void actWhenIsSelected();
+	public abstract void actWhenIsShot();
+	
 }

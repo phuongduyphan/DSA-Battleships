@@ -11,14 +11,13 @@ public class UnoccupiedCell extends Cell {
 	}
 
 	@Override
-	public boolean actWhenIsSelected() {
-		return canChangeWhenIsSelected;
+	public void actWhenIsSelected() {
+		//TODO GUI
 	}
 
 	@Override
-	public boolean actWhenIsShot() {
-		//GUI SOMETHING
-		return canChangeWhenIsShot;
+	public void actWhenIsShot() {
+		//TODO GUI
 	}
 
 }
