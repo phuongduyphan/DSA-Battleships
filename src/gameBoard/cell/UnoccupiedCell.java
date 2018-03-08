@@ -1,4 +1,7 @@
-package gameBoard;
+package gameBoard.cell;
+
+import gameBoard.Coordinate;
+import gameBoard.cell.Cell;
 
 public class UnoccupiedCell extends Cell {
 

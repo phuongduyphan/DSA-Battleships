@@ -1,28 +1,31 @@
-package gameBoard;
+package gameBoard.ship;
+
+import gameBoard.Coordinate;
+import gameBoard.cell.Cell;
 
 public class ShipCell extends Cell {
 	
-	public ShipCell(Coordinate coor) {
-		super(coor);
+	public ShipCell(Coordinate coordinate) {
+		super(coordinate);
 		canChangeWhenIsShot = true;
 		canChangeWhenIsSelected = false;
 	}
 	
-	public ShipCell(Coordinate coor, Ship ship) {
-		this(coor);
+	public ShipCell(Coordinate coordinate, Ship ship) {
+		this(coordinate);
 		this.ship = ship; 
 	}
 
 	@Override
 	public void actWhenIsSelected() {
 		//TODO GUI
-		System.out.println("Ship has already placed on cell" + coor);
+		System.out.println("Ship has already placed on cell" + coordinate);
 	}
 
 	@Override
 	public void actWhenIsShot() {
 		//TODO GUI
-		ship.damage(coor);
+		ship.damage(coordinate);
 	}
 
 	public Ship getShip() {

@@ -1,5 +1,7 @@
 
-package gameBoard;
+package gameBoard.ship;
+import gameBoard.Coordinate;
+
 import java.awt.Image;
 import java.util.ArrayList;
 

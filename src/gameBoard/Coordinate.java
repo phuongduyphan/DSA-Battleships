@@ -21,5 +21,4 @@ public class Coordinate {
 		this.col = col;
 	}
 	
-	
 }

@@ -1,6 +1,12 @@
-<<<<<<< HEAD
-=======
 package gameBoard;
+import gameBoard.cell.Cell;
+import gameBoard.cell.CellFactory;
+import gameBoard.cell.CellType;
+import gameBoard.ship.Ship;
+import gameBoard.ship.ShipCell;
+import gameBoard.ship.ShipFactory;
+import gameBoard.ship.ShipType;
+
 import java.util.List;
 
 public class Board {
@@ -21,7 +27,7 @@ public class Board {
 		listOfShips.add(ship);
 		
 		for (Coordinate coor : ship.getListOfCoors()) {
-			setCellAsType(coor, CellEnum.SHIP);
+			setCellAsType(coor, CellType.SHIP);
 			((ShipCell) getCellAt(coor)).setShip(ship);
 		}
 	}
@@ -31,7 +37,7 @@ public class Board {
 	}
 
 
-	public void setCellAsType(Coordinate coor, CellEnum type) {
+	public void setCellAsType(Coordinate coor, CellType type) {
 		Cell cell = getCellAt(coor);
 		cell = cellFactory.create(coor, type);
 	}
@@ -41,28 +47,28 @@ public class Board {
 		shotCell.actWhenIsShot();
 	
 		if (shotCell.getCanChangeWhenIsShot()) {
-			setCellAsType(coor, CellEnum.EXPLODED);
+			setCellAsType(coor, CellType.EXPLODED);
 		}
 	}
 	
-//	public void setExplodedCell(Coordinate coor) {
-//		grid[coor.getRow()][coor.getCol()] = new ExplodedCell(coor);
+//	public void setExplodedCell(Coordinate coordinate) {
+//		grid[coordinate.getRow()][coordinate.getCol()] = new ExplodedCell(coordinate);
 //	}
 //	
-//	public void setShipCell(Coordinate coor, Ship ship) {
-//		grid[coor.getRow()][coor.getCol()] = new ShipCell(coor, ship);
+//	public void setShipCell(Coordinate coordinate, Ship ship) {
+//		grid[coordinate.getRow()][coordinate.getCol()] = new ShipCell(coordinate, ship);
 //	}
 //	
 //	public void setShipCell(List<Coordinate> listOfCoors, Ship ship) {
-//		for (Coordinate coor : listOfCoors)
-//			setShipCell(coor, ship);
+//		for (Coordinate coordinate : listOfCoors)
+//			setShipCell(coordinate, ship);
 //	}
 	
 	public Cell getCellAt(Coordinate coor) {
 		return grid[coor.getRow()][coor.getCol()];
 	}
 	
-	public boolean createShip(Coordinate startCoor, int direction, ShipEnum type) {
+	public boolean createShip(Coordinate startCoor, int direction, ShipType type) {
 		
 		Ship ship = ShipFactory.create(startCoor, direction, type);
 		
@@ -82,4 +88,3 @@ public class Board {
 		return true;
 	}
 }
->>>>>>> Chau

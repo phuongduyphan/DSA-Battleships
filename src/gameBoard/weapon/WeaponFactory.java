@@ -1,4 +1,4 @@
-package gameBoard;
+package gameBoard.weapon;
 
 public class WeaponFactory {
 	private static WeaponFactory instance;

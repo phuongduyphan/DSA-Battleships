@@ -1,5 +1,7 @@
 package gameBoard;
 
+import gameBoard.player.Player;
+
 public class Turn {
 	private Player player;
 	public Turn nextTurn;

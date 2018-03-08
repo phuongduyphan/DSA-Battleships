@@ -1,4 +1,6 @@
-package gameBoard;
+package gameBoard.weapon;
+
+import gameBoard.Coordinate;
 
 public abstract class Weapon {
 	

@@ -1,20 +1,21 @@
-<<<<<<< HEAD
-=======
-package gameBoard;
+package gameBoard.cell;
+
+import gameBoard.Coordinate;
+import gameBoard.ship.Ship;
 
 public abstract class Cell {
 
-	protected Coordinate coor;
+	protected Coordinate coordinate;
 	protected Ship ship;
 	protected boolean canChangeWhenIsShot;
 	protected boolean canChangeWhenIsSelected;
 	
-	public Cell(Coordinate coor) {
-		this.coor = coor;
+	public Cell(Coordinate coordinate) {
+		this.coordinate = coordinate;
 	}
 	
-	public Coordinate getCoor() {
-		return coor;
+	public Coordinate getCoordinate() {
+		return coordinate;
 	}
 
 	public Ship getShip() {
@@ -25,8 +26,8 @@ public abstract class Cell {
 		this.ship = ship;
 	}
 
-	public void setCoor(Coordinate coor) {
-		this.coor = coor;
+	public void setCoordinate(Coordinate coordinate) {
+		this.coordinate = coordinate;
 	}
 
 	
@@ -42,4 +43,3 @@ public abstract class Cell {
 	public abstract void actWhenIsShot();
 	
 }
->>>>>>> Chau

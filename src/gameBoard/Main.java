@@ -1,16 +1,20 @@
 package gameBoard;
 
+import gameBoard.player.Player;
+
 public class Main {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		GameHandler handler = GameHandler.getInstance();
-		
-		while (!handler.getCurrentTurn().getPlayer().checkWin()) {
-			Player currentPlayer = handler.getCurrentTurn().getPlayer();
-			currentPlayer.play();
-			handler.getCurrentTurn().setNextTurnInGameHanler();
-		}
-	}
+    public static void main(String[] args) {
+
+        // TODO: init
+
+        // TODO: choose gamemode, create player and init gameHandler accordingly
+        GameHandler gameHandler = GameHandler.getInstance();
+
+        // TODO: user place ship sthing
+
+        // TODO: user click start?
+        gameHandler.nextTurn();
+    }
 
 }
