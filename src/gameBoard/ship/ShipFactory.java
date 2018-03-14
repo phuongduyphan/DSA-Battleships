@@ -16,7 +16,7 @@ public class ShipFactory {
         return instance;
     }
 
-    public Ship create(Coordinate startCoordinate, int direction, ShipType type) {
+    public Ship create(Coordinate startCoordinate, DirectionType direction, ShipType type) {
         switch (type) {
             case AIRCRAFT_CARRIER:
                 return new AircraftCarrierShip(startCoordinate, direction);

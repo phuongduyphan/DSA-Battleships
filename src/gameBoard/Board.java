@@ -2,6 +2,7 @@ package gameBoard;
 import gameBoard.cell.Cell;
 import gameBoard.cell.CellFactory;
 import gameBoard.cell.CellType;
+import gameBoard.ship.DirectionType;
 import gameBoard.ship.Ship;
 import gameBoard.ship.ShipCell;
 import gameBoard.ship.ShipFactory;
@@ -75,7 +76,7 @@ public class Board {
 		return grid[coor.getRow()][coor.getCol()];
 	}
 	
-	public boolean createShip(Coordinate startCoor, int direction, ShipType type) {
+	public boolean createShip(Coordinate startCoor, DirectionType direction, ShipType type) {
 		
 		Ship ship = shipFactory.create(startCoor, direction, type);
 		
