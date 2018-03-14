@@ -17,13 +17,13 @@ public class WeaponFactory {
 	public Weapon create(WeaponType type) {
 		switch (type) {
 		case BULLET_SHOT: 
-			return new bulletWeapon();
+			return new BulletWeapon();
 		case ROCKET: 
-			return new rocketWeapon();
+			return new RocketWeapon();
 		case HORIZONTAL_BOMBING: 
-			return new horizontalBombWeapon();
+			return new HorizontalBombWeapon();
 		case VERTICAL_BOMBING: 
-			return new verticalBombWeapon();
+			return new VerticalBombWeapon();
 		}
 		return null;
 	}
