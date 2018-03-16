@@ -11,6 +11,7 @@ import java.util.Iterator;
 public class GameHandler {
 	private ArrayList<Player> players;
 	private Iterator<Player> iterator;
+	private Player currentPlayer = new Player();
 
 	public GameHandler(ArrayList<Player> players) {
 		// TODO: GameHandler constructor
@@ -18,11 +19,15 @@ public class GameHandler {
         iterator = players.iterator();
 	}
 
-	public void nextTurn(bool first = false) {
-        if(!iterator.hasNext()) {
-            iterator = players.iterator();
-        }
-        iterator.next().play();
+	public void nextTurn() {
+	    if(!iterator.hasNext()) {
+	        iterator = players.iterator();
+	    }
+		if (iterator == players.iterator()) currentPlayer = players.get(0);
+		else currentPlayer = iterator.next();
+		
+		currentPlayer.play();
+		
     }
 
     /// receive input from inputHandler
@@ -32,12 +37,22 @@ public class GameHandler {
 
     private void process(InputObject o) {
         /// TODO: make sense of the input and update players accordingly
-
+    	o.player.update(o.weapon,o.coor);
+    	OutputHandler.getInstance().draw(o.player);
         /// TODO: check win
 
-        ///if there is no winner yet
+    	/// if (this.checkWin()) move to the next Stage; 
+        
+    	///if there is no winner yet
         this.nextTurn();
         /// if else
         /// app.win(winner) ????
+    }
+    
+    private boolean checkWin() {
+    	for (Player player: players) {
+    		if (player.canMove()) return false; 
+    	}
+    	return true;
     }
 }

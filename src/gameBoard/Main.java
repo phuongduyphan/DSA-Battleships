@@ -1,5 +1,6 @@
 package gameBoard;
 
+import gameBoard.GameHandler;
 import gameBoard.player.Player;
 
 public class Main {
@@ -9,7 +10,7 @@ public class Main {
         // TODO: init
 
         // TODO: choose gamemode, create player and init gameHandler accordingly
-        GameHandler gameHandler = GameHandler.getInstance();
+        GameHandler gameHandler = new GameHandler();
 
         // TODO: user place ship sthing
 
