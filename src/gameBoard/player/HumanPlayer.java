@@ -1,6 +1,7 @@
 package gameBoard.player;
 
 import gameBoard.Board;
+import gui.InputHandler;
 
 public class HumanPlayer extends Player{
 	
@@ -11,6 +12,6 @@ public class HumanPlayer extends Player{
 	@Override
 	public void play() {
 		// TODO Auto-generated method stub
-		super.getInputHandler().readInputFromPlayer(this);
+		InputHandler.getInstance().readInputFromPlayer(this);
 	}
 }

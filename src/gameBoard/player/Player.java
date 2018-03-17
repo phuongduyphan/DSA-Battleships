@@ -6,16 +6,10 @@ import gui.InputHandler;
 
 public abstract class Player {
     private Board board;
-    private static InputHandler inputHandler = null;
     
     public Player(Board board) {
     
     	this.board = board;
-    }
-    
-    public InputHandler getInputHandler() {
-    	if (inputHandler == null) return new InputHandler();
-    	else return inputHandler;
     }
     
 	public abstract void play();

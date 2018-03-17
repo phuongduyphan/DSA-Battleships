@@ -51,7 +51,9 @@ public class GameHandler {
     
     private boolean checkWin() {
     	for (Player player: players) {
-    		if (player.canMove()) return false; 
+    		if (player != currentPlayer) {
+    			if (player.canMove()) return false;
+    		}
     	}
     	return true;
     }
