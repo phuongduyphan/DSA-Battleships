@@ -1,6 +1,7 @@
 package gameBoard;
 
 import gameBoard.player.Player;
+import gui.InputHandler;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,30 +11,21 @@ import java.util.Iterator;
 public class GameHandler {
 	private ArrayList<Player> players;
 	private Iterator<Player> iterator;
-	private Player currentPlayer = new Player();
+	private Player currentPlayer;
+	private InputHandler inputHandler;
 
-	public GameHandler(ArrayList<Player> players) {
+	public GameHandler(ArrayList<Player> players, InputHandler inputHandler) {
 		// TODO: GameHandler constructor
         this.players = players;
+        this.inputHandler = inputHandler;
         iterator = players.iterator();
 	}
 
 	public void nextTurn() {
-
-	 //    if(!iterator.hasNext()) {
-	 //        iterator = players.iterator();
-	 //    }
-		// if (iterator == players.iterator()) currentPlayer = players.get(0);
-		// else currentPlayer = iterator.next();
-		
-		// currentPlayer.play();
-		
-
         if(!iterator.hasNext()) {
             iterator = players.iterator();
         }
-        iterator.next().play();
-
+        currentPlayer = iterator.next();
     }
 
     /// receive input from inputHandler
