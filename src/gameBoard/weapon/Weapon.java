@@ -1,5 +1,6 @@
 package gameBoard.weapon;
 
+import gameBoard.Board;
 import gameBoard.Coordinate;
 
 public abstract class Weapon {
@@ -16,5 +17,5 @@ public abstract class Weapon {
 		this.img = img;
 	}
 	
-	public abstract void act(Coordinate coor);
+	public abstract void act(Board board, Coordinate coor);
 }
