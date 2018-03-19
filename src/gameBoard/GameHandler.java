@@ -1,6 +1,5 @@
 package gameBoard;
 
-import com.sun.corba.se.pept.encoding.InputObject;
 import gameBoard.player.Player;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class GameHandler {
         iterator = players.iterator();
 	}
 
-	public void nextTurn(bool first = false) {
+	public void nextTurn() {
         if(!iterator.hasNext()) {
             iterator = players.iterator();
         }
@@ -31,7 +30,7 @@ public class GameHandler {
     }
 
     private void process(InputObject o) {
-        /// TODO: make sense of the input and update players accordingly
+        /// TODO: make sense of the input and updateCommandStage4 players accordingly
 
         /// TODO: check win
 
