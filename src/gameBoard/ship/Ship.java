@@ -1,26 +1,26 @@
 
 package gameBoard.ship;
 import gameBoard.Coordinate;
-
-import java.awt.Image;
+import gui.Command;
+import gui.CommandStage2;
+import gui.IClickable;
 import java.util.ArrayList;
 
-public abstract class Ship {
-	protected Coordinate startCoor;
-	protected DirectionType direction;
-	protected ArrayList<Coordinate> listOfCoors = new ArrayList<>();
-	protected int length;
+public abstract class Ship implements IClickable {
+	private Coordinate startCoordinate;
+	private ShipOrientation orientation;
+	private ArrayList<Coordinate> listOfCoors = new ArrayList<>();
 	//TODO verify data type of listOfShipParts
 	private ArrayList<Image> listOfShipParts;
 	
-	public Ship(Coordinate startCoor, DirectionType direction) {
-		this.startCoor = startCoor;
-		this.direction = direction;
-	}
+	public Ship(Coordinate startCoordinate, ShipOrientation orientation) {
+		this.startCoordinate = startCoordinate;
+		this.orientation = orientation;
+	}	
 	
-	public Ship(Coordinate startCoor, DirectionType direction, int length) {
-		this.startCoor = startCoor;
-		this.direction = direction;
+	public Ship(Coordinate startCoordinate, ShipOrientation orientation, int length) {
+		this.startCoordinate = startCoordinate;
+		this.orientation = orientation;
 		this.length = length;
 		appendCoorToList();
 //		setListOfShipParts();
@@ -54,6 +54,13 @@ public abstract class Ship {
 			}
 			
 		}
+
+	@Override
+	public void onClick(Command targetCommand) {
+		if(targetCommand instanceof CommandStage2) {
+			CommandStage2 cmd2 = (CommandStage2)targetCommand;
+			cmd2.setShip(this);
+		} else throw new Error("In Ship.java, onClick(), the targetCmd is not the right type of Cmd to be used with Ship");
 	}
 }
 

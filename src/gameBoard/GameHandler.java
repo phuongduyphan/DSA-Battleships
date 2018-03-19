@@ -1,6 +1,5 @@
 package gameBoard;
 
-import com.sun.corba.se.pept.encoding.InputObject;
 import gameBoard.player.Player;
 
 import java.util.ArrayList;
@@ -20,14 +19,21 @@ public class GameHandler {
 	}
 
 	public void nextTurn() {
-	    if(!iterator.hasNext()) {
-	        iterator = players.iterator();
-	    }
-		if (iterator == players.iterator()) currentPlayer = players.get(0);
-		else currentPlayer = iterator.next();
+
+	 //    if(!iterator.hasNext()) {
+	 //        iterator = players.iterator();
+	 //    }
+		// if (iterator == players.iterator()) currentPlayer = players.get(0);
+		// else currentPlayer = iterator.next();
 		
-		currentPlayer.play();
+		// currentPlayer.play();
 		
+
+        if(!iterator.hasNext()) {
+            iterator = players.iterator();
+        }
+        iterator.next().play();
+
     }
 
     /// receive input from inputHandler
