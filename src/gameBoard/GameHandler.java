@@ -26,6 +26,7 @@ public class GameHandler {
             iterator = players.iterator();
         }
         currentPlayer = iterator.next();
+        currentPlayer.play();
     }
 
     /// receive input from inputHandler
