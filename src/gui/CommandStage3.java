@@ -1,24 +1,24 @@
 package gui;
 
 import gameBoard.Coordinate;
-import gameBoard.cell.Cell;
+import gameBoard.GameHandler;
 import gameBoard.player.Player;
 import gameBoard.weapon.Weapon;
 
 public class CommandStage3 extends Command {
     private Player targetPlayer;
     private Weapon weapon;
-    private Cell cell;
+    private Coordinate coor;
 
     @Override
     public boolean isCompleted() {
-        if (targetPlayer != null && weapon != null && cell != null) return true;
+        if (targetPlayer != null && weapon != null && coor != null) return true;
         return false;
     }
 
     @Override
     public void onFinished() {
-        targetPlayer.shot(weapon, cell);
+        GameHandler.getInstance().input(this);
     }
 
     public Player getTargetPlayer() { return targetPlayer; }
@@ -29,7 +29,7 @@ public class CommandStage3 extends Command {
 
     public void setWeapon(Weapon weapon) { this.weapon = weapon; }
 
-    public Cell getCell() { return cell; }
+    public Coordinate getCoor() { return coor; }
 
-    public void setCell(Cell cell) { this.cell = cell; }
+    public void setCoor(Coordinate coor) { this.coor = coor; }
 }

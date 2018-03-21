@@ -12,22 +12,12 @@ public class State3 implements IState {
 	}
 	
 	public void handle() {
-		//TODO implement each state handle
+		// start playing game
+		GameHandler.getInstance().nextTurn();
 		
-		// TODO: init
-
-        // TODO: choose gamemode, create player and init gameHandler accordingly
-        GameHandler gameHandler = new GameHandler();
-
-        // TODO: user place ship sthing
-
-        // TODO: user click start?
-        gameHandler.nextTurn();
-		
-		setNextState();
 	}
 	
-	private void setNextState() {
-		app.getInstance().setState(State4.getInstance());
+	public void done() {
+		app.getInstance().setStateAndStart(State4.getInstance());
 	}
 }

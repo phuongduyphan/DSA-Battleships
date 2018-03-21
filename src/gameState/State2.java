@@ -12,10 +12,9 @@ public class State2 implements IState {
 	public void handle() {
 		//TODO implement each state handle
 		
-		setNextState();
 	}
 	
-	private void setNextState() {
-		app.getInstance().setState(State3.getInstance());
+	public void done() {
+		app.getInstance().setStateAndStart(State3.getInstance());
 	}
 }

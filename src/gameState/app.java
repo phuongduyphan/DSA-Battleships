@@ -13,8 +13,12 @@ public class app {
 		return currentState;
 	}
 	
-	public void setState(IState state) {
+	public void setStateAndStart(IState state) {
 		this.currentState = state;
+		this.start();
 	}
 	
+	public void start() {
+		this.currentState.handle();
+	}
 }
