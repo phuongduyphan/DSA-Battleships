@@ -4,16 +4,16 @@ import gameBoard.cell.CellFactory;
 import gameBoard.cell.CellType;
 import gameBoard.ship.DirectionType;
 import gameBoard.ship.Ship;
-import gameBoard.ship.ShipCell;
 import gameBoard.ship.ShipFactory;
 import gameBoard.ship.ShipType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
 	private Cell grid[][];
 	private Integer row, col;
-	private List<Ship> listOfShips;
+	private List<Ship> listOfShips = new ArrayList<>();
 	private CellFactory cellFactory = CellFactory.getInstance();
 	private ShipFactory shipFactory = ShipFactory.getInstance();
 	
@@ -21,6 +21,13 @@ public class Board {
 		this.row = row;
 		this.col = col;
 		grid = new Cell[row][col];
+		
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				Coordinate coor = new Coordinate(i, j);
+				setCellAsType(coor, CellType.UNOCCUPIED);
+			}
+		}
 	}
 	
 	public Integer getRow() {
@@ -36,7 +43,7 @@ public class Board {
 		
 		for (Coordinate coor : ship.getListOfCoors()) {
 			setCellAsType(coor, CellType.SHIP);
-			((ShipCell) getCellAt(coor)).setShip(ship);
+			getCellAt(coor).setShip(ship);
 		}
 	}
 	
@@ -46,8 +53,7 @@ public class Board {
 
 
 	public void setCellAsType(Coordinate coor, CellType type) {
-		Cell cell = getCellAt(coor);
-		cell = cellFactory.create(coor, type);
+		grid[coor.getRow()][coor.getCol()] = (Cell) cellFactory.create(coor, type);
 	}
 	
 	public void shootAt(Coordinate coor) {
