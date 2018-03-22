@@ -80,4 +80,10 @@ public class GameHandler {
     	}
     	return true;
     }
+    
+    public void reset() {
+    	this.players = null;
+    	this.iterator = null;
+    	this.currentPlayer = null;
+    }
 }
