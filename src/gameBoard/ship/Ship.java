@@ -11,7 +11,8 @@ public abstract class Ship implements IClickable {
 	private ShipOrientation orientation;
 	private ArrayList<Coordinate> listOfCoors = new ArrayList<>();
 	//TODO verify data type of listOfShipParts
-	private ArrayList<Image> listOfShipParts;
+//	private ArrayList<Image> listOfShipParts;
+	private int length;
 	
 	public Ship(Coordinate startCoordinate, ShipOrientation orientation) {
 		this.startCoordinate = startCoordinate;
@@ -42,19 +43,53 @@ public abstract class Ship implements IClickable {
 
 	public abstract void setListOfShipParts();
 	public void appendCoorToList() {
-		Integer startRow = startCoor.getRow();
-		Integer startCol = startCoor.getCol();
-		if (direction.equals(DirectionType.HORIZONTAL)) {
-			for (int col = startCol; col < startCol + length; col++) {
-				listOfCoors.add(new Coordinate(startRow, col));
-			}
-		} else if (direction.equals(DirectionType.VERTICAL)) {
-			for (int row = startRow; row < startRow + length; row++) {
-				listOfCoors.add(new Coordinate(row, startCol));
-			}
-			
+		
+		Integer startRow = startCoordinate.getRow();
+		Integer startCol = startCoordinate.getCol();
+		
+		switch (orientation) {
+		case NORTH:
+			appendCoorsInNorthDirection(startRow, startCol);
+			break;
+		case SOUTH:
+			appendCoorsInSouthDirection(startRow, startCol);
+			break;
+		case EAST:
+			appendCoorsInEastDirection(startRow, startCol);
+			break;
+		case WEST:
+			appendCoorsInWestDirection(startRow, startCol);
+			break;
+		default:
+			System.out.println("Wrong orientation");	
 		}
-
+		
+	}
+	
+	private void appendCoorsInNorthDirection(Integer startRow, Integer startCol) {
+		for (int row = startRow; row < startRow + length; row++) {
+			listOfCoors.add(new Coordinate(row, startCol));
+		}	
+	}
+	
+	private void appendCoorsInSouthDirection(Integer startRow, Integer startCol) {
+		for (int row = startRow; row > startRow - length; row--) {
+			listOfCoors.add(new Coordinate(row, startCol));
+		}
+	}
+	
+	private void appendCoorsInEastDirection(Integer startRow, Integer startCol) {
+		for (int col = startCol; col < startCol + length; col++) {
+		listOfCoors.add(new Coordinate(startRow, col));
+	}
+	}
+	
+	private void appendCoorsInWestDirection(Integer startRow, Integer startCol) {
+		for (int col = startCol; col > startCol - length; col--) {
+		listOfCoors.add(new Coordinate(startRow, col));
+	}
+	}
+	
 	@Override
 	public void onClick(Command targetCommand) {
 		if(targetCommand instanceof CommandStage2) {

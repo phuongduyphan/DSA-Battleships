@@ -9,7 +9,7 @@ public class VerticalBombWeapon extends Weapon {
 	public void act(Board board, Coordinate coor) {
 		// TODO Auto-generated method stub
 		Integer col = coor.getCol();
-		for (int row = 0; row < board.getRow(); row++) {
+		for (int row = 0; row < board.getNumberOfRows(); row++) {
 			board.shootAt(new Coordinate(row, col));
 		}
 	}

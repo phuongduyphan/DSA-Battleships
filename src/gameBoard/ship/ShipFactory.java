@@ -16,18 +16,18 @@ public class ShipFactory {
         return instance;
     }
 
-    public Ship create(Coordinate startCoordinate, DirectionType direction, ShipType type) {
+    public Ship create(Coordinate startCoordinate, ShipOrientation orientation, ShipType type) {
         switch (type) {
             case AIRCRAFT_CARRIER:
-                return new AircraftCarrierShip(startCoordinate, direction);
+                return new AircraftCarrierShip(startCoordinate, orientation);
             case BATTLESHIP:
-                return new BattleshipShip(startCoordinate, direction);
+                return new BattleshipShip(startCoordinate, orientation);
             case DESTROYER:
-                return new DestroyerShip(startCoordinate, direction);
+                return new DestroyerShip(startCoordinate, orientation);
             case SUBMARINE:
-                return new SubmarineShip(startCoordinate, direction);
+                return new SubmarineShip(startCoordinate, orientation);
             case PATROL_BOAT:
-                return new PatrolBoatShip(startCoordinate, direction);
+                return new PatrolBoatShip(startCoordinate, orientation);
 			default:
 			    return null;
         }

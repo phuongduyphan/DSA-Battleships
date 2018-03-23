@@ -20,5 +20,9 @@ public class Coordinate {
 	public void setCol(Integer col) {
 		this.col = col;
 	}
+	@Override
+	public String toString() {
+		return "Coordinate [row=" + row + ", col=" + col + "]";
+	}
 	
 }

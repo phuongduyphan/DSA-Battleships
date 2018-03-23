@@ -4,8 +4,8 @@ import gameBoard.Coordinate;
 
 public class SubmarineShip extends Ship {
 
-	public SubmarineShip(Coordinate startCoor, DirectionType direction) {
-		super(startCoor, direction, 3);
+	public SubmarineShip(Coordinate startCoor, ShipOrientation orientation) {
+		super(startCoor, orientation, 3);
 	}
 
 	@Override

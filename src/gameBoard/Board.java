@@ -2,9 +2,12 @@ package gameBoard;
 import gameBoard.cell.Cell;
 import gameBoard.cell.CellFactory;
 import gameBoard.cell.CellType;
-import gameBoard.ship.DirectionType;
+import gameBoard.cell.ExplodedCell;
+import gameBoard.cell.UnoccupiedCell;
 import gameBoard.ship.Ship;
+import gameBoard.ship.ShipCell;
 import gameBoard.ship.ShipFactory;
+import gameBoard.ship.ShipOrientation;
 import gameBoard.ship.ShipType;
 
 import java.util.ArrayList;
@@ -12,14 +15,14 @@ import java.util.List;
 
 public class Board {
 	private Cell grid[][];
-	private Integer row, col;
+	private Integer numberOfRows, numberOfColumns;
 	private List<Ship> listOfShips = new ArrayList<>();
 	private CellFactory cellFactory = CellFactory.getInstance();
 	private ShipFactory shipFactory = ShipFactory.getInstance();
 	
 	public Board(Integer row, Integer col) {
-		this.row = row;
-		this.col = col;
+		this.numberOfRows = row;
+		this.numberOfColumns = col;
 		grid = new Cell[row][col];
 		
 		for (int i = 0; i < row; i++) {
@@ -30,12 +33,12 @@ public class Board {
 		}
 	}
 	
-	public Integer getRow() {
-		return row;
+	public Integer getNumberOfRows() {
+		return numberOfRows;
 	}
 
-	public Integer getCol() {
-		return col;
+	public Integer getNumberOfColumns() {
+		return numberOfColumns;
 	}
 
 	public void placeShipToBoard(Ship ship) {
@@ -82,11 +85,24 @@ public class Board {
 		return grid[coor.getRow()][coor.getCol()];
 	}
 	
-	public boolean createShip(Coordinate startCoor, DirectionType direction, ShipType type) {
+	private boolean checkRange(Coordinate coor) {
 		
-		Ship ship = shipFactory.create(startCoor, direction, type);
+		return coor.getRow() < numberOfRows && coor.getCol() < numberOfColumns
+				&& coor.getRow() >= 0 && coor.getCol() >= 0;
+	}
+	
+	public boolean createShip(Coordinate startCoor, ShipOrientation orientation, ShipType type) {
+		
+		Ship ship = shipFactory.create(startCoor, orientation, type);
 		
 		for (Coordinate coor : ship.getListOfCoors()) {
+			
+			if (!checkRange(coor)) {
+				System.out.println("Boundary exceeded: " + startCoor);
+				ship = null;
+				return false;
+			}
+			
 			Cell cell = getCellAt(coor);
 			cell.actWhenIsSelected();
 			
@@ -100,5 +116,21 @@ public class Board {
 		
 		placeShipToBoard(ship);
 		return true;
+	}
+
+	public void displayBoard() {
+    	for (int i = 0; i < numberOfRows; i++) {
+    		for (int j = 0; j < numberOfColumns; j++) {
+    			Cell cell = getCellAt(new Coordinate(i, j));
+    			
+    			if (cell instanceof ShipCell)
+    				System.out.print("S ");
+    			else if (cell instanceof ExplodedCell)
+    				System.out.print("X ");
+    			else if (cell instanceof UnoccupiedCell)
+    				System.out.print("O ");
+    		}
+    		System.out.println("");
+    	}
 	}
 }
