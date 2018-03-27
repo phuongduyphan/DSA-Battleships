@@ -1,5 +1,8 @@
 package gui;
 
+import gameState.IState;
+import gameState.app;
+
 import java.util.Scanner;
 
 public class ConsoleInputHandler extends InputHandler {
@@ -13,16 +16,19 @@ public class ConsoleInputHandler extends InputHandler {
 
     @Override
     public void enable() {
+        IState currentState = app.getInstance().getCurrentState();
         int i;
-        switch (app.state) {
-        case 1:
+        if (currentState instanceof CommandStage1) {
+            cmd = new CommandStage1();
             System.out.println("1 for start, 2 for exit");
-            while ((i = scanner.nextInt()) != 1 && (i = scanner.nextInt()) != 2) ;
+            do i = scanner.nextInt();
+            while (i != 1 && i != 2);
             if (i == 1) updateCommand(1, btnStart);
-                break;
-        case 2:
-            break;
-        case 3:
+        } else if (currentState instanceof CommandStage2) {
+            cmd = new CommandStage2();
+            /// TODO
+        } else if (currentState instanceof CommandStage3) {
+            cmd = new CommandStage3();
             System.out.println("1 to choose player, 2 for weapon, 3 for cell");
             while (true) {
                 i = scanner.nextInt();
@@ -34,18 +40,24 @@ public class ConsoleInputHandler extends InputHandler {
                 case 2:
                     System.out.println("enter weapon id");
                     updateCommand(3, gameHandler.getWeapons.get(scanner.nextInt()));
+                    break;
                 case 3:
                     System.out.println("enter cell id");
                     updateCommand(3, gameHandler.getCells.get(scanner.nextInt()));
+                    break;
+                default:
+                    throw new Error("Invalid input");
                 }
-            };
-            break;
-        case 4:
-            break;
-        default:
-            throw new Error("Invlid app state");
-        }
+                if (cmd.isCompleted()) {
+                    gameHandler.input(cmd);
+                    break;
+                }
+            }
+        } else if (currentState instanceof CommandStage4) {
+            cmd = new CommandStage4();
+        } else throw new Error("Invlid app state");
     }
+
 
     @Override
     public void disable() {

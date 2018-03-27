@@ -7,7 +7,6 @@ import gameState.app;
 import gui.Command;
 import gui.CommandStage2;
 import gui.CommandStage3;
-import gui.InputHandler;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -63,7 +62,7 @@ public class GameHandler {
     }
 
     private void processStage3(CommandStage3 o) {
-    	o.getTargetPlayer().update(o.getWeapon(),o.getCoor());
+    	o.getTargetPlayer().update(o.getWeapon(),o.getCell());
     	OutputHandler.getInstance().draw(o.getTargetPlayer());
        
     	if (!checkWin()) this.nextTurn();

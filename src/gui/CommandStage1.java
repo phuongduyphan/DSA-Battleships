@@ -10,4 +10,8 @@ public class CommandStage1 extends Command {
     public void onFinished() {
         button.act();
     }
+
+    public void setButton(Button button) {
+        this.button = button;
+    }
 }
