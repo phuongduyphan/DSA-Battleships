@@ -54,17 +54,25 @@ public class Board {
 		return listOfShips;
 	}
 
-
 	public void setCellAsType(Coordinate coor, CellType type) {
 		grid[coor.getRow()][coor.getCol()] = (Cell) cellFactory.create(coor, type);
 	}
 	
 	public void shootAt(Coordinate coor) {
-		Cell shotCell = getCellAt(coor);
-		shotCell.actWhenIsShot();
-	
-		if (shotCell.getCanChangeWhenIsShot()) {
-			setCellAsType(coor, CellType.EXPLODED);
+		
+		if (checkRange(coor)) {
+			Cell shotCell = getCellAt(coor);
+			shotCell.actWhenIsShot();
+			
+			if (shotCell.getCanChangeWhenIsShot()) {
+			    Ship ship = shotCell.getShip();
+	            if (ship.getListOfCoors().isEmpty())
+	                listOfShips.remove(ship);
+	        
+				setCellAsType(coor, CellType.EXPLODED);
+			}
+		} else {
+			System.out.println("Cannot Shoot - Boundary exceeded " + coor);
 		}
 	}
 	
