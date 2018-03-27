@@ -1,17 +1,20 @@
 package gameBoard.player;
 
+import java.util.ArrayList;
 import gameBoard.Board;
-import gui.InputHandler;
+import gameBoard.weapon.Weapon;
+import gui.ConsoleInputHandler;
 
 public class HumanPlayer extends Player{
 	
-	public HumanPlayer(Board board) {
-		super(board);
+	public HumanPlayer(Board board, ArrayList<Weapon> listOfWeapon) {
+		super(board, listOfWeapon);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void play() {
 		// TODO Auto-generated method stub
-		InputHandler.getInstance().readInputFromPlayer(this);
+		ConsoleInputHandler.getInstance().enable();
 	}
 }

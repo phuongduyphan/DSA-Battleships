@@ -2,6 +2,8 @@ package gameBoard;
 
 import java.util.ArrayList;
 
+import gameBoard.player.BotPlayer;
+import gameBoard.player.HumanPlayer;
 import gameBoard.player.Player;
 
 public class Configuration {
@@ -10,8 +12,8 @@ public class Configuration {
 	private ArrayList<Player> players = new ArrayList<>(); 
 	
 	public void init() {
-		players.add(new HumanPlayer());
-		players.add(new BotPlayer());
+//		players.add(new HumanPlayer());
+//		players.add(new BotPlayer());
 	}
 
 }

@@ -5,7 +5,9 @@ public class app {
 	private IState currentState;
 	
 	public static app getInstance() {
-		if (instance == null) return new app();
+		if (instance == null) {
+			instance =  new app();
+		}
 		return instance;
 	}
 	
