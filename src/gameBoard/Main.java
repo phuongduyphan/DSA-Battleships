@@ -2,8 +2,10 @@ package gameBoard;
 import java.util.ArrayList;
 
 import gameBoard.player.BotPlayer;
+import gameBoard.player.EasyMode;
 import gameBoard.player.HumanPlayer;
 import gameBoard.player.Player;
+import gameBoard.player.Strategy;
 import gameBoard.ship.ShipOrientation;
 import gameBoard.ship.ShipType;
 import gameBoard.weapon.Weapon;
@@ -27,8 +29,10 @@ public class Main {
     	listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT));
     	listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT));
     	
+    	Strategy mode = new EasyMode();
+    	
     	Player human = new HumanPlayer(humanBoard,listWeaponOfHuman);
-    	Player bot = new HumanPlayer(botBoard,listWeaponOfBot);
+    	Player bot = new BotPlayer(botBoard,listWeaponOfBot,mode);
     	GameHandler.getInstance().addPlayers(human);
     	GameHandler.getInstance().addPlayers(bot);
     	System.out.println(GameHandler.getInstance().getPlayers().size());

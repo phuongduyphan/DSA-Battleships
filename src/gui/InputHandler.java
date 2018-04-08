@@ -16,7 +16,15 @@ public abstract class InputHandler {
 
     public abstract void disable();
 
-    public void updateCommand(int cmdId, IClickable i) {
+	public Command getCmd() {
+		return cmd;
+	}
+
+	public void setCmd(Command cmd) {
+		this.cmd = cmd;
+	}
+
+	public void updateCommand(int cmdId, IClickable i) {
         switch (cmdId) {
 //        case 1:
 //            updateCommandStage1(i);

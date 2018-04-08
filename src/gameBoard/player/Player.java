@@ -20,13 +20,9 @@ public abstract class Player implements IClickable {
     	
     }
     
-    
-    
 	public ArrayList<Weapon> getListOfWeapon() {
 		return listOfWeapon;
 	}
-
-
 
 	public abstract void play();
 	
