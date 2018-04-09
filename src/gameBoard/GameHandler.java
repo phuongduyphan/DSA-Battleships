@@ -47,6 +47,7 @@ public class GameHandler {
             iterator = players.iterator();
         }
         currentPlayer = iterator.next();
+        System.out.println(currentPlayer.getClass());
         currentPlayer.play();
     }
 

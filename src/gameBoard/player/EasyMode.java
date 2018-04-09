@@ -1,29 +1,54 @@
 package gameBoard.player;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import gameBoard.Coordinate;
 import gameBoard.GameHandler;
+import gameBoard.cell.CellType;
 import gameBoard.weapon.Weapon;
 import gui.Command;
 import gui.CommandStage3;
 import gui.ConsoleInputHandler;
 
-public class EasyMode implements Strategy{
+public class EasyMode extends Strategy{
 	public Player pickOpponent() {
-		
+		Random rand = new Random();
+		System.out.print(super.getBot().getListOfOpponents().size());
+		int index = rand.nextInt(super.getBot().getListOfOpponents().size());
+		return super.getBot().getListOfOpponents().get(index);
 	}
 	
-	public Coordinate pickCoordinate() {
+	public Coordinate pickCoordinate(Player opponent) {
+		ArrayList<Coordinate> canShoot = new ArrayList<>();
 		
+		for (int i = 0; i < opponent.getBoard().getNumberOfRows(); i++) {
+			for (int j=0; j< opponent.getBoard().getNumberOfColumns(); j++) {
+				Coordinate coor = new Coordinate(i,j);
+				if (opponent.getBoard().getCellAt(coor).getType() == CellType.UNOCCUPIED) {
+					canShoot.add(coor);
+				}
+			}
+		}
+		
+		Random rand = new Random();
+		int index = rand.nextInt(canShoot.size());
+		return canShoot.get(index);
 	}
 	
 	public Weapon pickWeapon() {
-		
+		Random rand = new Random();
+		int index = rand.nextInt(super.getBot().getListOfWeapon().size());
+		return super.getBot().getListOfWeapon().get(index);
 	}
 	
 	public void runMode() {
 		Player opponent = pickOpponent();
-		Coordinate coor = pickCoordinate();
+		System.out.print(opponent);
+		Coordinate coor = pickCoordinate(opponent);
+		System.out.print(coor);
 		Weapon weapon = pickWeapon();
+		System.out.print(weapon);
 		
 		ConsoleInputHandler.getInstance().setCmd(new CommandStage3());
 		ConsoleInputHandler.getInstance().updateCommand(3, opponent);

@@ -4,13 +4,12 @@ import gameBoard.Coordinate;
 import gameBoard.cell.Cell;
 
 public class UnoccupiedCell extends Cell {
-
-	
-	public UnoccupiedCell(Coordinate coor) {
+	public UnoccupiedCell(Coordinate coor, CellType type) {
 		super(coor);
 		ship = null;
 		canChangeWhenIsShot = false;
 		canChangeWhenIsSelected = true;
+		this.type = type;
 	}
 
 	@Override

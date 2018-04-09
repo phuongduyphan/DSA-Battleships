@@ -22,11 +22,11 @@ public class CellFactory {
     public Cell create(Coordinate coordinate, CellType type) {
         switch (type) {
             case SHIP:
-                return new ShipCell(coordinate);
+                return new ShipCell(coordinate,type);
             case EXPLODED:
-                return new ExplodedCell(coordinate);
+                return new ExplodedCell(coordinate,type);
             case UNOCCUPIED:
-                return new UnoccupiedCell(coordinate);
+                return new UnoccupiedCell(coordinate,type);
             default:
                 return null;
         }

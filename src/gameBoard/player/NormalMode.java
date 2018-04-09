@@ -6,7 +6,7 @@ import gameBoard.weapon.Weapon;
 import gui.CommandStage3;
 import gui.ConsoleInputHandler;
 
-public class NormalMode implements Strategy {
+public class NormalMode extends Strategy {
 	public Player pickOpponent() {
 
 	}
@@ -18,8 +18,8 @@ public class NormalMode implements Strategy {
 	public Weapon pickWeapon() {
 
 	}
-	
+
 	public void runMode() {
-	
+
 	}
 }

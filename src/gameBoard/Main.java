@@ -33,6 +33,8 @@ public class Main {
     	
     	Player human = new HumanPlayer(humanBoard,listWeaponOfHuman);
     	Player bot = new BotPlayer(botBoard,listWeaponOfBot,mode);
+    	mode.setBot((BotPlayer) bot);
+    	
     	GameHandler.getInstance().addPlayers(human);
     	GameHandler.getInstance().addPlayers(bot);
     	System.out.println(GameHandler.getInstance().getPlayers().size());

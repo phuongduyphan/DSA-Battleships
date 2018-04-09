@@ -13,7 +13,16 @@ public abstract class Cell implements IClickable {
 	protected Ship ship;
 	protected boolean canChangeWhenIsShot;
 	protected boolean canChangeWhenIsSelected;
+	protected CellType type;
 	
+	public CellType getType() {
+		return type;
+	}
+
+	public void setType(CellType type) {
+		this.type = type;
+	}
+
 	public Cell(Coordinate coordinate) {
 		this.coordinate = coordinate;
 	}

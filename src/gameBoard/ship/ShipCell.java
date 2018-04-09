@@ -2,17 +2,19 @@ package gameBoard.ship;
 
 import gameBoard.Coordinate;
 import gameBoard.cell.Cell;
+import gameBoard.cell.CellType;
 
 public class ShipCell extends Cell {
 	
-	public ShipCell(Coordinate coordinate) {
+	public ShipCell(Coordinate coordinate, CellType type) {
 		super(coordinate);
 		canChangeWhenIsShot = true;
 		canChangeWhenIsSelected = false;
+		this.type = type;
 	}
 	
-	public ShipCell(Coordinate coordinate, Ship ship) {
-		this(coordinate);
+	public ShipCell(Coordinate coordinate, Ship ship, CellType type) {
+		this(coordinate,type);
 		this.ship = ship; 
 	}
 
