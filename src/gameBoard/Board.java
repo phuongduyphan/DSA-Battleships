@@ -130,13 +130,14 @@ public class Board {
     	for (int i = 0; i < numberOfRows; i++) {
     		for (int j = 0; j < numberOfColumns; j++) {
     			Cell cell = getCellAt(new Coordinate(i, j));
+    			cell.display();
     			
-    			if (cell instanceof ShipCell)
-    				System.out.print("S ");
-    			else if (cell instanceof ExplodedCell)
-    				System.out.print("X ");
-    			else if (cell instanceof UnoccupiedCell)
-    				System.out.print("O ");
+//    			if (cell instanceof ShipCell)
+//    				System.out.print("S ");
+//    			else if (cell instanceof ExplodedCell)
+//    				System.out.print("X ");
+//    			else if (cell instanceof UnoccupiedCell)
+//    				System.out.print("O ");
     		}
     		System.out.println("");
     	}

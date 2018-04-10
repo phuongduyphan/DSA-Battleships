@@ -11,6 +11,7 @@ public class ShipCell extends Cell {
 		canChangeWhenIsShot = true;
 		canChangeWhenIsSelected = false;
 		setType(CellType.SHIP);
+		setNotation('S');
 	}
 	
 	public ShipCell(Coordinate coordinate, Ship ship) {

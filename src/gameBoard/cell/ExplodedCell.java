@@ -11,6 +11,7 @@ public class ExplodedCell extends Cell {
 		canChangeWhenIsShot = false;
 		canChangeWhenIsSelected = false;
 		setType(CellType.EXPLODED);
+		setNotation('X');
 	}
 
 	@Override
