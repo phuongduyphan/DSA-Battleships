@@ -5,12 +5,12 @@ import gameBoard.cell.Cell;
 
 public class ExplodedCell extends Cell {
 	
-	public ExplodedCell(Coordinate coordinate,CellType type) {
+	public ExplodedCell(Coordinate coordinate) {
 		super(coordinate);
 		ship = null;
 		canChangeWhenIsShot = false;
 		canChangeWhenIsSelected = false;
-		this.type = type;
+		setType(CellType.EXPLODED);
 	}
 
 	@Override

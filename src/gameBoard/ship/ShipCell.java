@@ -6,15 +6,15 @@ import gameBoard.cell.CellType;
 
 public class ShipCell extends Cell {
 	
-	public ShipCell(Coordinate coordinate, CellType type) {
+	public ShipCell(Coordinate coordinate) {
 		super(coordinate);
 		canChangeWhenIsShot = true;
 		canChangeWhenIsSelected = false;
-		this.type = type;
+		setType(CellType.SHIP);
 	}
 	
-	public ShipCell(Coordinate coordinate, Ship ship, CellType type) {
-		this(coordinate,type);
+	public ShipCell(Coordinate coordinate, Ship ship) {
+		this(coordinate);
 		this.ship = ship; 
 	}
 
