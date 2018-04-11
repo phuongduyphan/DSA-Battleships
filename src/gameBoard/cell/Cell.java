@@ -13,7 +13,17 @@ public abstract class Cell implements IClickable {
 	protected Ship ship;
 	protected boolean canChangeWhenIsShot;
 	protected boolean canChangeWhenIsSelected;
+	protected CellType type;
+	protected char notation;
 	
+	public CellType getType() {
+		return type;
+	}
+
+	public void setType(CellType type) {
+		this.type = type;
+	}
+
 	public Cell(Coordinate coordinate) {
 		this.coordinate = coordinate;
 	}
@@ -42,8 +52,13 @@ public abstract class Cell implements IClickable {
 	public boolean getCanChangeWhenIsSelected() {
 		return canChangeWhenIsSelected;
 	}
+	
 
-	public abstract void actWhenIsSelected();
+	public void setNotation(char notation) {
+        this.notation = notation;
+    }
+
+    public abstract void actWhenIsSelected();
 	public abstract void actWhenIsShot();
 
     @Override
@@ -55,5 +70,10 @@ public abstract class Cell implements IClickable {
             CommandStage3 cmd3 = (CommandStage3)targetCommand;
             cmd3.setCell(this);
         } else throw new Error("In Cell.java, onClick(), the targetCmd is not the right type of Cmd to be used with Cell");
+    }
+
+    public void display() {
+        // TODO Auto-generated method stub
+        System.out.print(notation + " ");
     }
 }

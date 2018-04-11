@@ -7,7 +7,7 @@ public class WeaponFactory {
 		
 	}
 	
-	public WeaponFactory getInstance() {
+	public static WeaponFactory getInstance() {
 		if (instance == null) {
 			instance = new WeaponFactory();
 		}

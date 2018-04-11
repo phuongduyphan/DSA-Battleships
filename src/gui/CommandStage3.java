@@ -2,17 +2,18 @@ package gui;
 
 import gameBoard.Coordinate;
 import gameBoard.GameHandler;
+import gameBoard.cell.Cell;
 import gameBoard.player.Player;
 import gameBoard.weapon.Weapon;
 
 public class CommandStage3 extends Command {
     private Player targetPlayer;
     private Weapon weapon;
-    private Coordinate coor;
+    private Cell cell;
 
     @Override
     public boolean isCompleted() {
-        if (targetPlayer != null && weapon != null && coor != null) return true;
+        if (targetPlayer != null && weapon != null && cell != null) return true;
         return false;
     }
 
@@ -29,7 +30,7 @@ public class CommandStage3 extends Command {
 
     public void setWeapon(Weapon weapon) { this.weapon = weapon; }
 
-    public Coordinate getCoor() { return coor; }
+    public Cell getCell() { return cell; }
 
-    public void setCoor(Coordinate coor) { this.coor = coor; }
+    public void setCell(Cell cell) { this.cell = cell; }
 }

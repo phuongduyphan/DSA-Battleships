@@ -10,6 +10,8 @@ public class ExplodedCell extends Cell {
 		ship = null;
 		canChangeWhenIsShot = false;
 		canChangeWhenIsSelected = false;
+		setType(CellType.EXPLODED);
+		setNotation('X');
 	}
 
 	@Override

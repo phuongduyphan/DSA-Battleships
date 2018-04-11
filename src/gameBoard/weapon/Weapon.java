@@ -8,17 +8,17 @@ import gui.IClickable;
 
 public abstract class Weapon implements IClickable {
 	
-	private Image img;
-	
+//	private Image img;
+//	
 	public Weapon() {}
-
-	public Image getImg() {
-		return img;
-	}
-
-	public void setImg(Image img) {
-		this.img = img;
-	}
+//
+//	public Image getImg() {
+//		return img;
+//	}
+//
+//	public void setImg(Image img) {
+//		this.img = img;
+//	}
 	
 
 	public abstract void act(Board board, Coordinate coor);

@@ -2,6 +2,7 @@ package gameBoard.ship;
 
 import gameBoard.Coordinate;
 import gameBoard.cell.Cell;
+import gameBoard.cell.CellType;
 
 public class ShipCell extends Cell {
 	
@@ -9,6 +10,8 @@ public class ShipCell extends Cell {
 		super(coordinate);
 		canChangeWhenIsShot = true;
 		canChangeWhenIsSelected = false;
+		setType(CellType.SHIP);
+		setNotation('S');
 	}
 	
 	public ShipCell(Coordinate coordinate, Ship ship) {

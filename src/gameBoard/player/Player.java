@@ -1,6 +1,7 @@
 package gameBoard.player;
+import java.util.ArrayList;
+
 import gameBoard.Board;
-<<<<<<< HEAD
 import gameBoard.weapon.Weapon;
 import gameBoard.Coordinate;
 import gui.InputHandler;
@@ -10,13 +11,24 @@ import gui.IClickable;
 
 public abstract class Player implements IClickable {
     private Board board;
+    private ArrayList<Weapon> listOfWeapon = new ArrayList<Weapon>();
     
-    public Player(Board board) {
+    public Player(Board board,ArrayList<Weapon> listOfWeapon) {
     
     	this.board = board;
+    	this.listOfWeapon = listOfWeapon;
+    	
     }
     
+	public ArrayList<Weapon> getListOfWeapon() {
+		return listOfWeapon;
+	}
+
 	public abstract void play();
+	
+	public Board getBoard() {
+		return board;
+	}
 	
     public boolean canMove() {
     	if (board.getListOfShips().size() == 0) return false;
