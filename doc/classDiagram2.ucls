@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <interface id="1" language="java" name="gui.IHoverable" project="DSA-Battleships" 
-    file="/DSA-Battleships/src/gui/IHoverable.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="1" language="java" name="UI.consoleUI.IHoverable" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/UI/consoleUI/IHoverable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="735" y="272"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,17 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="2" language="java" name="gui.IGUIOutput" project="DSA-Battleships" 
-    file="/DSA-Battleships/src/gui/IGUIOutput.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="890" y="136"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <interface id="3" language="java" name="gui.IClickable" project="DSA-Battleships" 
-    file="/DSA-Battleships/src/gui/IClickable.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="2" language="java" name="UI.consoleUI.IClickable" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/UI/consoleUI/IClickable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="262" y="81"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,19 +19,6 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="4" language="java" name="gui.CommandlineGUI" project="DSA-Battleships" 
-    file="/DSA-Battleships/src/gui/CommandlineGUI.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="889" y="281"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <realization id="5">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="2"/>  
-  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

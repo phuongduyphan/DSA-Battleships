@@ -3,13 +3,13 @@ package gameBoard.player;
 import java.util.ArrayList;
 import java.util.Random;
 
+import UI.consoleUI.Command;
+import UI.consoleUI.CommandStage3;
+import UI.consoleUI.ConsoleInputHandler;
 import gameBoard.Coordinate;
 import gameBoard.GameHandler;
 import gameBoard.cell.CellType;
 import gameBoard.weapon.Weapon;
-import gui.Command;
-import gui.CommandStage3;
-import gui.ConsoleInputHandler;
 
 public class EasyMode extends Strategy{
 	public Player pickOpponent() {

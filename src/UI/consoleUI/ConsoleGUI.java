@@ -1,4 +1,4 @@
-package gui;
+package UI.consoleUI;
 
 public class ConsoleGUI {
 

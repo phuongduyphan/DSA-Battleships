@@ -4,13 +4,14 @@ import gameBoard.player.Player;
 import gameState.State2;
 import gameState.State3;
 import gameState.app;
-import gui.Command;
-import gui.CommandStage2;
-import gui.CommandStage3;
-import gui.ConsoleOutputHandler;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import UI.consoleUI.Command;
+import UI.consoleUI.CommandStage2;
+import UI.consoleUI.CommandStage3;
+import UI.consoleUI.ConsoleOutputHandler;
 
 /// TODO: consider turning of singleton for this class, make every instance is created for each game
 

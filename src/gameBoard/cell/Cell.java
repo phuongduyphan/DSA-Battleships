@@ -1,11 +1,11 @@
 package gameBoard.cell;
 
+import UI.consoleUI.Command;
+import UI.consoleUI.CommandStage2;
+import UI.consoleUI.CommandStage3;
+import UI.consoleUI.IClickable;
 import gameBoard.Coordinate;
 import gameBoard.ship.Ship;
-import gui.Command;
-import gui.CommandStage2;
-import gui.CommandStage3;
-import gui.IClickable;
 
 public abstract class Cell implements IClickable {
 

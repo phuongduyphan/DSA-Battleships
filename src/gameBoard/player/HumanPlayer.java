@@ -1,9 +1,10 @@
 package gameBoard.player;
 
 import java.util.ArrayList;
+
+import UI.consoleUI.ConsoleInputHandler;
 import gameBoard.Board;
 import gameBoard.weapon.Weapon;
-import gui.ConsoleInputHandler;
 
 public class HumanPlayer extends Player{
 	

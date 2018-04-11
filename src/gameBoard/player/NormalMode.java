@@ -1,10 +1,10 @@
 package gameBoard.player;
 
+import UI.consoleUI.CommandStage3;
+import UI.consoleUI.ConsoleInputHandler;
 import gameBoard.Coordinate;
 import gameBoard.GameHandler;
 import gameBoard.weapon.Weapon;
-import gui.CommandStage3;
-import gui.ConsoleInputHandler;
 
 public class NormalMode extends Strategy {
 	public Player pickOpponent() {

@@ -1,4 +1,4 @@
-package gui;
+package UI.consoleUI;
 
 import gameBoard.GameHandler;
 import gameBoard.cell.Cell;

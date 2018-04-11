@@ -1,4 +1,4 @@
-package gui;
+package UI.consoleUI;
 
 import gameState.IState;
 import gameState.State2;
@@ -58,10 +58,10 @@ public class ConsoleInputHandler extends InputHandler {
 				default:
 					throw new Error("Invalid input");
 				}
-				if (cmd.isCompleted()) {
-					gameHandler.getInstance().input(cmd);
-					break;
-				}
+//				if (cmd.isCompleted()) {
+//					gameHandler.getInstance().input(cmd);
+//					break;
+//				}
 			}
 			// } else if (currentState instanceof CommandStage4) {
 			// cmd = new CommandStage4();

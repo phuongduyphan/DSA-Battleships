@@ -1,10 +1,12 @@
 
 package gameBoard.ship;
 import gameBoard.Coordinate;
-import gui.Command;
-import gui.CommandStage2;
-import gui.IClickable;
+
 import java.util.ArrayList;
+
+import UI.consoleUI.Command;
+import UI.consoleUI.CommandStage2;
+import UI.consoleUI.IClickable;
 
 public abstract class Ship implements IClickable {
 	private Coordinate startCoordinate;

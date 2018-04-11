@@ -1,10 +1,10 @@
 package gameBoard.weapon;
 
+import UI.consoleUI.Command;
+import UI.consoleUI.CommandStage3;
+import UI.consoleUI.IClickable;
 import gameBoard.Board;
 import gameBoard.Coordinate;
-import gui.Command;
-import gui.CommandStage3;
-import gui.IClickable;
 
 public abstract class Weapon implements IClickable {
 	
