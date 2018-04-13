@@ -1,0 +1,65 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#seaPane {
+	-fx-background-image:url('sea-background.jpg');
+	-fx-background-repeat:no-repeat;
+	-fx-background-size:540px 460px;
+}
+
+#seaButton {
+	-fx-background-image:white;
+	-fx-opacity:0.1;
+	-fx-background-size:50px 50px;
+	-fx-background-repeat:no-repeat;
+}
+
+#opponentPane {
+	-fx-background-color:#173616;
+	-fx-border-width:0 0 10 0;
+	-fx-border-color:#2B6D2F;
+}
+
+
+#radarPane {
+	-fx-background-image:url('radar-background.gif');
+	-fx-background-repeat:no-repeat;
+	-fx-background-size:400px 400px;
+	
+}
+
+#radarButton {
+	-fx-background-color:#1E4C1D;
+	-fx-border-color:#2B6D2F;
+	-fx-border-width:2px;
+	-fx-opacity:0.7;
+	-fx-background-size:50px 50px;
+}
+
+#radarButton:selected {
+	-fx-background-image:url('cross-hair2.png');
+	-fx-background-color:#59EF00;
+	-fx-background-size:50px 50px;
+	-fx-opacity:0.5;
+}
+
+#shootPane {
+	-fx-background-color:#173616;
+}
+
+#selectWeaponPane {
+	-fx-background-color:#173616;
+}
+
+#shootButton {
+	-fx-border-width:7px;
+	-fx-border-color:white;
+}
+
+#hitCoor {
+	-fx-background-image:url('hit.jpg');
+	-fx-background-size:50px 50px;
+}
+
+#missCoor {
+	-fx-background-image:url('miss.jpg');
+	-fx-background-size:50px 50px;
+}

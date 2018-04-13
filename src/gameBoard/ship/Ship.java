@@ -4,9 +4,9 @@ import gameBoard.Coordinate;
 
 import java.util.ArrayList;
 
-import UI.consoleUI.Command;
-import UI.consoleUI.CommandStage2;
-import UI.consoleUI.IClickable;
+import UI.Command;
+import UI.CommandStage2;
+import UI.IClickable;
 
 public abstract class Ship implements IClickable {
 	private Coordinate startCoordinate;

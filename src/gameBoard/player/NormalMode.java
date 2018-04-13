@@ -1,6 +1,6 @@
 package gameBoard.player;
 
-import UI.consoleUI.CommandStage3;
+import UI.CommandStage3;
 import UI.consoleUI.ConsoleInputHandler;
 import gameBoard.Coordinate;
 import gameBoard.GameHandler;

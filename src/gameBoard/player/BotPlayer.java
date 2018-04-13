@@ -2,8 +2,8 @@ package gameBoard.player;
 import java.util.ArrayList;
 
 import gameBoard.Board;
+import gameBoard.Configurations;
 import gameBoard.Coordinate;
-import gameBoard.GameHandler;
 import gameBoard.weapon.Weapon;
 
 public class BotPlayer extends Player {
@@ -21,9 +21,9 @@ public class BotPlayer extends Player {
 	}
 	
 	public void setCurrentListOfOpponents() {
-		for (int i=0; i < GameHandler.getInstance().getPlayers().size(); i++) {
-			if (GameHandler.getInstance().getPlayers().get(i) != this) {
-				listOfOpponents.add(GameHandler.getInstance().getPlayers().get(i));
+		for (int i=0; i < Configurations.listOfPlayer.size() ; i++) {
+			if (Configurations.listOfPlayer.get(i) != this) {
+				listOfOpponents.add(Configurations.listOfPlayer.get(i));
 			}
 		}
 	}

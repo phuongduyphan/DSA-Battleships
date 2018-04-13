@@ -1,8 +1,8 @@
-package gameState;
+package gameStage;
 
 public class app {
 	private static app instance = null;
-	private IState currentState;
+	private IStage currentState;
 	
 	public static app getInstance() {
 		if (instance == null) {
@@ -11,11 +11,11 @@ public class app {
 		return instance;
 	}
 	
-	public IState getCurrentState() {
+	public IStage getCurrentState() {
 		return currentState;
 	}
 	
-	public void setStateAndStart(IState state) {
+	public void setStateAndStart(IStage state) {
 		this.currentState = state;
 		this.start();
 	}

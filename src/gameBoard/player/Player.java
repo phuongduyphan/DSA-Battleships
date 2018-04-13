@@ -1,10 +1,10 @@
 package gameBoard.player;
 import java.util.ArrayList;
 
-import UI.consoleUI.Command;
-import UI.consoleUI.CommandStage3;
-import UI.consoleUI.IClickable;
-import UI.consoleUI.InputHandler;
+import UI.Command;
+import UI.CommandStage3;
+import UI.IClickable;
+import UI.InputHandler;
 import gameBoard.Board;
 import gameBoard.weapon.Weapon;
 import gameBoard.Coordinate;

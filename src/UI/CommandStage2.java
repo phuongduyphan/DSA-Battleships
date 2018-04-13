@@ -1,4 +1,4 @@
-package UI.consoleUI;
+package UI;
 
 import gameBoard.Coordinate;
 import gameBoard.cell.Cell;

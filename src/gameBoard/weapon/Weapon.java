@@ -1,8 +1,8 @@
 package gameBoard.weapon;
 
-import UI.consoleUI.Command;
-import UI.consoleUI.CommandStage3;
-import UI.consoleUI.IClickable;
+import UI.Command;
+import UI.CommandStage3;
+import UI.IClickable;
 import gameBoard.Board;
 import gameBoard.Coordinate;
 
@@ -10,6 +10,7 @@ public abstract class Weapon implements IClickable {
 	
 //	private Image img;
 //	
+	protected WeaponType type;
 	public Weapon() {}
 //
 //	public Image getImg() {
@@ -19,7 +20,9 @@ public abstract class Weapon implements IClickable {
 //	public void setImg(Image img) {
 //		this.img = img;
 //	}
-	
+	public WeaponType getType() {
+		return type;
+	}
 
 	public abstract void act(Board board, Coordinate coor);
 

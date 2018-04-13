@@ -1,10 +1,10 @@
-package UI.consoleUI;
+package UI;
 
 import gameBoard.Coordinate;
-import gameBoard.GameHandler;
 import gameBoard.cell.Cell;
 import gameBoard.player.Player;
 import gameBoard.weapon.Weapon;
+import gameStage.app;
 
 public class CommandStage3 extends Command {
     private Player targetPlayer;
@@ -19,7 +19,8 @@ public class CommandStage3 extends Command {
 
     @Override
     public void onFinished() {
-        GameHandler.getInstance().input(this);
+        UIHandlerStage3 uiHandler = (UIHandlerStage3)app.getInstance().getCurrentState().getUIHandler();
+        uiHandler.setReadyToShoot();
     }
 
     public Player getTargetPlayer() { return targetPlayer; }

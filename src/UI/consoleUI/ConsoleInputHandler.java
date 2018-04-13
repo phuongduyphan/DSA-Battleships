@@ -1,13 +1,15 @@
 package UI.consoleUI;
 
-import gameState.IState;
-import gameState.State2;
-import gameState.State3;
-import gameState.app;
-
 import java.util.Scanner;
 
+import UI.CommandStage2;
+import UI.CommandStage3;
+import UI.InputHandler;
 import gameBoard.Coordinate;
+import gameStage.IStage;
+import gameStage.Stage2;
+import gameStage.Stage3;
+import gameStage.app;
 
 public class ConsoleInputHandler extends InputHandler {
 	private static ConsoleInputHandler instance;
@@ -21,7 +23,7 @@ public class ConsoleInputHandler extends InputHandler {
 
 	@Override
 	public void enable() {
-		IState currentState = app.getInstance().getCurrentState();
+		IStage currentState = app.getInstance().getCurrentState();
 		System.out.println(currentState);
 		int i;
 		if (false) {
@@ -30,10 +32,10 @@ public class ConsoleInputHandler extends InputHandler {
 			// do i = scanner.nextInt();
 			// while (i != 1 && i != 2);
 			// if (i == 1) updateCommand(1, btnStart);
-		} else if (currentState instanceof State2) {
+		} else if (currentState instanceof Stage2) {
 			cmd = new CommandStage2();
 			/// TODO
-		} else if (currentState instanceof State3) {
+		} else if (currentState instanceof Stage3) {
 			cmd = new CommandStage3();
 			while (true) {
 				System.out.println("1 to choose player, 2 for weapon, 3 for cell");

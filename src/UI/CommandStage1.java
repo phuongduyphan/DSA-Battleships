@@ -1,4 +1,4 @@
-package UI.consoleUI;
+package UI;
 //package gui;
 //
 //public class CommandStage1 extends Command {

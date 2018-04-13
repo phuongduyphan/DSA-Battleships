@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <interface id="1" language="java" name="UI.consoleUI.IHoverable" project="DSA-Battleships" 
-    file="/DSA-Battleships/src/UI/consoleUI/IHoverable.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="1" language="java" name="UI.IHoverable" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/UI/IHoverable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="735" y="272"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="2" language="java" name="UI.consoleUI.IClickable" project="DSA-Battleships" 
-    file="/DSA-Battleships/src/UI/consoleUI/IClickable.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="2" language="java" name="UI.IClickable" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/UI/IClickable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="262" y="81"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

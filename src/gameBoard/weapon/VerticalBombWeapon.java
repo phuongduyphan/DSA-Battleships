@@ -5,6 +5,10 @@ import gameBoard.Coordinate;
 
 public class VerticalBombWeapon extends Weapon {
 
+	public VerticalBombWeapon(WeaponType type) {
+		// TODO Auto-generated constructor stub
+		this.type = type;
+	}
 	@Override
 	public void act(Board board, Coordinate coor) {
 		// TODO Auto-generated method stub

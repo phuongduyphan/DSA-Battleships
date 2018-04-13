@@ -1,4 +1,4 @@
-package UI.consoleUI;
+package UI;
 
 import gameBoard.player.Player;
 

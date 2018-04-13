@@ -1,11 +1,11 @@
-package UI.consoleUI;
+package UI;
 
 import gameBoard.GameHandler;
 import gameBoard.cell.Cell;
 import gameBoard.player.Player;
 import gameBoard.ship.Ship;
 import gameBoard.weapon.Weapon;
-import gameState.app;
+import gameStage.app;
 
 public abstract class InputHandler {
     protected Command cmd;

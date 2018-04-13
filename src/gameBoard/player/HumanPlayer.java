@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import UI.consoleUI.ConsoleInputHandler;
 import gameBoard.Board;
 import gameBoard.weapon.Weapon;
+import gameStage.Stage3;
 
 public class HumanPlayer extends Player{
 	
@@ -16,6 +17,7 @@ public class HumanPlayer extends Player{
 	@Override
 	public void play() {
 		// TODO Auto-generated method stub
-		ConsoleInputHandler.getInstance().enable();
+		//ConsoleInputHandler.getInstance().enable();
+		Stage3.getInstance().getUIHandler().enableInput();
 	}
 }

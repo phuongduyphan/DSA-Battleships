@@ -1,9 +1,9 @@
 package gameBoard.cell;
 
-import UI.consoleUI.Command;
-import UI.consoleUI.CommandStage2;
-import UI.consoleUI.CommandStage3;
-import UI.consoleUI.IClickable;
+import UI.Command;
+import UI.CommandStage2;
+import UI.CommandStage3;
+import UI.IClickable;
 import gameBoard.Coordinate;
 import gameBoard.ship.Ship;
 

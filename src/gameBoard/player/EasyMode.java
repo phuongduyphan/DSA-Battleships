@@ -3,13 +3,13 @@ package gameBoard.player;
 import java.util.ArrayList;
 import java.util.Random;
 
-import UI.consoleUI.Command;
-import UI.consoleUI.CommandStage3;
+import UI.Command;
+import UI.CommandStage3;
 import UI.consoleUI.ConsoleInputHandler;
 import gameBoard.Coordinate;
-import gameBoard.GameHandler;
 import gameBoard.cell.CellType;
 import gameBoard.weapon.Weapon;
+import gameStage.Stage3;
 
 public class EasyMode extends Strategy{
 	public Player pickOpponent() {
@@ -50,11 +50,11 @@ public class EasyMode extends Strategy{
 		Weapon weapon = pickWeapon();
 		System.out.print(weapon);
 		
-		ConsoleInputHandler.getInstance().setCmd(new CommandStage3());
-		ConsoleInputHandler.getInstance().updateCommand(3, opponent);
-		ConsoleInputHandler.getInstance().updateCommand(3, opponent.getBoard().getCellAt(coor));
-		ConsoleInputHandler.getInstance().updateCommand(3, weapon);
-		GameHandler.getInstance().input(ConsoleInputHandler.getInstance().getCmd());
+		CommandStage3 cmd = new CommandStage3();
+		cmd.setTargetPlayer(opponent);
+		cmd.setCell(opponent.getBoard().getCellAt(coor));
+		cmd.setWeapon(weapon);
+		Stage3.getInstance().processInput(cmd);
 	}
 }
 

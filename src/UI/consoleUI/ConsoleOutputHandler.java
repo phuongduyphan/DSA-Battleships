@@ -1,5 +1,6 @@
 package UI.consoleUI;
 
+import UI.OutputHandler;
 import gameBoard.Board;
 import gameBoard.player.Player;
 

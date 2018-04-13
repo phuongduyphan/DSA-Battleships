@@ -1,4 +1,4 @@
-package UI.consoleUI;
+package UI;
 
 public abstract class Command {
     public abstract boolean isCompleted();

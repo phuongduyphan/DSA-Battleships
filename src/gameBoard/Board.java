@@ -19,6 +19,7 @@ public class Board {
 	private List<Ship> listOfShips = new ArrayList<>();
 	private CellFactory cellFactory = CellFactory.getInstance();
 	private ShipFactory shipFactory = ShipFactory.getInstance();
+	private ArrayList<Cell> listOfExplosion = new ArrayList<>();
 	
 	public Board(Integer row, Integer col) {
 		this.numberOfRows = row;
@@ -59,7 +60,7 @@ public class Board {
 	}
 	
 	public void shootAt(Coordinate coor) {
-		
+		listOfExplosion.add(getCellAt(coor));
 		if (checkRange(coor)) {
 			Cell shotCell = getCellAt(coor);
 			shotCell.actWhenIsShot();
@@ -142,4 +143,13 @@ public class Board {
     		System.out.println("");
     	}
 	}
+	
+	public ArrayList<Cell> getListOfExplosion() {
+		return listOfExplosion;
+	}
+
+	public void clearListOfExplosion() {
+		listOfExplosion.clear();
+	}
+	
 }
