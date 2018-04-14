@@ -64,10 +64,9 @@ public class GUI implements UI {
 
 	public void shootStage3(final CommandStage3 cmd) {
 		System.out.println(cmd.getWeapon().getType());
-		System.out.println(Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
+		System.out.println("file:///../resources/"+Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 
-		Image image = new Image(
-				getClass().getResourceAsStream(Configurations.mapWeaponImage.get(cmd.getWeapon().getType())));
+		Image image = new Image("file:///../resources/"+Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 		final ImageView imageView = new ImageView(image);
 		imageView.setFitHeight(50);
 		imageView.setFitWidth(50);
@@ -98,8 +97,7 @@ public class GUI implements UI {
 	public void displayStage3(final CommandStage3 cmd,final ArrayList<Cell> listOfExplosion) {
 
 		if ((Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer) == false) {
-			Image weaponImage = new Image(
-					getClass().getResourceAsStream(Configurations.mapWeaponImage.get(cmd.getWeapon().getType())));
+			Image weaponImage = new Image("file:///../resources/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 			final ImageView weaponImageView = new ImageView(weaponImage);
 			weaponImageView.setFitHeight(50);
 			weaponImageView.setFitWidth(50);
@@ -125,7 +123,7 @@ public class GUI implements UI {
 					final ArrayList<ImageView> listOfExplosionView = new ArrayList<>();
 
 					for (int i = 0; i < listOfExplosion.size(); i++) {
-						Image explosion = new Image(getClass().getResourceAsStream("explosion.gif"));
+						Image explosion = new Image("file:///../resources/explosion.gif");
 						ImageView explosionView = new ImageView(explosion);
 						explosionView.setFitHeight(60);
 						explosionView.setFitWidth(60);
@@ -148,7 +146,7 @@ public class GUI implements UI {
 							}
 
 							for (int i = 0; i < listOfExplosion.size(); i++) {
-								Image image = new Image(getClass().getResourceAsStream("flame.gif"));
+								Image image = new Image("file:///../resources/flame.gif");
 								ImageView imageView = new ImageView(image);
 								imageView.setFitHeight(50);
 								imageView.setFitWidth(50);
