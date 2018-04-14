@@ -30,9 +30,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		Board humanBoard = new Board(8, 8);
 
-		humanBoard.createShip(new Coordinate(4, 4), ShipOrientation.NORTH, ShipType.PATROL_BOAT);
+		humanBoard.createShip(new Coordinate(4, 4), ShipOrientation.VERTICAL, ShipType.PATROL_BOAT);
 		Board botBoard = new Board(8, 8);
-		botBoard.createShip(new Coordinate(3, 3), ShipOrientation.NORTH, ShipType.PATROL_BOAT);
+		botBoard.createShip(new Coordinate(3, 3), ShipOrientation.VERTICAL, ShipType.PATROL_BOAT);
 		ArrayList<Weapon> listWeaponOfHuman = new ArrayList<>();
 		ArrayList<Weapon> listWeaponOfBot = new ArrayList<>();
 		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT));

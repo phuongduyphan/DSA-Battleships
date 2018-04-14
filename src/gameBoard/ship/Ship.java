@@ -50,17 +50,11 @@ public abstract class Ship implements IClickable {
 		Integer startCol = startCoordinate.getCol();
 		
 		switch (orientation) {
-		case NORTH:
-			appendCoorsInNorthDirection(startRow, startCol);
+		case VERTICAL:
+			appendCoorsVertically(startRow, startCol);
 			break;
-		case SOUTH:
-			appendCoorsInSouthDirection(startRow, startCol);
-			break;
-		case EAST:
-			appendCoorsInEastDirection(startRow, startCol);
-			break;
-		case WEST:
-			appendCoorsInWestDirection(startRow, startCol);
+		case HORIZONTAL:
+			appendCoorsHorizontally(startRow, startCol);
 			break;
 		default:
 			System.out.println("Wrong orientation");	
@@ -68,25 +62,12 @@ public abstract class Ship implements IClickable {
 		
 	}
 	
-	private void appendCoorsInNorthDirection(Integer startRow, Integer startCol) {
+	private void appendCoorsVertically(Integer startRow, Integer startCol) {
 		for (int row = startRow; row < startRow + length; row++) {
 			listOfCoors.add(new Coordinate(row, startCol));
 		}	
 	}
-	
-	private void appendCoorsInSouthDirection(Integer startRow, Integer startCol) {
-		for (int row = startRow; row > startRow - length; row--) {
-			listOfCoors.add(new Coordinate(row, startCol));
-		}
-	}
-	
-	private void appendCoorsInEastDirection(Integer startRow, Integer startCol) {
-		for (int col = startCol; col < startCol + length; col++) {
-		listOfCoors.add(new Coordinate(startRow, col));
-	}
-	}
-	
-	private void appendCoorsInWestDirection(Integer startRow, Integer startCol) {
+	private void appendCoorsHorizontally(Integer startRow, Integer startCol) {
 		for (int col = startCol; col > startCol - length; col--) {
 		listOfCoors.add(new Coordinate(startRow, col));
 	}
