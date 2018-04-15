@@ -63,7 +63,7 @@ public class GUI implements UI {
 	}
 
 	public void shootStage3(final CommandStage3 cmd) {
-		System.out.println(cmd.getWeapon().getType());
+		cmd.getWeapon().setNumberOfWeapon(cmd.getWeapon().getNumberOfWeapon()-1);
 		System.out.println("file:///../resources/"+Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 
 		Image image = new Image("file:///../resources/"+Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
@@ -153,8 +153,8 @@ public class GUI implements UI {
 								imageView.setTranslateX(70 + listOfExplosion.get(i).getCoordinate().getCol() * 50);
 								imageView.setTranslateY(30+50 * listOfExplosion.get(i).getCoordinate().getRow() - 10);
 								gameBoardStage3.getGameBoardPane().getChildren().add(imageView);
-								Stage3.getInstance().displayFinish(cmd);
 							}
+							Stage3.getInstance().displayFinish(cmd);
 						}
 					});
 				}

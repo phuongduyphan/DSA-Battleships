@@ -7,6 +7,7 @@ import UI.IClickable;
 import UI.InputHandler;
 import gameBoard.Board;
 import gameBoard.weapon.Weapon;
+import gameBoard.weapon.WeaponType;
 import gameBoard.Coordinate;
 
 public abstract class Player implements IClickable {
@@ -45,5 +46,12 @@ public abstract class Player implements IClickable {
             CommandStage3 cmd3 = (CommandStage3)targetCommand;
             cmd3.setTargetPlayer(this);
         } else throw new Error("In Player.java, onClick(), the targetCmd is not the right type of Cmd to be used with Player");
+    }
+    
+    public Weapon findWeapon(WeaponType type) {
+    	for (int i=0; i<listOfWeapon.size(); i++) {
+    		if (listOfWeapon.get(i).getType() == type) return listOfWeapon.get(i);
+    	}
+    	return null;
     }
 }

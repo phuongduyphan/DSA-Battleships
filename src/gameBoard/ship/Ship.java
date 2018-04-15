@@ -70,7 +70,7 @@ public abstract class Ship implements IClickable {
 		}	
 	}
 	private void appendCoorsHorizontally(Integer startRow, Integer startCol) {
-		for (int col = startCol; col > startCol - length; col--) {
+		for (int col = startCol; col < startCol + length; col++) {
 		listOfCoors.add(new Coordinate(startRow, col));
 	}
 	}

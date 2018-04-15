@@ -20,12 +20,13 @@ public class EasyMode extends Strategy{
 	}
 	
 	public Coordinate pickCoordinate(Player opponent) {
+		opponent.getBoard().displayBoard();
 		ArrayList<Coordinate> canShoot = new ArrayList<>();
 		
 		for (int i = 0; i < opponent.getBoard().getNumberOfRows(); i++) {
 			for (int j=0; j< opponent.getBoard().getNumberOfColumns(); j++) {
 				Coordinate coor = new Coordinate(i,j);
-				if (opponent.getBoard().getCellAt(coor).getType() == CellType.UNOCCUPIED) {
+				if (opponent.getBoard().getCellAt(coor).getCanChangeWhenIsShot() == true) {
 					canShoot.add(coor);
 				}
 			}
@@ -46,7 +47,7 @@ public class EasyMode extends Strategy{
 		Player opponent = pickOpponent();
 		System.out.print(opponent);
 		Coordinate coor = pickCoordinate(opponent);
-		System.out.print(coor);
+		System.out.print(opponent.getBoard().getCellAt(coor));
 		Weapon weapon = pickWeapon();
 		System.out.print(weapon);
 		

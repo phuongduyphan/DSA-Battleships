@@ -4,20 +4,24 @@ import gameBoard.Board;
 import gameBoard.Coordinate;
 
 public class RocketWeapon extends Weapon {
-	
 	public RocketWeapon(WeaponType type) {
 		// TODO Auto-generated constructor stub
 		this.type = type;
 	}
+	
+	public RocketWeapon(WeaponType type,int numberOfWeapon) {
+		// TODO Auto-generated constructor stub
+		this.type = type;
+		this.numberOfWeapon = numberOfWeapon;
+	}
 	@Override
 	public void act(Board board, Coordinate coor) {
 		// TODO Auto-generated method stub
-		for (int row = coor.getRow() - 1; row <= coor.getRow() + 1; row++) {
-			for (int col = coor.getCol() - 1; col <= coor.getCol() + 1; col++) {
-				board.shootAt(new Coordinate(row, col));
-			}
-		}
-
+		board.shootAt(new Coordinate(coor.getRow(), coor.getCol()));
+		board.shootAt(new Coordinate(coor.getRow()-1, coor.getCol()));
+		board.shootAt(new Coordinate(coor.getRow(), coor.getCol()+1));
+		board.shootAt(new Coordinate(coor.getRow()+1, coor.getCol()));
+		board.shootAt(new Coordinate(coor.getRow(), coor.getCol()-1));
 	}
 
 }

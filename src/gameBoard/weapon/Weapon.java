@@ -7,9 +7,7 @@ import gameBoard.Board;
 import gameBoard.Coordinate;
 
 public abstract class Weapon implements IClickable {
-	
-//	private Image img;
-//	
+	protected int numberOfWeapon;
 	protected WeaponType type;
 	public Weapon() {}
 //
@@ -34,5 +32,11 @@ public abstract class Weapon implements IClickable {
 		} else {
 		    throw new Error("In Weapon.java, onClick(), the targetCmd is not the right type of Cmd to be used with Weapon");
         }
+	}
+	public int getNumberOfWeapon() {
+		return numberOfWeapon;
+	}
+	public void setNumberOfWeapon(int numberOfWeapon) {
+		this.numberOfWeapon = numberOfWeapon;
 	}
 }
