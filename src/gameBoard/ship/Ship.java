@@ -15,16 +15,18 @@ public abstract class Ship implements IClickable {
 	//TODO verify data type of listOfShipParts
 //	private ArrayList<Image> listOfShipParts;
 	private int length;
+	private ShipType type;
 	
 	public Ship(Coordinate startCoordinate, ShipOrientation orientation) {
 		this.startCoordinate = startCoordinate;
 		this.orientation = orientation;
 	}	
 	
-	public Ship(Coordinate startCoordinate, ShipOrientation orientation, int length) {
+	public Ship(Coordinate startCoordinate, ShipOrientation orientation, int length, ShipType type) {
 		this.startCoordinate = startCoordinate;
 		this.orientation = orientation;
 		this.length = length;
+		this.type = type;
 		appendCoorToList();
 //		setListOfShipParts();
 	}
@@ -80,5 +82,22 @@ public abstract class Ship implements IClickable {
 			cmd2.setShip(this);
 		} else throw new Error("In Ship.java, onClick(), the targetCmd is not the right type of Cmd to be used with Ship");
 	}
+
+	public Coordinate getStartCoordinate() {
+		return startCoordinate;
+	}
+
+	public ShipOrientation getOrientation() {
+		return orientation;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public ShipType getType() {
+		return type;
+	}
+
 }
 

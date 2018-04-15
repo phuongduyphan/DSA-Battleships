@@ -28,15 +28,18 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
+		primaryStage.setTitle("BattleShip");
+		
 		Board humanBoard = new Board(8, 8);
-
 		humanBoard.createShip(new Coordinate(4, 4), ShipOrientation.VERTICAL, ShipType.PATROL_BOAT);
+		humanBoard.createShip(new Coordinate(2, 2), ShipOrientation.HORIZONTAL, ShipType.DESTROYER);
 		Board botBoard = new Board(8, 8);
 		botBoard.createShip(new Coordinate(3, 3), ShipOrientation.VERTICAL, ShipType.PATROL_BOAT);
 		ArrayList<Weapon> listWeaponOfHuman = new ArrayList<>();
 		ArrayList<Weapon> listWeaponOfBot = new ArrayList<>();
 		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT));
 		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.ROCKET));
+		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.HORIZONTAL_BOMBING));
 		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT));
 
 		Strategy mode = new EasyMode();
@@ -51,6 +54,11 @@ public class Main extends Application {
 		Configurations.mapWeaponImage.put(WeaponType.ROCKET, "rocket.png");
 		Configurations.mapWeaponImage.put(WeaponType.HORIZONTAL_BOMBING, "rocket.png");
 		Configurations.mapWeaponImage.put(WeaponType.VERTICAL_BOMBING, "rocket.png");
+		Configurations.mapShipImage.put(ShipType.AIRCRAFT_CARRIER,"AIRCRAFT_CARRIER");
+		Configurations.mapShipImage.put(ShipType.BATTLESHIP, "BATTLESHIP");
+		Configurations.mapShipImage.put(ShipType.DESTROYER, "DESTROYER");
+		Configurations.mapShipImage.put(ShipType.PATROL_BOAT,"PATROL_BOAT");
+		Configurations.mapShipImage.put(ShipType.SUBMARINE,"SUBMARINE");
 		 
 		GUI humanGUI = new GUI(human);
 		Configurations.listOfUI.add(humanGUI);

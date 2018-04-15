@@ -10,13 +10,11 @@ import gameBoard.weapon.Weapon;
 import gameStage.Stage3;
 
 public class UIHandlerStage3 extends UIHandler {
-
-	public UIHandlerStage3() {
-		cmd = new CommandStage3();
-	}
 	
 	public void enableInput() {
+		setCmd(new CommandStage3());
 		currentUI = getCurrentUI();
+		currentUI.getWeaponPaneStage3().unselected();
 		currentUI.enableInputStage3();
 	}
 
@@ -59,4 +57,5 @@ public class UIHandlerStage3 extends UIHandler {
 	public void switchPlayer() {
 		currentUI.switchPlayerStage3();
 	}
+	
 }

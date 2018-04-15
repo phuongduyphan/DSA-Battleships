@@ -11,4 +11,8 @@ public abstract class UIHandler {
 	public abstract void enableInput();
 	public abstract void display(Command cmd,ArrayList<Cell> listOfExplosion);
 	public abstract void updateCommand(IClickable i);
+	
+	public void setCmd(Command cmd) {
+		this.cmd = cmd;
+	}
 }

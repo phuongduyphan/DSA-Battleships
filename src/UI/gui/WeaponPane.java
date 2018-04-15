@@ -163,6 +163,15 @@ public class WeaponPane {
 		horizontalBomb.setDisable(true);
 	}
 	
+	public void unselected() {
+		shootButton.setSelected(false);
+		shootButton.setDisable(true);
+		bullet.setSelected(false);
+		rocket.setSelected(false);
+		verticalBomb.setSelected(false);
+		horizontalBomb.setSelected(false);
+	}
+	
 	public void enableWeapon(Player player) {
 		for (int i=0; i < player.getListOfWeapon().size(); i++) {
 			if (player.getListOfWeapon().get(i) instanceof BulletWeapon) bullet.setDisable(false);

@@ -41,7 +41,7 @@ public class GUI implements UI {
 
 		opponentBoardStage3 = new OpponentBoard();
 		weaponPaneStage3 = new WeaponPane();
-		gameBoardStage3 = new GameBoard();
+		gameBoardStage3 = new GameBoard(player.getBoard());
 		containerStage3.getChildren().addAll(opponentBoardStage3.getOpponentBoardPane(),
 				gameBoardStage3.getGameBoardPane(), weaponPaneStage3.getWeaponPane());
 	}
@@ -213,6 +213,10 @@ public class GUI implements UI {
 
 	public VBox getContainerStage3() {
 		return containerStage3;
+	}
+
+	public WeaponPane getWeaponPaneStage3() {
+		return weaponPaneStage3;
 	}
 
 }

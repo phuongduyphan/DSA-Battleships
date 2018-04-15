@@ -2,6 +2,7 @@ package UI;
 
 import java.util.ArrayList;
 
+import UI.gui.WeaponPane;
 import gameBoard.cell.Cell;
 import gameBoard.player.Player;
 import javafx.scene.layout.VBox;
@@ -20,4 +21,6 @@ public interface UI {
 	public void switchPlayerStage3();
 	
 	public VBox getContainerStage3();
+	
+	public WeaponPane getWeaponPaneStage3();
 }

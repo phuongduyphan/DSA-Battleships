@@ -57,9 +57,11 @@
 #hitCoor {
 	-fx-background-image:url('file:///../resources/hit.jpg');
 	-fx-background-size:50px 50px;
+	-fx-opacity:0.8;
 }
 
 #missCoor {
 	-fx-background-image:url('file:///../resources/miss.jpg');
 	-fx-background-size:50px 50px;
+	-fx-opacity:0.8;
 }
