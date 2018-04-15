@@ -78,5 +78,9 @@ public class GameBoard {
 			gameBoardPane.getChildren().add(shipImageView);
 		}
 	}
+
+	public Button[][] getButtonGrid() {
+		return buttonGrid;
+	}
 	
 }

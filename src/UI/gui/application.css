@@ -70,3 +70,9 @@
 	-fx-background-color: red;
 	-fx-text-fill:white;
 }
+
+#missCoorGameBoard {
+	-fx-background-image:url('file:///../resources/cross_gameBoard.png');
+	-fx-background-size:50px 50px;
+	-fx-opacity:0.4;
+}

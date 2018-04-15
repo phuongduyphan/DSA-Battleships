@@ -63,10 +63,10 @@ public class GUI implements UI {
 	}
 
 	public void shootStage3(final CommandStage3 cmd) {
-		cmd.getWeapon().setNumberOfWeapon(cmd.getWeapon().getNumberOfWeapon()-1);
-		System.out.println("file:///../resources/"+Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
+		cmd.getWeapon().setNumberOfWeapon(cmd.getWeapon().getNumberOfWeapon() - 1);
+		System.out.println("file:///../resources/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 
-		Image image = new Image("file:///../resources/"+Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
+		Image image = new Image("file:///../resources/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 		final ImageView imageView = new ImageView(image);
 		imageView.setFitHeight(50);
 		imageView.setFitWidth(50);
@@ -78,7 +78,7 @@ public class GUI implements UI {
 		translate.setFromX(70 + cmd.getCell().getCoordinate().getCol() * 50);
 		translate.setFromY(-50);
 		translate.setToX(70 + cmd.getCell().getCoordinate().getCol() * 50);
-		translate.setToY(30+50 * cmd.getCell().getCoordinate().getRow() - 40);
+		translate.setToY(30 + 50 * cmd.getCell().getCoordinate().getRow() - 40);
 		translate.play();
 		opponentBoardStage3.getOpponentBoardPane().getChildren().add(imageView);
 
@@ -94,10 +94,11 @@ public class GUI implements UI {
 		});
 	}
 
-	public void displayStage3(final CommandStage3 cmd,final ArrayList<Cell> listOfExplosion) {
+	public void displayStage3(final CommandStage3 cmd, final ArrayList<Cell> listOfExplosion) {
 
 		if ((Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer) == false) {
-			Image weaponImage = new Image("file:///../resources/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
+			Image weaponImage = new Image(
+					"file:///../resources/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 			final ImageView weaponImageView = new ImageView(weaponImage);
 			weaponImageView.setFitHeight(50);
 			weaponImageView.setFitWidth(50);
@@ -109,7 +110,7 @@ public class GUI implements UI {
 			translate.setFromX(70 + cmd.getCell().getCoordinate().getCol() * 50);
 			translate.setFromY(-460 - 50);
 			translate.setToX(70 + cmd.getCell().getCoordinate().getCol() * 50);
-			translate.setToY(30+50 * cmd.getCell().getCoordinate().getRow() - 20);
+			translate.setToY(30 + 50 * cmd.getCell().getCoordinate().getRow() - 20);
 			translate.play();
 			gameBoardStage3.getGameBoardPane().getChildren().add(weaponImageView);
 
@@ -128,7 +129,7 @@ public class GUI implements UI {
 						explosionView.setFitHeight(60);
 						explosionView.setFitWidth(60);
 						explosionView.setTranslateX(70 + listOfExplosion.get(i).getCoordinate().getCol() * 50);
-						explosionView.setTranslateY(30+50 * listOfExplosion.get(i).getCoordinate().getRow() - 10);
+						explosionView.setTranslateY(30 + 50 * listOfExplosion.get(i).getCoordinate().getRow() - 10);
 
 						listOfExplosionView.add(explosionView);
 						gameBoardStage3.getGameBoardPane().getChildren().add(explosionView);
@@ -146,13 +147,21 @@ public class GUI implements UI {
 							}
 
 							for (int i = 0; i < listOfExplosion.size(); i++) {
-								Image image = new Image("file:///../resources/flame.gif");
-								ImageView imageView = new ImageView(image);
-								imageView.setFitHeight(50);
-								imageView.setFitWidth(50);
-								imageView.setTranslateX(70 + listOfExplosion.get(i).getCoordinate().getCol() * 50);
-								imageView.setTranslateY(30+50 * listOfExplosion.get(i).getCoordinate().getRow() - 10);
-								gameBoardStage3.getGameBoardPane().getChildren().add(imageView);
+								Image image;
+								ImageView imageView;
+								if (listOfExplosion.get(i).getType() == CellType.SHIP) {
+									image = new Image("file:///../resources/flame.gif");
+									imageView = new ImageView(image);
+									imageView.setTranslateX(70 + listOfExplosion.get(i).getCoordinate().getCol() * 50);
+									imageView.setTranslateY(30 + 50 * listOfExplosion.get(i).getCoordinate().getRow() - 10);
+									imageView.setFitHeight(50);
+									imageView.setFitWidth(50);
+									gameBoardStage3.getGameBoardPane().getChildren().add(imageView);
+								}
+								else {
+									gameBoardStage3.getButtonGrid()
+									[listOfExplosion.get(i).getCoordinate().getRow()][listOfExplosion.get(i).getCoordinate().getCol()].setId("missCoorGameBoard");
+								}
 							}
 							Stage3.getInstance().displayFinish(cmd);
 						}
@@ -188,14 +197,13 @@ public class GUI implements UI {
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
 					Stage3.getInstance().switchPlayerFinish();
-					
+
 				}
 			});
-		}
-		else {
+		} else {
 			PauseTransition pause = new PauseTransition(Duration.millis(1000));
 			pause.play();
-			
+
 			pause.setOnFinished(new EventHandler<ActionEvent>() {
 
 				@Override
