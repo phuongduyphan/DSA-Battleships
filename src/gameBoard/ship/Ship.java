@@ -31,7 +31,7 @@ public abstract class Ship implements IClickable {
 //		setListOfShipParts();
 	}
 
-	public void damage(Coordinate coor) {
+	public void removeFromList(Coordinate coor) {
 		
 		int indexToRemove = listOfCoors.indexOf(coor);
 		

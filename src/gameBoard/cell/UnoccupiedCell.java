@@ -7,7 +7,7 @@ public class UnoccupiedCell extends Cell {
 	public UnoccupiedCell(Coordinate coor) {
 		super(coor);
 		ship = null;
-		canChangeWhenIsShot = false;
+		canChangeWhenIsShot = true;
 		canChangeWhenIsSelected = true;
 		setType(CellType.UNOCCUPIED);
 		setNotation('O');
@@ -22,7 +22,6 @@ public class UnoccupiedCell extends Cell {
 	@Override
 	public void actWhenIsShot() {
 		//TODO GUI
-	    setNotation('X');
 	    System.out.println("Ship at " + coordinate + " is shot");
 	}
 

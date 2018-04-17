@@ -28,7 +28,7 @@ public class ShipCell extends Cell {
 	@Override
 	public void actWhenIsShot() {
 		//TODO GUI
-		ship.damage(coordinate);
+		ship.removeFromList(coordinate);
 	}
 
 	public Ship getShip() {
