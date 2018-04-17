@@ -13,19 +13,10 @@ public class UIHandlerStage3 extends UIHandler {
 	
 	public void enableInput() {
 		setCmd(new CommandStage3());
-		currentUI = getCurrentUI();
+		currentUI = Stage3.getInstance().getCurrentPlayer().getUi();
+		if (Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer) updateCommand(Configurations.listOfPlayer.get(1));
 		currentUI.getWeaponPaneStage3().unselected();
 		currentUI.enableInputStage3();
-	}
-
-	public UI getCurrentUI() {
-		if (Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer) updateCommand(Configurations.listOfPlayer.get(1));
-		for (int i = 0; i < Configurations.listOfUI.size(); i++) {
-			if (Configurations.listOfUI.get(i).getPlayer() == Stage3.getInstance().getCurrentPlayer()) {
-				return Configurations.listOfUI.get(i);
-			}
-		}
-		return null;
 	}
 	
 	public void setReadyToShoot() {
@@ -43,7 +34,7 @@ public class UIHandlerStage3 extends UIHandler {
         else if (i instanceof Weapon) c.setWeapon((Weapon)i);
         else if (i instanceof Cell) c.setCell((Cell)i);
         else throw new Error(i.getClass() + "is not a valid input for cmdstage3");
-        
+      
         System.out.println(c.isCompleted());
         if (c.isCompleted()) c.onFinished();
 	}

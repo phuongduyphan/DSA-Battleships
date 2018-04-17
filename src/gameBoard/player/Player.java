@@ -5,6 +5,7 @@ import UI.Command;
 import UI.CommandStage3;
 import UI.IClickable;
 import UI.InputHandler;
+import UI.UI;
 import gameBoard.Board;
 import gameBoard.weapon.Weapon;
 import gameBoard.weapon.WeaponType;
@@ -13,6 +14,7 @@ import gameBoard.Coordinate;
 public abstract class Player implements IClickable {
     private Board board;
     private ArrayList<Weapon> listOfWeapon = new ArrayList<Weapon>();
+    private UI ui;
     
     public Player(Board board,ArrayList<Weapon> listOfWeapon) {
     
@@ -54,4 +56,12 @@ public abstract class Player implements IClickable {
     	}
     	return null;
     }
+
+	public UI getUi() {
+		return ui;
+	}
+
+	public void setUi(UI ui) {
+		this.ui = ui;
+	}
 }

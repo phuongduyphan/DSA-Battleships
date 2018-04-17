@@ -128,7 +128,6 @@ public class WeaponPane {
 		rocket.setGraphic(imageView);
 		rocket.setOnAction(new EventHandler<ActionEvent>() {
 
-			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				app.getInstance().getCurrentState().getUIHandler()

@@ -66,6 +66,7 @@ public class Main extends Application {
 		Configurations.mapShipImage.put(ShipType.SUBMARINE, "SUBMARINE");
 
 		GUI humanGUI = new GUI(human);
+		human.setUi(humanGUI);
 		Configurations.listOfUI.add(humanGUI);
 		humanGUI.createStage3();
 
