@@ -20,7 +20,7 @@ public class Board {
 	private List<Ship> listOfShips = new ArrayList<>();
 	private CellFactory cellFactory = CellFactory.getInstance();
 	private ShipFactory shipFactory = ShipFactory.getInstance();
-	private ArrayList<Cell> listOfExplosion = new ArrayList<>();
+	private ArrayList<Cell> listOfExplodedCells = new ArrayList<>();
 
 	public Board(Integer row, Integer col) {
 		this.numberOfRows = row;
@@ -61,21 +61,40 @@ public class Board {
 	}
 
 	public void shootAt(Coordinate coor) {
-		if (checkRange(coor) && getCellAt(coor).getType() != CellType.EXPLODED) listOfExplosion.add(getCellAt(coor));
-		if (checkRange(coor)) {
-			Cell shotCell = getCellAt(coor);
-			shotCell.actWhenIsShot();
-
-			if (shotCell.getCanChangeWhenIsShot()) {
-				Ship ship = shotCell.getShip();
-				if (ship.getListOfCoors().isEmpty())
-					listOfShips.remove(ship);
-
-				setCellAsType(coor, CellType.EXPLODED);
-			}
-		} else {
-			System.out.println("Cannot Shoot - Boundary exceeded " + coor);
-		}
+		if (checkRange(coor) && getCellAt(coor).getType() != CellType.EXPLODED)
+		    listOfExplodedCells.add(getCellAt(coor));
+//		if (checkRange(coor)) {
+//			Cell shotCell = getCellAt(coor);
+//			shotCell.actWhenIsShot();
+//
+//			if (shotCell.getCanChangeWhenIsShot()) {
+//				Ship ship = shotCell.getShip();
+//				if (ship.getListOfCoors().isEmpty())
+//					listOfShips.remove(ship);
+//
+//				setCellAsType(coor, CellType.EXPLODED);
+//			}
+//		} else {
+//			System.out.println("Cannot Shoot - Boundary exceeded " + coor);
+//		}
+	    
+	    if (checkRange(coor)) {
+	        Cell targetCell = getCellAt(coor);
+	        targetCell.actWhenIsShot();
+	        
+	        if (targetCell.getCanChangeWhenIsShot()) {
+	            
+	            if (targetCell.getType().equals(CellType.SHIP)) {
+	                Ship ship = targetCell.getShip();
+	                if (ship.getListOfCoors().isEmpty())
+	                    listOfShips.remove(ship);
+	            }
+	            
+	            setCellAsType(coor, CellType.EXPLODED);
+	        }
+	        
+	    }
+	    
 	}
 
 	// public void setExplodedCell(Coordinate coordinate) {
@@ -131,11 +150,12 @@ public class Board {
 	}
 
 	public void displayBoard() {
+	    System.out.println("");
 		for (int i = 0; i < numberOfRows; i++) {
 			for (int j = 0; j < numberOfColumns; j++) {
 				Cell cell = getCellAt(new Coordinate(i, j));
-				System.out.print(cell.getType() + " ");
-				// cell.display();
+//				System.out.print(cell.getType() + " ");
+				cell.display();
 
 				// if (cell instanceof ShipCell)
 				// System.out.print("S ");
@@ -149,11 +169,11 @@ public class Board {
 	}
 
 	public ArrayList<Cell> getListOfExplosion() {
-		return listOfExplosion;
+		return listOfExplodedCells;
 	}
 
 	public void clearListOfExplosion() {
-		listOfExplosion.clear();
+		listOfExplodedCells.clear();
 	}
 
 }
