@@ -94,7 +94,7 @@ public class GUI implements UI {
 		});
 	}
 
-	public void displayStage3(final CommandStage3 cmd, final ArrayList<Cell> listOfExplosion) {
+	public void displayStage3(final CommandStage3 cmd, final ArrayList<Cell> listOfTargetableCells) {
 
 		if ((Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer) == false) {
 			Image weaponImage = new Image(
@@ -123,13 +123,13 @@ public class GUI implements UI {
 					gameBoardStage3.getGameBoardPane().getChildren().remove(weaponImageView);
 					final ArrayList<ImageView> listOfExplosionView = new ArrayList<>();
 
-					for (int i = 0; i < listOfExplosion.size(); i++) {
+					for (int i = 0; i < listOfTargetableCells.size(); i++) {
 						Image explosion = new Image("file:///../resources/explosion.gif");
 						ImageView explosionView = new ImageView(explosion);
 						explosionView.setFitHeight(60);
 						explosionView.setFitWidth(60);
-						explosionView.setTranslateX(70 + listOfExplosion.get(i).getCoordinate().getCol() * 50);
-						explosionView.setTranslateY(30 + 50 * listOfExplosion.get(i).getCoordinate().getRow() - 10);
+						explosionView.setTranslateX(70 + listOfTargetableCells.get(i).getCoordinate().getCol() * 50);
+						explosionView.setTranslateY(30 + 50 * listOfTargetableCells.get(i).getCoordinate().getRow() - 10);
 
 						listOfExplosionView.add(explosionView);
 						gameBoardStage3.getGameBoardPane().getChildren().add(explosionView);
@@ -146,21 +146,21 @@ public class GUI implements UI {
 								gameBoardStage3.getGameBoardPane().getChildren().remove(listOfExplosionView.get(i));
 							}
 
-							for (int i = 0; i < listOfExplosion.size(); i++) {
+							for (int i = 0; i < listOfTargetableCells.size(); i++) {
 								Image image;
 								ImageView imageView;
-								if (listOfExplosion.get(i).getType() == CellType.SHIP) {
+								if (listOfTargetableCells.get(i).getType() == CellType.SHIP) {
 									image = new Image("file:///../resources/flame.gif");
 									imageView = new ImageView(image);
-									imageView.setTranslateX(70 + listOfExplosion.get(i).getCoordinate().getCol() * 50);
-									imageView.setTranslateY(30 + 50 * listOfExplosion.get(i).getCoordinate().getRow() - 10);
+									imageView.setTranslateX(70 + listOfTargetableCells.get(i).getCoordinate().getCol() * 50);
+									imageView.setTranslateY(30 + 50 * listOfTargetableCells.get(i).getCoordinate().getRow() - 10);
 									imageView.setFitHeight(50);
 									imageView.setFitWidth(50);
 									gameBoardStage3.getGameBoardPane().getChildren().add(imageView);
 								}
 								else {
 									gameBoardStage3.getButtonGrid()
-									[listOfExplosion.get(i).getCoordinate().getRow()][listOfExplosion.get(i).getCoordinate().getCol()].setId("missCoorGameBoard");
+									[listOfTargetableCells.get(i).getCoordinate().getRow()][listOfTargetableCells.get(i).getCoordinate().getCol()].setId("missCoorGameBoard");
 								}
 							}
 							Stage3.getInstance().displayFinish(cmd);
@@ -169,14 +169,14 @@ public class GUI implements UI {
 				}
 			});
 		} else {
-			for (int i = 0; i < listOfExplosion.size(); i++) {
+			for (int i = 0; i < listOfTargetableCells.size(); i++) {
 				// System.out.println(listOfExplosion.get(i).getType());
-				if (listOfExplosion.get(i).getType() == CellType.SHIP) {
-					opponentBoardStage3.setButtonImage(listOfExplosion.get(i).getCoordinate().getRow(),
-							listOfExplosion.get(i).getCoordinate().getCol(), true);
+				if (listOfTargetableCells.get(i).getType() == CellType.SHIP) {
+					opponentBoardStage3.setButtonImage(listOfTargetableCells.get(i).getCoordinate().getRow(),
+							listOfTargetableCells.get(i).getCoordinate().getCol(), true);
 				} else {
-					opponentBoardStage3.setButtonImage(listOfExplosion.get(i).getCoordinate().getRow(),
-							listOfExplosion.get(i).getCoordinate().getCol(), false);
+					opponentBoardStage3.setButtonImage(listOfTargetableCells.get(i).getCoordinate().getRow(),
+							listOfTargetableCells.get(i).getCoordinate().getCol(), false);
 				}
 			}
 			Stage3.getInstance().displayFinish(cmd);

@@ -20,7 +20,7 @@ public class Board {
 	private List<Ship> listOfShips = new ArrayList<>();
 	private CellFactory cellFactory = CellFactory.getInstance();
 	private ShipFactory shipFactory = ShipFactory.getInstance();
-	private ArrayList<Cell> listOfExplodedCells = new ArrayList<>();
+	private ArrayList<Cell> listOfTargetableCells = new ArrayList<>();
 
 	public Board(Integer row, Integer col) {
 		this.numberOfRows = row;
@@ -62,7 +62,7 @@ public class Board {
 
 	public void shootAt(Coordinate coor) {
 		if (checkRange(coor) && getCellAt(coor).getType() != CellType.EXPLODED)
-		    listOfExplodedCells.add(getCellAt(coor));
+		    listOfTargetableCells.add(getCellAt(coor));
 //		if (checkRange(coor)) {
 //			Cell shotCell = getCellAt(coor);
 //			shotCell.actWhenIsShot();
@@ -169,11 +169,11 @@ public class Board {
 	}
 
 	public ArrayList<Cell> getListOfExplosion() {
-		return listOfExplodedCells;
+		return listOfTargetableCells;
 	}
 
 	public void clearListOfExplosion() {
-		listOfExplodedCells.clear();
+		listOfTargetableCells.clear();
 	}
 
 }

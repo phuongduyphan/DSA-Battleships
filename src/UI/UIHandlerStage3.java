@@ -39,9 +39,9 @@ public class UIHandlerStage3 extends UIHandler {
         if (c.isCompleted()) c.onFinished();
 	}
 	
-	public void display(Command cmd, ArrayList<Cell> listOfExplosion) {
+	public void display(Command cmd, ArrayList<Cell> listOfTargetableCells) {
 		for (int i=0; i<Configurations.listOfUI.size(); i++) {
-			Configurations.listOfUI.get(i).displayStage3((CommandStage3) cmd,listOfExplosion);
+			Configurations.listOfUI.get(i).displayStage3((CommandStage3) cmd,listOfTargetableCells);
 		}
 	}
 	
