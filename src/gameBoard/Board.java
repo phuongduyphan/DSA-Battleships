@@ -61,7 +61,7 @@ public class Board {
 	}
 
 	public void shootAt(Coordinate coor) {
-		if (checkRange(coor) && getCellAt(coor).getType().equals(CellType.EXPLODED))
+		if (checkRange(coor) && getCellAt(coor).getType() != CellType.EXPLODED)
 		    listOfExplodedCells.add(getCellAt(coor));
 //		if (checkRange(coor)) {
 //			Cell shotCell = getCellAt(coor);
