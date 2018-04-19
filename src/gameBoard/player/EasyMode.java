@@ -26,7 +26,7 @@ public class EasyMode extends Strategy{
 		for (int i = 0; i < opponent.getBoard().getNumberOfRows(); i++) {
 			for (int j=0; j< opponent.getBoard().getNumberOfColumns(); j++) {
 				Coordinate coor = new Coordinate(i,j);
-				if (opponent.getBoard().getCellAt(coor).getType() == CellType.UNOCCUPIED) {
+				if (opponent.getBoard().getCellAt(coor).getType() != CellType.EXPLODED) {
 					canShoot.add(coor);
 				}
 			}

@@ -126,6 +126,13 @@ public class Board {
 
 		Ship ship = shipFactory.create(startCoor, orientation, type);
 
+		if (canPlaceShip(startCoor, orientation, ship) == true) placeShipToBoard(ship);
+		else return false;
+		
+		return true;
+	}
+	
+	public boolean canPlaceShip(Coordinate startCoor, ShipOrientation orientation, Ship ship) {
 		for (Coordinate coor : ship.getListOfCoors()) {
 
 			if (!checkRange(coor)) {
@@ -144,8 +151,6 @@ public class Board {
 			}
 
 		}
-
-		placeShipToBoard(ship);
 		return true;
 	}
 

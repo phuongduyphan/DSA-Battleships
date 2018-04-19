@@ -2,8 +2,11 @@ package UI.gui;
 
 import java.io.IOException;
 
+import UI.CommandStage2;
 import gameBoard.Configurations;
 import gameBoard.Coordinate;
+import gameBoard.ship.Ship;
+import gameBoard.ship.ShipFactory;
 import gameBoard.ship.ShipOrientation;
 import gameBoard.ship.ShipType;
 import gameStage.Stage2;
@@ -125,8 +128,8 @@ public class ShipBoard {
 		
 		Image submarineImage = new Image("file:///../resources/submarine_verti.png");
 		ImageView submarineImageView = new ImageView(submarineImage);
-		submarineImageView.setFitHeight(150);
-		submarineImageView.setFitWidth(50);
+		submarineImageView.setFitHeight(140);
+		submarineImageView.setFitWidth(30);
 		submarineButton = new ToggleButton();
 		submarineButton.setPrefHeight(220);
 		submarineButton.setPrefWidth(60);
@@ -233,12 +236,44 @@ public class ShipBoard {
 					@Override
 					public void handle(ActionEvent event) {
 						// TODO Auto-generated method stub
-						Stage2.getInstance().getUIHandler().updateCommand(Configurations.listOfPlayer.get(0).getBoard().getCellAt(new Coordinate(row,column)));
-						if (reverseButton.getText() == "Horizontal") {
-							Stage2.getInstance().getUIHandler().updateCommand(ShipOrientation.HORIZONTAL);
+						
+						String str = reverseButton.getText();
+						ShipOrientation orientation;
+						if (str == "Horizontal") {
+							orientation = ShipOrientation.HORIZONTAL;
 						}
 						else {
-							Stage2.getInstance().getUIHandler().updateCommand(ShipOrientation.VERTICAL);
+							orientation = ShipOrientation.VERTICAL;
+						}
+						
+						CommandStage2 cmd = (CommandStage2) Stage2.getInstance().getUIHandler().getCmd(); 
+						if (cmd.getShipType() != null) {
+							String id;
+							Ship ship = ShipFactory.getInstance().create(new Coordinate(row, column), orientation,cmd.getShipType());
+							if (Configurations.listOfPlayer.get(0).getBoard().canPlaceShip(new Coordinate(row, column)
+									, orientation,ship)) {
+								id = "seaButton";
+								Stage2.getInstance().getUIHandler().updateCommand(Configurations.listOfPlayer.get(0)
+										.getBoard().getCellAt(new Coordinate(row, column)));
+								if (str == "Horizontal") {
+									Stage2.getInstance().getUIHandler().updateCommand(ShipOrientation.HORIZONTAL);
+								}
+								else {
+									Stage2.getInstance().getUIHandler().updateCommand(ShipOrientation.VERTICAL);
+								}
+							}
+							else id = "shipBoardButton_INVALID";
+							
+							if (orientation == ShipOrientation.HORIZONTAL) {
+								for (int i=column; i < Math.min(column+ship.getLength(), numberOfColumns); i++) {
+									buttonGrid[row][i].setId(id);
+								}
+							}
+							else {
+								for (int i = row; i < Math.min(row + ship.getLength(), numberOfRows); i++) {
+									buttonGrid[i][column].setId(id);
+								}
+							}
 						}
 					}
 					
@@ -249,7 +284,36 @@ public class ShipBoard {
 					@Override
 					public void handle(Event event) {
 						// TODO Auto-generated method stub
-						button.setId("shipBoardButton_ENTERED");
+						String str = reverseButton.getText();
+						ShipOrientation orientation;
+						if (str == "Horizontal") {
+							orientation = ShipOrientation.HORIZONTAL;
+						}
+						else {
+							orientation = ShipOrientation.VERTICAL;
+						}
+						
+						CommandStage2 cmd = (CommandStage2) Stage2.getInstance().getUIHandler().getCmd(); 
+						if (cmd.getShipType() != null) {
+							String id;
+							Ship ship = ShipFactory.getInstance().create(new Coordinate(row, column), orientation,cmd.getShipType());
+							if (Configurations.listOfPlayer.get(0).getBoard().canPlaceShip(new Coordinate(row, column)
+									, orientation,ship)) {
+								id = "shipBoardButton_ENTERED";
+							}
+							else id = "shipBoardButton_INVALID";
+							
+							if (orientation == ShipOrientation.HORIZONTAL) {
+								for (int i=column; i < Math.min(column+ship.getLength(), numberOfColumns); i++) {
+									buttonGrid[row][i].setId(id);
+								}
+							}
+							else {
+								for (int i = row; i < Math.min(row + ship.getLength(), numberOfRows); i++) {
+									buttonGrid[i][column].setId(id);
+								}
+							}
+						}
 					}
 				});
 				
@@ -258,7 +322,30 @@ public class ShipBoard {
 					@Override
 					public void handle(Event event) {
 						// TODO Auto-generated method stub
-						button.setId("seaButton");
+						String str = reverseButton.getText();
+						ShipOrientation orientation;
+						if (str == "Horizontal") {
+							orientation = ShipOrientation.HORIZONTAL;
+						}
+						else {
+							orientation = ShipOrientation.VERTICAL;
+						}
+						
+						CommandStage2 cmd = (CommandStage2) Stage2.getInstance().getUIHandler().getCmd(); 
+						if (cmd.getShipType() != null) {
+							Ship ship = ShipFactory.getInstance().create(new Coordinate(row, column), orientation,cmd.getShipType());
+							
+							if (orientation == ShipOrientation.HORIZONTAL) {
+								for (int i=column; i < Math.min(column+ship.getLength(), numberOfColumns); i++) {
+									buttonGrid[row][i].setId("seaButton");
+								}
+							}
+							else {
+								for (int i = row; i < Math.min(row + ship.getLength(), numberOfRows); i++) {
+									buttonGrid[i][column].setId("seaButton");
+								}
+							}
+						}
 					}
 				});
 				

@@ -225,7 +225,7 @@ public class GUI implements UI {
 				}
 			});
 		} else {
-			PauseTransition pause = new PauseTransition(Duration.millis(1000));
+			PauseTransition pause = new PauseTransition(Duration.millis(800));
 			pause.play();
 
 			pause.setOnFinished(new EventHandler<ActionEvent>() {

@@ -98,3 +98,8 @@
 	-fx-background-color:green;
 	-fx-opacity:0.5;
 }
+
+#shipBoardButton_INVALID {
+	-fx-background-color:red;
+	-fx-opacity:0.5;
+}
