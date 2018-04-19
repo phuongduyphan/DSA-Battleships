@@ -1,6 +1,7 @@
 package UI;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import gameBoard.Configurations;
 import gameBoard.cell.Cell;
@@ -8,15 +9,18 @@ import gameBoard.player.HumanPlayer;
 import gameBoard.player.Player;
 import gameBoard.weapon.Weapon;
 import gameStage.Stage3;
+import log.Log;
 
 public class UIHandlerStage3 extends UIHandler {
+	private UI currentUI;
 	
-	public void enableInput() {
+	public void enableInput() {		
 		setCmd(new CommandStage3());
 		currentUI = Stage3.getInstance().getCurrentPlayer().getUi();
 		if (Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer) updateCommand(Configurations.listOfPlayer.get(1));
 		currentUI.getWeaponPaneStage3().unselected();
 		currentUI.enableInputStage3();
+		
 	}
 	
 	public void setReadyToShoot() {
@@ -35,13 +39,15 @@ public class UIHandlerStage3 extends UIHandler {
         else if (i instanceof Cell) c.setCell((Cell)i);
         else throw new Error(i.getClass() + "is not a valid input for cmdstage3");
       
+        System.out.println(c.getWeapon());
+        System.out.println(c.getCell());
         System.out.println(c.isCompleted());
         if (c.isCompleted()) c.onFinished();
 	}
 	
-	public void display(Command cmd, ArrayList<Cell> listOfTargetableCells) {
+	public void display(Command cmd, ArrayList<Cell> listOfExplosion) {
 		for (int i=0; i<Configurations.listOfUI.size(); i++) {
-			Configurations.listOfUI.get(i).displayStage3((CommandStage3) cmd,listOfTargetableCells);
+			Configurations.listOfUI.get(i).displayStage3((CommandStage3) cmd,listOfExplosion);
 		}
 	}
 	

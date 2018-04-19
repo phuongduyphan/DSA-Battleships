@@ -3,6 +3,7 @@ package UI.gui;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import UI.CommandStage2;
 import UI.CommandStage3;
 import UI.UI;
 import gameBoard.Configurations;
@@ -23,6 +24,8 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 public class GUI implements UI {
+	private VBox containerStage2;
+	private ShipBoard shipBoardStage2;
 	private VBox containerStage3;
 	private OpponentBoard opponentBoardStage3;
 	private WeaponPane weaponPaneStage3;
@@ -32,6 +35,27 @@ public class GUI implements UI {
 	public GUI(Player player) {
 		// TODO Auto-generated constructor stub
 		this.player = player;
+	}
+	
+	public void createStage2() throws IOException {
+		containerStage2 = new VBox();
+		containerStage2.setPrefWidth(540);
+		containerStage2.setPrefHeight(920);
+		
+		shipBoardStage2 = new ShipBoard();
+		containerStage2.getChildren().add(shipBoardStage2.getShipBoard());
+	}
+	
+	public void enableInputStage2() {
+		
+	}
+	
+	public void disableShipStage2(CommandStage2 cmd) {
+		shipBoardStage2.disableShip(cmd.getShipType());
+	}
+	
+	public void displayShipStage2(CommandStage2 cmd) {
+		shipBoardStage2.displayShip(cmd.getCell().getCoordinate(),cmd.getOrientation(),cmd.getShipType());
 	}
 
 	public void createStage3() throws IOException {
@@ -225,6 +249,10 @@ public class GUI implements UI {
 
 	public WeaponPane getWeaponPaneStage3() {
 		return weaponPaneStage3;
+	}
+
+	public VBox getContainerStage2() {
+		return containerStage2;
 	}
 
 }

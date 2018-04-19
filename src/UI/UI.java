@@ -1,5 +1,6 @@
 package UI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import UI.gui.WeaponPane;
@@ -8,6 +9,16 @@ import gameBoard.player.Player;
 import javafx.scene.layout.VBox;
 
 public interface UI {
+	public void createStage2() throws IOException;
+	
+	public void enableInputStage2();
+	
+	public void disableShipStage2(CommandStage2 cmd);
+	
+	public void displayShipStage2(CommandStage2 cmd);
+	
+	public void createStage3() throws IOException;
+	
 	public void enableInputStage3();
 
 	public void enableShootStage3();

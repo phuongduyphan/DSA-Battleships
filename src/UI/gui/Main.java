@@ -17,22 +17,26 @@ import gameBoard.weapon.BulletWeapon;
 import gameBoard.weapon.Weapon;
 import gameBoard.weapon.WeaponFactory;
 import gameBoard.weapon.WeaponType;
+import gameStage.Stage2;
 import gameStage.Stage3;
 import gameStage.app;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import log.Log;
 
 public class Main extends Application {
+	public static Stage primaryStage;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
+		new Log("game.log");
 		primaryStage.setTitle("BattleShip");
 
 		Board humanBoard = new Board(8, 8);
-		humanBoard.createShip(new Coordinate(4, 4), ShipOrientation.VERTICAL, ShipType.PATROL_BOAT);
-		humanBoard.createShip(new Coordinate(2, 2), ShipOrientation.HORIZONTAL, ShipType.DESTROYER);
+//		humanBoard.createShip(new Coordinate(4, 4), ShipOrientation.VERTICAL, ShipType.PATROL_BOAT);
+//		humanBoard.createShip(new Coordinate(2, 2), ShipOrientation.HORIZONTAL, ShipType.DESTROYER);
 		Board botBoard = new Board(8, 8);
 		botBoard.createShip(new Coordinate(3, 3), ShipOrientation.VERTICAL, ShipType.PATROL_BOAT);
 		ArrayList<Weapon> listWeaponOfHuman = new ArrayList<>();
@@ -68,15 +72,15 @@ public class Main extends Application {
 		GUI humanGUI = new GUI(human);
 		human.setUi(humanGUI);
 		Configurations.listOfUI.add(humanGUI);
-		humanGUI.createStage3();
+//		humanGUI.createStage3();
 
-		Scene scene = new Scene(humanGUI.getContainerStage3(), 540, 920);
+		app.getInstance().setStateAndStart(Stage2.getInstance());
+		
+		this.primaryStage = primaryStage;
+		Scene scene = new Scene(humanGUI.getContainerStage2(), 540, 920);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
-		app.getInstance().setStateAndStart(Stage3.getInstance());
-
 	}
 
 	public static void main(String[] args) {

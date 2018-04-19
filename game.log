@@ -1,0 +1,4 @@
+Apr 19, 2018 8:35:51 AM com.sun.javafx.css.parser.CSSParser declaration
+WARNING: CSS Error parsing file:/D:/IU/DSA/DSA-Battleships/target/classes/UI/gui/application.css: Expected 'url("<uri-string>")' while parsing '-fx-background-image' at [9,22]
+Apr 19, 2018 8:35:58 AM com.sun.javafx.css.parser.CSSParser declaration
+WARNING: CSS Error parsing file:/D:/IU/DSA/DSA-Battleships/target/classes/UI/gui/application.css: Expected 'url("<uri-string>")' while parsing '-fx-background-image' at [9,22]

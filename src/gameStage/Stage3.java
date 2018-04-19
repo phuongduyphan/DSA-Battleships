@@ -1,13 +1,16 @@
 package gameStage;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 import UI.CommandStage3;
 import UI.UIHandler;
 import UI.UIHandlerStage3;
 import UI.consoleUI.ConsoleOutputHandler;
+import UI.gui.Main;
 import gameBoard.Configurations;
 import gameBoard.player.Player;
+import javafx.scene.Scene;
 
 public class Stage3 implements IStage {
 	private static Stage3 instance = null;
@@ -46,6 +49,17 @@ public class Stage3 implements IStage {
 
 	public void handle() {
 		// start playing game
+		try {
+			Configurations.listOfUI.get(0).createStage3();
+			Scene scene = new Scene(Configurations.listOfUI.get(0).getContainerStage3(), 540, 920);
+			String url = "file:/D:/IU/DSA/DSA-Battleships/target/classes/UI/gui/application.css";
+			scene.getStylesheets().add(url);
+			Main.primaryStage.setScene(scene);
+			Main.primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		nextTurn();
 	}
 
@@ -62,7 +76,7 @@ public class Stage3 implements IStage {
 		o.getTargetPlayer().update(o.getWeapon(), o.getCell().getCoordinate());
 		System.out.println(o.getTargetPlayer().getBoard().getListOfShips().size());
 		// ConsoleOutputHandler.getInstance().display(o.getTargetPlayer());
-		uiHandler.display(o, o.getTargetPlayer().getBoard().getListOfExplosion());
+		((UIHandlerStage3) uiHandler).display(o,o.getTargetPlayer().getBoard().getListOfTargetableCells());
 	}
 	
 	public void displayFinish(CommandStage3 o) {

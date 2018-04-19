@@ -76,3 +76,25 @@
 	-fx-background-size:50px 50px;
 	-fx-opacity:0.4;
 }
+
+#shipBoardHeader {
+	-fx-background-image:url('file:///../resources/battleship_header.jpg');
+	-fx-background-repeat:no-repeat;
+	-fx-background-size:540px 150px;
+}
+
+#shipBoardPane {
+	-fx-background-image:url('file:///../resources/sea-background.jpg');
+	-fx-background-repeat:no-repeat;
+	-fx-background-size:540px 770px;
+}
+
+#reverseButton {
+	-fx-font: 20px "Serif";
+    -fx-padding: 5;
+}
+
+#shipBoardButton_ENTERED {
+	-fx-background-color:green;
+	-fx-opacity:0.5;
+}

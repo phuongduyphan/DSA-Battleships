@@ -168,7 +168,7 @@ public class Board {
 		}
 	}
 
-	public ArrayList<Cell> getListOfExplosion() {
+	public ArrayList<Cell> getListOfTargetableCells() {
 		return listOfTargetableCells;
 	}
 
