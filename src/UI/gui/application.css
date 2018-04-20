@@ -103,3 +103,12 @@
 	-fx-background-color:red;
 	-fx-opacity:0.5;
 }
+
+#menuBoard {
+	-fx-background-image:url('file:///../resources/cover.jpg');
+}
+
+#cover-button {
+	-fx-opacity:0.7;
+	-fx-font-size:30px;
+}

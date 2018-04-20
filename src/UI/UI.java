@@ -6,12 +6,17 @@ import java.util.ArrayList;
 import UI.gui.WeaponPane;
 import gameBoard.cell.Cell;
 import gameBoard.player.Player;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public interface UI {
+	public void createStage1() throws IOException;
+	
+	public StackPane getContainerStage1();
+	
 	public void createStage2() throws IOException;
 	
-	public void enableInputStage2();
+	public VBox getContainerStage2();
 	
 	public void disableShipStage2(CommandStage2 cmd);
 	

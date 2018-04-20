@@ -9,8 +9,6 @@ import gameStage.Stage2;
 public class UIHandlerStage2 extends UIHandler {
 	public void enableInput() {
 		cmd = new CommandStage2();
-		Configurations.listOfUI.get(0).enableInputStage2();
-
 	}
 	
 	public void display() {
@@ -40,6 +38,6 @@ public class UIHandlerStage2 extends UIHandler {
 		Configurations.listOfPlayer.get(0).getBoard().displayBoard();
 		Configurations.listOfUI.get(0).disableShipStage2((CommandStage2) cmd);
 		if (Configurations.listOfPlayer.get(0).getBoard().getListOfShips().size() == 5) Stage2.getInstance().done();
-		else Stage2.getInstance().renewInput();
+		else enableInput();;
 	}
 }

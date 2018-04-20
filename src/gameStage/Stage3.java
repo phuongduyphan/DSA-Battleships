@@ -55,7 +55,6 @@ public class Stage3 implements IStage {
 			String url = "file:/D:/IU/DSA/DSA-Battleships/target/classes/UI/gui/application.css";
 			scene.getStylesheets().add(url);
 			Main.primaryStage.setScene(scene);
-			Main.primaryStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

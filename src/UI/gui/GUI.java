@@ -20,10 +20,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 public class GUI implements UI {
+	private StackPane containerStage1;
 	private VBox containerStage2;
 	private ShipBoard shipBoardStage2;
 	private VBox containerStage3;
@@ -37,6 +39,11 @@ public class GUI implements UI {
 		this.player = player;
 	}
 	
+	public void createStage1() throws IOException {
+		MenuBoard menuBoard = new MenuBoard();
+		containerStage1 = menuBoard.getMenuBoard();
+	}
+	
 	public void createStage2() throws IOException {
 		containerStage2 = new VBox();
 		containerStage2.setPrefWidth(540);
@@ -44,10 +51,6 @@ public class GUI implements UI {
 		
 		shipBoardStage2 = new ShipBoard();
 		containerStage2.getChildren().add(shipBoardStage2.getShipBoard());
-	}
-	
-	public void enableInputStage2() {
-		
 	}
 	
 	public void disableShipStage2(CommandStage2 cmd) {
@@ -243,16 +246,20 @@ public class GUI implements UI {
 		return player;
 	}
 
+	public StackPane getContainerStage1() {
+		return containerStage1;
+	}
+	
+	public VBox getContainerStage2() {
+		return containerStage2;
+	}
+
 	public VBox getContainerStage3() {
 		return containerStage3;
 	}
 
 	public WeaponPane getWeaponPaneStage3() {
 		return weaponPaneStage3;
-	}
-
-	public VBox getContainerStage2() {
-		return containerStage2;
 	}
 
 }

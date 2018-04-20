@@ -16,6 +16,10 @@ public abstract class Player implements IClickable {
     private ArrayList<Weapon> listOfWeapon = new ArrayList<Weapon>();
     private UI ui;
     
+    public Player() {
+    	
+    }
+    
     public Player(Board board,ArrayList<Weapon> listOfWeapon) {
     
     	this.board = board;
@@ -23,12 +27,20 @@ public abstract class Player implements IClickable {
     	
     }
     
+	public void setListOfWeapon(ArrayList<Weapon> listOfWeapon) {
+		this.listOfWeapon = listOfWeapon;
+	}
+
 	public ArrayList<Weapon> getListOfWeapon() {
 		return listOfWeapon;
 	}
 
 	public abstract void play();
 	
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+
 	public Board getBoard() {
 		return board;
 	}
