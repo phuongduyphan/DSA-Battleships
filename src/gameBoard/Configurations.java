@@ -13,8 +13,15 @@ import gameBoard.weapon.WeaponType;
 public class Configurations {
 	public static Integer numberOfColumns = 8;
 	public static Integer numberOfRows = 8;
-	public static HashMap<WeaponType, String> mapWeaponImage = new HashMap<>();
-	public static ArrayList<Player> listOfPlayer = new ArrayList<>();
-	public static ArrayList<UI> listOfUI = new ArrayList<>();
-	public static HashMap<ShipType, String> mapShipImage = new HashMap<>();
+	public static HashMap<WeaponType, String> mapWeaponImage;
+	public static ArrayList<Player> listOfPlayer;
+	public static ArrayList<UI> listOfUI;
+	public static HashMap<ShipType, String> mapShipImage;
+	
+	public static void initialize() {
+		mapWeaponImage = new HashMap<>();
+		listOfPlayer = new ArrayList<>();
+		listOfUI = new ArrayList<>();
+		mapShipImage = new HashMap<>();
+	}
 }

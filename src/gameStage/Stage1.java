@@ -37,6 +37,9 @@ public class Stage1 implements IStage {
 		//TODO implement each state handle
 		Player human = new HumanPlayer();
 		((HumanPlayer) human).create();
+		
+		Configurations.initialize();
+		
 		Configurations.listOfPlayer.add(human);
 		Configurations.mapWeaponImage.put(WeaponType.BULLET_SHOT, "rocket.png");
 		Configurations.mapWeaponImage.put(WeaponType.ROCKET, "rocket.png");
@@ -56,6 +59,7 @@ public class Stage1 implements IStage {
 			String url = "file:/D:/IU/DSA/DSA-Battleships/target/classes/UI/gui/application.css";
 			scene.getStylesheets().add(url);
 			Main.primaryStage.setScene(scene);
+			Main.primaryStage.centerOnScreen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,7 +85,6 @@ public class Stage1 implements IStage {
 
 	@Override
 	public UIHandler getUIHandler() {
-		// TODO Auto-generated method stub
 		return uiHandler;
 	}
 }

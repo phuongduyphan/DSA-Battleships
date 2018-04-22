@@ -86,7 +86,10 @@ public class Stage3 implements IStage {
 			UIHandlerStage3 uiTemp = (UIHandlerStage3) uiHandler;
 			uiTemp.switchPlayer();
 		} 
-		else done();
+		else {
+			if (Configurations.listOfPlayer.get(0).canMove()) Configurations.listOfUI.get(0).displayStatusStage3(true);
+			else Configurations.listOfUI.get(0).displayStatusStage3(false);
+		}
 	}
 	
 	public void switchPlayerFinish() {

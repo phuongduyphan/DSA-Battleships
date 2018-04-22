@@ -34,46 +34,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		new Log("game.log");
 		primaryStage.setTitle("BattleShip");
-
-//		Board humanBoard = new Board(8, 8);
-////		humanBoard.createShip(new Coordinate(4, 4), ShipOrientation.VERTICAL, ShipType.PATROL_BOAT);
-////		humanBoard.createShip(new Coordinate(2, 2), ShipOrientation.HORIZONTAL, ShipType.DESTROYER);
-//		Board botBoard = new Board(8, 8);
-//		botBoard.createShip(new Coordinate(3, 3), ShipOrientation.VERTICAL, ShipType.PATROL_BOAT);
-//		ArrayList<Weapon> listWeaponOfHuman = new ArrayList<>();
-//		ArrayList<Weapon> listWeaponOfBot = new ArrayList<>();
-//		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT,
-//				Configurations.numberOfColumns * Configurations.numberOfRows));
-//		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.ROCKET, 3));
-//		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.HORIZONTAL_BOMBING, 1));
-//		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.VERTICAL_BOMBING, 2));
-//		
-//		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT,
-//				Configurations.numberOfColumns * Configurations.numberOfRows));
-//		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.HORIZONTAL_BOMBING, 100));
-//
-//		Strategy mode = new EasyMode();
-//
-//		Player human = new HumanPlayer(humanBoard, listWeaponOfHuman);
-//		Player bot = new BotPlayer(botBoard, listWeaponOfBot, mode);
-//		mode.setBot((BotPlayer) bot);
-//
-//		Configurations.listOfPlayer.add(human);
-//		Configurations.listOfPlayer.add(bot);
-//		Configurations.mapWeaponImage.put(WeaponType.BULLET_SHOT, "rocket.png");
-//		Configurations.mapWeaponImage.put(WeaponType.ROCKET, "rocket.png");
-//		Configurations.mapWeaponImage.put(WeaponType.HORIZONTAL_BOMBING, "rocket.png");
-//		Configurations.mapWeaponImage.put(WeaponType.VERTICAL_BOMBING, "rocket.png");
-//		Configurations.mapShipImage.put(ShipType.AIRCRAFT_CARRIER, "AIRCRAFT_CARRIER");
-//		Configurations.mapShipImage.put(ShipType.BATTLESHIP, "BATTLESHIP");
-//		Configurations.mapShipImage.put(ShipType.DESTROYER, "DESTROYER");
-//		Configurations.mapShipImage.put(ShipType.PATROL_BOAT, "PATROL_BOAT");
-//		Configurations.mapShipImage.put(ShipType.SUBMARINE, "SUBMARINE");
-//
-//		GUI humanGUI = new GUI(human);
-//		human.setUi(humanGUI);
-//		Configurations.listOfUI.add(humanGUI);
-////		humanGUI.createStage3();
+		primaryStage.setResizable(false);
 		
 		this.primaryStage = primaryStage;
 		app.getInstance().setStateAndStart(Stage1.getInstance());

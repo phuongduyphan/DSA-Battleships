@@ -36,7 +36,13 @@ public interface UI {
 	
 	public void switchPlayerStage3();
 	
-	public VBox getContainerStage3();
+	public void displayStatusStage3(boolean status);
+	
+	public StackPane getContainerStage3();
 	
 	public WeaponPane getWeaponPaneStage3();
+	
+	public void createStage4();
+	
+	public StackPane getContainerStage4();
 }

@@ -112,3 +112,30 @@
 	-fx-opacity:0.7;
 	-fx-font-size:30px;
 }
+
+#winLabel {
+	-fx-text-fill:#F8E319;
+	-fx-font-size:50px;
+	-fx-font-weight:bold;
+}
+
+#loseLabel {
+	-fx-text-fill:#BBBBBB;
+	-fx-font-size:50px;
+	-fx-font-weight:bold;
+}
+
+#statusLayer {
+	-fx-background-color:black;
+	-fx-opacity:0.4;
+}
+
+#optionBoard {
+	-fx-background-image:url('file:///../resources/sea-background.jpg');
+	-fx-background-repeat:no-repeat;
+	-fx-background-size:540px 920px;
+}
+
+#optionButton {
+	-fx-font-size:30px;
+}

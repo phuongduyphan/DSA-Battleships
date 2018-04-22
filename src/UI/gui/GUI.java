@@ -18,8 +18,11 @@ import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -28,10 +31,11 @@ public class GUI implements UI {
 	private StackPane containerStage1;
 	private VBox containerStage2;
 	private ShipBoard shipBoardStage2;
-	private VBox containerStage3;
+	private StackPane containerStage3;
 	private OpponentBoard opponentBoardStage3;
 	private WeaponPane weaponPaneStage3;
 	private GameBoard gameBoardStage3;
+	private StackPane containerStage4;
 	private Player player;
 
 	public GUI(Player player) {
@@ -62,15 +66,28 @@ public class GUI implements UI {
 	}
 
 	public void createStage3() throws IOException {
-		containerStage3 = new VBox();
+		containerStage3 = new StackPane();
 		containerStage3.setPrefWidth(540);
 		containerStage3.setPrefHeight(920);
+		containerStage3.setMinHeight(containerStage3.USE_PREF_SIZE);
+		containerStage3.setMinWidth(containerStage3.USE_PREF_SIZE);
+		containerStage3.setMaxHeight(containerStage3.USE_PREF_SIZE);
+		containerStage3.setMaxWidth(containerStage3.USE_PREF_SIZE);
+		
+		VBox containerTemp = new VBox();
+		containerTemp.setPrefHeight(920);
+		containerTemp.setPrefWidth(540);	
+		containerTemp.setMinHeight(containerStage3.USE_PREF_SIZE);
+		containerTemp.setMinWidth(containerStage3.USE_PREF_SIZE);
+		containerTemp.setMaxHeight(containerStage3.USE_PREF_SIZE);
+		containerTemp.setMaxWidth(containerStage3.USE_PREF_SIZE);
 
 		opponentBoardStage3 = new OpponentBoard();
 		weaponPaneStage3 = new WeaponPane();
 		gameBoardStage3 = new GameBoard(player.getBoard());
-		containerStage3.getChildren().addAll(opponentBoardStage3.getOpponentBoardPane(),
+		containerTemp.getChildren().addAll(opponentBoardStage3.getOpponentBoardPane(),
 				gameBoardStage3.getGameBoardPane(), weaponPaneStage3.getWeaponPane());
+		containerStage3.getChildren().add(containerTemp);
 	}
 
 	public void enableInputStage3() {
@@ -241,6 +258,61 @@ public class GUI implements UI {
 			});
 		}
 	}
+	
+	public void displayStatusStage3(boolean status) {
+		Pane layer = new Pane();
+		layer.setPrefHeight(920);
+		layer.setPrefWidth(540);	
+		layer.setMinHeight(containerStage3.USE_PREF_SIZE);
+		layer.setMinWidth(containerStage3.USE_PREF_SIZE);
+		layer.setMaxHeight(containerStage3.USE_PREF_SIZE);
+		layer.setMaxWidth(containerStage3.USE_PREF_SIZE);
+		layer.setId("statusLayer");
+		
+		Label label = new Label();
+		label.setPrefHeight(100);
+		label.setPrefWidth(350);
+		label.setTranslateX(45);
+		if (status) {
+			label.setText("YOU WIN !!!");
+			label.setId("winLabel");
+		}
+		else {
+			label.setText("YOU LOSE !!!");
+			label.setId("loseLabel");
+		}
+		
+		TranslateTransition translate = new TranslateTransition(Duration.millis(500),label);
+		translate.setFromY(460);
+		translate.setToY(-200);
+		translate.setByY(1);
+		translate.play();
+		containerStage3.getChildren().addAll(layer,label);
+		
+		translate.setOnFinished(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				PauseTransition pause = new PauseTransition(Duration.millis(1000));
+				pause.play();
+				pause.setOnFinished(new EventHandler<ActionEvent>() {
+					
+					@Override
+					public void handle(ActionEvent event) {
+						// TODO Auto-generated method stub
+						Stage3.getInstance().done();
+					}
+				});
+			}
+		});
+	}
+	
+	public void createStage4() {
+		containerStage4 = new StackPane();
+		OptionBoard optionBoard = new OptionBoard();
+		containerStage4 = optionBoard.getOptionBoard();
+	}
 
 	public Player getPlayer() {
 		return player;
@@ -254,7 +326,7 @@ public class GUI implements UI {
 		return containerStage2;
 	}
 
-	public VBox getContainerStage3() {
+	public StackPane getContainerStage3() {
 		return containerStage3;
 	}
 
@@ -262,4 +334,8 @@ public class GUI implements UI {
 		return weaponPaneStage3;
 	}
 
+	public StackPane getContainerStage4() {
+		return containerStage4;
+	}
+	
 }
