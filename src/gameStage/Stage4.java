@@ -1,7 +1,5 @@
 package gameStage;
 
-import java.io.IOException;
-
 import UI.UIHandler;
 import UI.gui.Main;
 import gameBoard.Configurations;

@@ -1,9 +1,8 @@
 package gameBoard.player;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import gameBoard.Board;
 import gameBoard.Configurations;
-import gameBoard.Coordinate;
 import gameBoard.weapon.Weapon;
 
 public class BotPlayer extends Player {

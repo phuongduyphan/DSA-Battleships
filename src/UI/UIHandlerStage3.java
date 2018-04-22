@@ -1,15 +1,12 @@
 package UI;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-
 import gameBoard.Configurations;
 import gameBoard.cell.Cell;
 import gameBoard.player.HumanPlayer;
 import gameBoard.player.Player;
 import gameBoard.weapon.Weapon;
 import gameStage.Stage3;
-import log.Log;
 
 public class UIHandlerStage3 extends UIHandler {
 	private UI currentUI;

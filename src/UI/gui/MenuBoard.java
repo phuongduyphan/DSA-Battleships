@@ -2,15 +2,8 @@ package UI.gui;
 
 import java.io.IOException;
 
-import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
-
-import UI.Command;
-import gameBoard.Coordinate;
 import gameBoard.player.EasyMode;
 import gameBoard.player.NormalMode;
-import gameBoard.player.Player;
-import gameBoard.player.Strategy;
-import gameBoard.weapon.Weapon;
 import gameStage.Stage1;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

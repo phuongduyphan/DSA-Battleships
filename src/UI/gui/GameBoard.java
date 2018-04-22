@@ -6,8 +6,6 @@ import gameBoard.Board;
 import gameBoard.Configurations;
 import gameBoard.ship.Ship;
 import gameBoard.ship.ShipOrientation;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

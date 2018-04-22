@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import UI.Command;
 import UI.CommandStage3;
 import UI.IClickable;
-import UI.InputHandler;
 import UI.UI;
 import gameBoard.Board;
 import gameBoard.weapon.Weapon;

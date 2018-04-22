@@ -6,7 +6,6 @@ import java.util.Iterator;
 import UI.CommandStage3;
 import UI.UIHandler;
 import UI.UIHandlerStage3;
-import UI.consoleUI.ConsoleOutputHandler;
 import UI.gui.Main;
 import gameBoard.Configurations;
 import gameBoard.player.Player;

@@ -1,9 +1,5 @@
 package UI;
 
-import java.util.ArrayList;
-
-import gameBoard.cell.Cell;
-
 public abstract class UIHandler {
 	protected Command cmd;
 	

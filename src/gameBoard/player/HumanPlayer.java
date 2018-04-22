@@ -2,7 +2,6 @@ package gameBoard.player;
 
 import java.util.ArrayList;
 
-import UI.consoleUI.ConsoleInputHandler;
 import UI.gui.GUI;
 import gameBoard.Board;
 import gameBoard.Configurations;

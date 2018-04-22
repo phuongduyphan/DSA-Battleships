@@ -16,7 +16,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.ToggleButton;
@@ -25,12 +24,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import javafx.scene.text.TextAlignment;
 
 public class WeaponPane {
 	private BorderPane weaponPane;
@@ -82,10 +79,10 @@ public class WeaponPane {
 		bulletPane = new VBox();
 		bulletPane.setPrefHeight(100);
 		bulletPane.setPrefWidth(110);
-		bulletPane.setMinHeight(bulletPane.USE_PREF_SIZE);
-		bulletPane.setMinWidth(bulletPane.USE_PREF_SIZE);
-		bulletPane.setMaxHeight(bulletPane.USE_PREF_SIZE);
-		bulletPane.setMaxWidth(bulletPane.USE_PREF_SIZE);
+		bulletPane.setMinHeight(Region.USE_PREF_SIZE);
+		bulletPane.setMinWidth(Region.USE_PREF_SIZE);
+		bulletPane.setMaxHeight(Region.USE_PREF_SIZE);
+		bulletPane.setMaxWidth(Region.USE_PREF_SIZE);
 		
 		ToggleButton bullet = new ToggleButton();
 		bullet.setPrefHeight(80);
@@ -113,10 +110,10 @@ public class WeaponPane {
 		rocketPane = new VBox();
 		rocketPane.setPrefHeight(100);
 		rocketPane.setPrefWidth(110);
-		rocketPane.setMinHeight(bulletPane.USE_PREF_SIZE);
-		rocketPane.setMinWidth(bulletPane.USE_PREF_SIZE);
-		rocketPane.setMaxHeight(bulletPane.USE_PREF_SIZE);
-		rocketPane.setMaxWidth(bulletPane.USE_PREF_SIZE);
+		rocketPane.setMinHeight(Region.USE_PREF_SIZE);
+		rocketPane.setMinWidth(Region.USE_PREF_SIZE);
+		rocketPane.setMaxHeight(Region.USE_PREF_SIZE);
+		rocketPane.setMaxWidth(Region.USE_PREF_SIZE);
 		
 		ToggleButton rocket = new ToggleButton();
 		rocket.setPrefHeight(80);
@@ -143,10 +140,10 @@ public class WeaponPane {
 		verticalBombPane = new VBox();
 		verticalBombPane.setPrefHeight(100);
 		verticalBombPane.setPrefWidth(110);
-		verticalBombPane.setMinHeight(bulletPane.USE_PREF_SIZE);
-		verticalBombPane.setMinWidth(bulletPane.USE_PREF_SIZE);
-		verticalBombPane.setMaxHeight(bulletPane.USE_PREF_SIZE);
-		verticalBombPane.setMaxWidth(bulletPane.USE_PREF_SIZE);
+		verticalBombPane.setMinHeight(Region.USE_PREF_SIZE);
+		verticalBombPane.setMinWidth(Region.USE_PREF_SIZE);
+		verticalBombPane.setMaxHeight(Region.USE_PREF_SIZE);
+		verticalBombPane.setMaxWidth(Region.USE_PREF_SIZE);
 		
 		ToggleButton verticalBomb = new ToggleButton();
 		verticalBomb.setPrefHeight(80);
@@ -174,10 +171,10 @@ public class WeaponPane {
 		horizontalBombPane = new VBox();
 		horizontalBombPane.setPrefHeight(100);
 		horizontalBombPane.setPrefWidth(110);
-		horizontalBombPane.setMinHeight(bulletPane.USE_PREF_SIZE);
-		horizontalBombPane.setMinWidth(bulletPane.USE_PREF_SIZE);
-		horizontalBombPane.setMaxHeight(bulletPane.USE_PREF_SIZE);
-		horizontalBombPane.setMaxWidth(bulletPane.USE_PREF_SIZE);
+		horizontalBombPane.setMinHeight(Region.USE_PREF_SIZE);
+		horizontalBombPane.setMinWidth(Region.USE_PREF_SIZE);
+		horizontalBombPane.setMaxHeight(Region.USE_PREF_SIZE);
+		horizontalBombPane.setMaxWidth(Region.USE_PREF_SIZE);
 		
 		ToggleButton horizontalBomb = new ToggleButton();
 		horizontalBomb.setPrefHeight(80);

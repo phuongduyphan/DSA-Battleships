@@ -24,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -57,10 +58,10 @@ public class ShipBoard {
 		shipBoardPane.setId("shipBoardPane");
 		shipBoardPane.setPrefHeight(770);
 		shipBoardPane.setPrefWidth(540);
-		shipBoardPane.setMinHeight(shipBoardPane.USE_PREF_SIZE);
-		shipBoardPane.setMinWidth(shipBoardPane.USE_PREF_SIZE);
-		shipBoardPane.setMaxHeight(shipBoardPane.USE_PREF_SIZE);
-		shipBoardPane.setMaxWidth(shipBoardPane.USE_PREF_SIZE);
+		shipBoardPane.setMinHeight(Region.USE_PREF_SIZE);
+		shipBoardPane.setMinWidth(Region.USE_PREF_SIZE);
+		shipBoardPane.setMaxHeight(Region.USE_PREF_SIZE);
+		shipBoardPane.setMaxWidth(Region.USE_PREF_SIZE);
 		shipBoardPane.setAlignment(Pos.TOP_LEFT);
 		
 		Image aircraftImage = new Image("file:///../resources/AIRCRAFT_CARRIER_verti.png");

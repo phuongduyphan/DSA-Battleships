@@ -1,6 +1,5 @@
 package UI;
 
-import gameBoard.Coordinate;
 import gameBoard.cell.Cell;
 import gameBoard.player.Player;
 import gameBoard.weapon.Weapon;

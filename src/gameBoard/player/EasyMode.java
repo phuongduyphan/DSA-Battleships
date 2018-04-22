@@ -5,7 +5,6 @@ import java.util.Random;
 
 import UI.Command;
 import UI.CommandStage3;
-import UI.consoleUI.ConsoleInputHandler;
 import gameBoard.Board;
 import gameBoard.Configurations;
 import gameBoard.Coordinate;

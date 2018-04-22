@@ -1,11 +1,9 @@
 
 package gameBoard.ship;
+
 import gameBoard.Coordinate;
-
 import java.util.ArrayList;
-
 import UI.Command;
-import UI.CommandStage2;
 import UI.IClickable;
 
 public abstract class Ship implements IClickable {

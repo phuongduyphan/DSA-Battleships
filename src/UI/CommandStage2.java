@@ -1,8 +1,6 @@
 package UI;
 
-import gameBoard.Coordinate;
 import gameBoard.cell.Cell;
-import gameBoard.ship.Ship;
 import gameBoard.ship.ShipOrientation;
 import gameBoard.ship.ShipType;
 import gameStage.Stage2;

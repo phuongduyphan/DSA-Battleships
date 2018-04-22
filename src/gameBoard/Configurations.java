@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import UI.UI;
-import gameBoard.player.BotPlayer;
-import gameBoard.player.HumanPlayer;
 import gameBoard.player.Player;
 import gameBoard.ship.ShipType;
 import gameBoard.weapon.WeaponType;

@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import gameBoard.Configurations;
 import gameBoard.Coordinate;
-import gameBoard.cell.CellFactory;
 import gameStage.Stage3;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
