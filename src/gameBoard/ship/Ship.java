@@ -58,6 +58,7 @@ public abstract class Ship implements IClickable {
 			break;
 		default:
 			System.out.println("Wrong orientation");	
+			break;
 		}
 		
 	}

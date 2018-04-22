@@ -10,7 +10,7 @@ import gameBoard.weapon.RocketWeapon;
 import gameBoard.weapon.VerticalBombWeapon;
 import gameBoard.weapon.WeaponType;
 import gameStage.Stage3;
-import gameStage.app;
+import gameStage.App;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -97,7 +97,7 @@ public class WeaponPane {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				app.getInstance().getCurrentState().getUIHandler()
+				App.getInstance().getCurrentState().getUIHandler()
 				.updateCommand(Stage3.getInstance().getCurrentPlayer().findWeapon(WeaponType.BULLET_SHOT));
 			}
 		});
@@ -127,7 +127,7 @@ public class WeaponPane {
 
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				app.getInstance().getCurrentState().getUIHandler()
+				App.getInstance().getCurrentState().getUIHandler()
 				.updateCommand(Stage3.getInstance().getCurrentPlayer().findWeapon(WeaponType.ROCKET));
 			}
 		});
@@ -158,7 +158,7 @@ public class WeaponPane {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				app.getInstance().getCurrentState().getUIHandler()
+				App.getInstance().getCurrentState().getUIHandler()
 				.updateCommand(Stage3.getInstance().getCurrentPlayer().findWeapon(WeaponType.VERTICAL_BOMBING));
 			}
 		});
@@ -189,7 +189,7 @@ public class WeaponPane {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				app.getInstance().getCurrentState().getUIHandler()
+				App.getInstance().getCurrentState().getUIHandler()
 				.updateCommand(Stage3.getInstance().getCurrentPlayer().findWeapon(WeaponType.HORIZONTAL_BOMBING));
 			}
 		});
@@ -222,8 +222,8 @@ public class WeaponPane {
 	
 	public void enableWeapon(Player player) {
 		for (int i=0; i < player.getListOfWeapon().size(); i++) {
-			if (player.getListOfWeapon().get(i) instanceof BulletWeapon) {
-				if (player.getListOfWeapon().get(i).getNumberOfWeapon() == 0) bulletPane.getChildren().get(0).setDisable(true);
+			if (player.getListOfWeapon().get(i) instanceof BulletWeapon && player.getListOfWeapon().get(i).getNumberOfWeapon() == 0) {
+				bulletPane.getChildren().get(0).setDisable(true);
 			}
 			if (player.getListOfWeapon().get(i) instanceof RocketWeapon) {
 				if (player.getListOfWeapon().get(i).getNumberOfWeapon() == 0) rocketPane.getChildren().get(0).setDisable(true);

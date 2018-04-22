@@ -3,7 +3,7 @@ package UI;
 import gameBoard.cell.Cell;
 import gameBoard.player.Player;
 import gameBoard.weapon.Weapon;
-import gameStage.app;
+import gameStage.App;
 
 public class CommandStage3 extends Command {
     private Player targetPlayer;
@@ -12,13 +12,12 @@ public class CommandStage3 extends Command {
 
     @Override
     public boolean isCompleted() {
-        if (targetPlayer != null && weapon != null && cell != null) return true;
-        return false;
+        return (targetPlayer != null && weapon != null && cell != null);
     }
 
     @Override
     public void onFinished() {
-        UIHandlerStage3 uiHandler = (UIHandlerStage3)app.getInstance().getCurrentState().getUIHandler();
+        UIHandlerStage3 uiHandler = (UIHandlerStage3)App.getInstance().getCurrentState().getUIHandler();
         uiHandler.setReadyToShoot();
     }
 

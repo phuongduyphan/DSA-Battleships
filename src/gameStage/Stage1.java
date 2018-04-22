@@ -27,7 +27,7 @@ public class Stage1 implements IStage {
 	public static Stage1 getInstance() {
 		if (instance == null) {
 			instance = new Stage1();
-		};
+		}
 		return instance;
 	}
 	
@@ -78,7 +78,7 @@ public class Stage1 implements IStage {
 	
 	
 	public void done() {
-		app.getInstance().setStateAndStart(Stage2.getInstance());
+		App.getInstance().setStateAndStart(Stage2.getInstance());
 	}
 
 	@Override

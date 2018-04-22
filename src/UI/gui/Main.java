@@ -3,7 +3,7 @@ package UI.gui;
 import java.io.IOException;
 
 import gameStage.Stage1;
-import gameStage.app;
+import gameStage.App;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import log.Log;
@@ -18,7 +18,7 @@ public class Main extends Application {
 		primaryStage.setResizable(false);
 		
 		Main.primaryStage = primaryStage;
-		app.getInstance().setStateAndStart(Stage1.getInstance());
+		App.getInstance().setStateAndStart(Stage1.getInstance());
 		primaryStage.show();
 		
 	}

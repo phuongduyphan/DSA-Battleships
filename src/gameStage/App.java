@@ -1,12 +1,12 @@
 package gameStage;
 
-public class app {
-	private static app instance = null;
+public class App {
+	private static App instance = null;
 	private IStage currentState;
 	
-	public static app getInstance() {
+	public static App getInstance() {
 		if (instance == null) {
-			instance =  new app();
+			instance =  new App();
 		}
 		return instance;
 	}

@@ -9,7 +9,6 @@ import gameBoard.Coordinate;
 public abstract class Weapon implements IClickable {
 	protected int numberOfWeapon;
 	protected WeaponType type;
-	public Weapon() {}
 //
 //	public Image getImg() {
 //		return img;

@@ -12,9 +12,7 @@ public class CommandStage2 extends Command {
 
 	@Override
 	public boolean isCompleted() {
-		if (shipType != null && cell != null && orientation != null)
-			return true;
-		return false;
+		return (shipType != null && cell != null && orientation != null);
 	}
 
 	@Override

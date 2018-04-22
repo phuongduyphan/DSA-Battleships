@@ -45,8 +45,7 @@ public abstract class Player implements IClickable {
 	}
 	
     public boolean canMove() {
-    	if (board.getListOfShips().size() == 0) return false;
-		return true;
+    	return (board.getListOfShips().size() == 0) ? false:true;
     }
     
     public void update(Weapon weap,Coordinate coor) {

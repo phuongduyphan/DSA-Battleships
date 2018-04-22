@@ -38,6 +38,6 @@ public class UIHandlerStage2 extends UIHandler {
 		Configurations.listOfPlayer.get(0).getBoard().displayBoard();
 		Configurations.listOfUI.get(0).disableShipStage2((CommandStage2) cmd);
 		if (Configurations.listOfPlayer.get(0).getBoard().getListOfShips().size() == 5) Stage2.getInstance().done();
-		else enableInput();;
+		else enableInput();
 	}
 }

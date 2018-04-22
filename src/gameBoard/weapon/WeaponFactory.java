@@ -24,7 +24,8 @@ public class WeaponFactory {
 			return new HorizontalBombWeapon(type,numberOfWeapon);
 		case VERTICAL_BOMBING: 
 			return new VerticalBombWeapon(type,numberOfWeapon);
+		default:
+			return null;
 		}
-		return null;
 	}
 }

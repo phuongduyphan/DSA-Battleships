@@ -48,7 +48,7 @@ public class Stage2 implements IStage {
 	}
 
 	public void done() {
-		app.getInstance().setStateAndStart(Stage3.getInstance());
+		App.getInstance().setStateAndStart(Stage3.getInstance());
 	}
 
 	public UIHandler getUIHandler() {

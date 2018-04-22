@@ -24,7 +24,7 @@ public class Stage4 implements IStage{
 	}
 	
 	public void done() {
-		app.getInstance().setStateAndStart(Stage1.getInstance());
+		App.getInstance().setStateAndStart(Stage1.getInstance());
 	}
 	
 	public void exitGame() {
