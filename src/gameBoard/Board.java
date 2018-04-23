@@ -123,7 +123,7 @@ public class Board {
 
 		Ship ship = shipFactory.create(startCoor, orientation, type);
 
-		if (canPlaceShip(startCoor, orientation, ship) == true) placeShipToBoard(ship);
+		if (canPlaceShip(startCoor, orientation, ship)) placeShipToBoard(ship);
 		else return false;
 		
 		return true;

@@ -74,9 +74,9 @@ public class Stage3 implements IStage {
 		o.getTargetPlayer().update(o.getWeapon(), o.getCell().getCoordinate());
 		System.out.println(o.getTargetPlayer().getBoard().getListOfShips().size());
 		// ConsoleOutputHandler.getInstance().display(o.getTargetPlayer());
-		((UIHandlerStage3) uiHandler).display(o,o.getTargetPlayer().getBoard().getListOfTargetableCells());
+		((UIHandlerStage3) uiHandler).display(o, o.getTargetPlayer().getBoard().getListOfTargetableCells());
 	}
-	
+
 	public void displayFinish(CommandStage3 o) {
 		// TODO Auto-generated method stub
 		o.getTargetPlayer().getBoard().clearListOfExplosion();
@@ -84,22 +84,22 @@ public class Stage3 implements IStage {
 		if (!checkWin()) {
 			UIHandlerStage3 uiTemp = (UIHandlerStage3) uiHandler;
 			uiTemp.switchPlayer();
-		} 
-		else {
-			if (Configurations.listOfPlayer.get(0).canMove()) Configurations.listOfUI.get(0).displayStatusStage3(true);
-			else Configurations.listOfUI.get(0).displayStatusStage3(false);
+		} else {
+			if (Configurations.listOfPlayer.get(0).canMove())
+				Configurations.listOfUI.get(0).displayStatusStage3(true);
+			else
+				Configurations.listOfUI.get(0).displayStatusStage3(false);
 		}
 	}
-	
+
 	public void switchPlayerFinish() {
 		this.nextTurn();
 	}
 
 	private boolean checkWin() {
 		for (Player player : Configurations.listOfPlayer) {
-			if (player != currentPlayer) {
-				if (player.canMove())
-					return false;
+			if (player != currentPlayer && player.canMove()) {
+				return false;
 			}
 		}
 		return true;

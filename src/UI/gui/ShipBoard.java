@@ -199,7 +199,7 @@ public class ShipBoard {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				String str = reverseButton.getText();
-				if (str == "Horizontal") {
+				if (str.equals("Horizontal")) {
 					reverseButton.setText("Vertical");
 				}
 				else {
@@ -240,7 +240,7 @@ public class ShipBoard {
 						
 						String str = reverseButton.getText();
 						ShipOrientation orientation;
-						if (str == "Horizontal") {
+						if (str.equals("Horizontal")) {
 							orientation = ShipOrientation.HORIZONTAL;
 						}
 						else {
@@ -266,12 +266,14 @@ public class ShipBoard {
 							else id = "shipBoardButton_INVALID";
 							
 							if (orientation == ShipOrientation.HORIZONTAL) {
-								for (int i=column; i < Math.min(column+ship.getLength(), numberOfColumns); i++) {
+								int columnBoundary = Math.min(column+ship.getLength(), numberOfColumns);
+								for (int i=column; i < columnBoundary ; i++) {
 									buttonGrid[row][i].setId(id);
 								}
 							}
 							else {
-								for (int i = row; i < Math.min(row + ship.getLength(), numberOfRows); i++) {
+								int rowBoundary = Math.min(row + ship.getLength(), numberOfRows);
+								for (int i = row; i < rowBoundary; i++) {
 									buttonGrid[i][column].setId(id);
 								}
 							}
@@ -287,7 +289,7 @@ public class ShipBoard {
 						// TODO Auto-generated method stub
 						String str = reverseButton.getText();
 						ShipOrientation orientation;
-						if (str == "Horizontal") {
+						if (str.equals("Horizontal")) {
 							orientation = ShipOrientation.HORIZONTAL;
 						}
 						else {
@@ -325,7 +327,7 @@ public class ShipBoard {
 						// TODO Auto-generated method stub
 						String str = reverseButton.getText();
 						ShipOrientation orientation;
-						if (str == "Horizontal") {
+						if (str.equals("Horizontal")) {
 							orientation = ShipOrientation.HORIZONTAL;
 						}
 						else {
