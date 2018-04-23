@@ -106,7 +106,6 @@ public class GUI implements UI {
 	}
 
 	public void shootStage3(final CommandStage3 cmd) {
-		cmd.getWeapon().setNumberOfWeapon(cmd.getWeapon().getNumberOfWeapon() - 1);
 		System.out.println("file:///../resources/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 
 		Image image = new Image("file:///../resources/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));

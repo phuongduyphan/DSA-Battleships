@@ -3,6 +3,7 @@ package gameBoard;
 import gameBoard.cell.Cell;
 import gameBoard.cell.CellFactory;
 import gameBoard.cell.CellType;
+import gameBoard.player.Player;
 import gameBoard.ship.Ship;
 import gameBoard.ship.ShipFactory;
 import gameBoard.ship.ShipOrientation;
@@ -19,6 +20,7 @@ public class Board {
 	private ShipFactory shipFactory = ShipFactory.getInstance();
 	private ArrayList<Cell> listOfTargetableCells = new ArrayList<>();
 	private ArrayList<Ship> listOfDestroyedShips = new ArrayList<>();
+	private Player player;
 
 	public Board(Integer row, Integer col) {
 		this.numberOfRows = row;
@@ -183,6 +185,14 @@ public class Board {
 
 	public ArrayList<Ship> getListOfDestroyedShips() {
 		return listOfDestroyedShips;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 	
 

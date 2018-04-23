@@ -221,21 +221,34 @@ public class WeaponPane {
 	}
 	
 	public void enableWeapon(Player player) {
+		bulletPane.getChildren().get(0).setDisable(true);
+		rocketPane.getChildren().get(0).setDisable(true);
+		verticalBombPane.getChildren().get(0).setDisable(true);
+		horizontalBombPane.getChildren().get(0).setDisable(true);
+		
+		updateWeaponLabel(rocketPane,0);
+		updateWeaponLabel(verticalBombPane,0);
+		updateWeaponLabel(horizontalBombPane,0);
+		
+		System.out.println(player);
+		System.out.println(player.getListOfWeapon().size());
 		for (int i=0; i < player.getListOfWeapon().size(); i++) {
-			if (player.getListOfWeapon().get(i) instanceof BulletWeapon && player.getListOfWeapon().get(i).getNumberOfWeapon() == 0) {
-				bulletPane.getChildren().get(0).setDisable(true);
+			System.out.println(player.getListOfWeapon().get(i));
+		}
+		for (int i=0; i < player.getListOfWeapon().size(); i++) {
+			if (player.getListOfWeapon().get(i) instanceof BulletWeapon) {
+				bulletPane.getChildren().get(0).setDisable(false);
 			}
 			if (player.getListOfWeapon().get(i) instanceof RocketWeapon) {
-				if (player.getListOfWeapon().get(i).getNumberOfWeapon() == 0) rocketPane.getChildren().get(0).setDisable(true);
+				rocketPane.getChildren().get(0).setDisable(false);
 				updateWeaponLabel(rocketPane,player.getListOfWeapon().get(i).getNumberOfWeapon());
 			}
 			if (player.getListOfWeapon().get(i) instanceof VerticalBombWeapon) {
-				if (player.getListOfWeapon().get(i).getNumberOfWeapon() == 0) verticalBombPane.getChildren().get(0).setDisable(true);
+				verticalBombPane.getChildren().get(0).setDisable(false);
 				updateWeaponLabel(verticalBombPane,player.getListOfWeapon().get(i).getNumberOfWeapon());
 			}
 			if (player.getListOfWeapon().get(i) instanceof HorizontalBombWeapon) {
-				System.out.println(player.getListOfWeapon().get(i).getNumberOfWeapon());
-				if (player.getListOfWeapon().get(i).getNumberOfWeapon() == 0) horizontalBombPane.getChildren().get(0).setDisable(true);
+				horizontalBombPane.getChildren().get(0).setDisable(false);
 				updateWeaponLabel(horizontalBombPane,player.getListOfWeapon().get(i).getNumberOfWeapon());
 			}
 		}

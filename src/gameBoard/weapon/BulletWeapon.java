@@ -2,6 +2,7 @@ package gameBoard.weapon;
 
 import gameBoard.Board;
 import gameBoard.Coordinate;
+import gameBoard.player.Player;
 
 public class BulletWeapon extends Weapon {
 	public BulletWeapon(WeaponType type) {
@@ -13,9 +14,11 @@ public class BulletWeapon extends Weapon {
 		this.numberOfWeapon = numberOfWeapon;
 	}
 	@Override
-	public void act(Board board, Coordinate coor) {
+	public void act(Board board, Coordinate coor, Player currentPlayer) {
 		// TODO Auto-generated method stub
 		board.shootAt(coor);
+		numberOfWeapon--;
+		if (numberOfWeapon == 0) currentPlayer.getListOfWeapon().remove(this);
 	}
 
 }

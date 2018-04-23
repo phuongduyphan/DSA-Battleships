@@ -2,6 +2,7 @@ package gameBoard.weapon;
 
 import gameBoard.Board;
 import gameBoard.Coordinate;
+import gameBoard.player.Player;
 
 public class HorizontalBombWeapon extends Weapon {
 	public HorizontalBombWeapon(WeaponType type) {
@@ -15,11 +16,14 @@ public class HorizontalBombWeapon extends Weapon {
 	}
 	
 	@Override
-	public void act(Board board, Coordinate coor) {
+	public void act(Board board, Coordinate coor, Player currentPlayer) {
 		Integer row = coor.getRow();
 		for (int col = coor.getCol()-2; col <= coor.getCol()+2; col++) {
 			board.shootAt(new Coordinate(row, col));
 		}
+		numberOfWeapon--;
+		System.out.println(currentPlayer + "dkm");
+		if (numberOfWeapon == 0) currentPlayer.getListOfWeapon().remove(this);
 	}
 
 }

@@ -28,6 +28,7 @@ public abstract class Player implements IClickable {
     
 	public void setListOfWeapon(ArrayList<Weapon> listOfWeapon) {
 		this.listOfWeapon = listOfWeapon;
+		System.out.println(listOfWeapon);
 	}
 
 	public ArrayList<Weapon> getListOfWeapon() {
@@ -48,8 +49,8 @@ public abstract class Player implements IClickable {
     	return (board.getListOfShips().size() == 0) ? false:true;
     }
     
-    public void update(Weapon weap,Coordinate coor) {
-    	weap.act(board,coor);
+    public void update(Weapon weap,Coordinate coor, Player opponent) {
+    	weap.act(board,coor,opponent);
     }
 
     @Override

@@ -30,6 +30,7 @@ public class HumanPlayer extends Player{
 	
 	public void create() {
 		super.setBoard(new Board(8,8));
+		super.getBoard().setPlayer(this);
 		
 		ArrayList<Weapon> listWeaponOfHuman = new ArrayList<>();
 		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT,

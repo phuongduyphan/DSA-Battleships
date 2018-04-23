@@ -20,6 +20,7 @@ public class EasyMode extends Strategy{
 	
 	public void create() {
 		super.getBot().setBoard(new Board(8,8));
+		super.getBot().getBoard().setPlayer(super.getBot());
 		ArrayList<Weapon> listWeaponOfBot = new ArrayList<>();
 		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT,
 				Configurations.numberOfColumns * Configurations.numberOfRows));
@@ -118,6 +119,7 @@ public class EasyMode extends Strategy{
 	
 	public Weapon pickWeapon() {
 		Random rand = new Random();
+		System.out.println(super.getBot().getListOfWeapon().size());
 		int index = rand.nextInt(super.getBot().getListOfWeapon().size());
 		return super.getBot().getListOfWeapon().get(index);
 	}

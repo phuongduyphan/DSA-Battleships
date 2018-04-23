@@ -5,6 +5,7 @@ import UI.CommandStage3;
 import UI.IClickable;
 import gameBoard.Board;
 import gameBoard.Coordinate;
+import gameBoard.player.Player;
 
 public abstract class Weapon implements IClickable {
 	protected int numberOfWeapon;
@@ -21,7 +22,7 @@ public abstract class Weapon implements IClickable {
 		return type;
 	}
 
-	public abstract void act(Board board, Coordinate coor);
+	public abstract void act(Board board, Coordinate coor, Player currentPlayer);
 
 	@Override
 	public void onClick(Command targetCommand) {

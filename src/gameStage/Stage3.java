@@ -71,7 +71,7 @@ public class Stage3 implements IStage {
 	}
 
 	public void processInput(CommandStage3 o) {
-		o.getTargetPlayer().update(o.getWeapon(), o.getCell().getCoordinate());
+		o.getTargetPlayer().update(o.getWeapon(), o.getCell().getCoordinate(),currentPlayer);
 		System.out.println(o.getTargetPlayer().getBoard().getListOfShips().size());
 		// ConsoleOutputHandler.getInstance().display(o.getTargetPlayer());
 		((UIHandlerStage3) uiHandler).display(o, o.getTargetPlayer().getBoard().getListOfTargetableCells()
