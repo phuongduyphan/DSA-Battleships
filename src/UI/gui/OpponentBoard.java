@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import gameBoard.Configurations;
 import gameBoard.Coordinate;
+import gameBoard.ship.Ship;
+import gameBoard.ship.ShipOrientation;
 import gameStage.Stage3;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,10 +13,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class OpponentBoard {
 	private StackPane opponentBoardPane;
@@ -89,5 +95,30 @@ public class OpponentBoard {
 		else {
 			buttonGrid[row][col].setId("missCoor");
 		}	
+	}
+	
+	public void setDestroyedShips(Ship ship) {
+		String imageName = "file:///../resources/" + Configurations.mapShipImage.get(ship.getType());
+		Rectangle layer = new Rectangle();
+		if (ship.getOrientation().equals(ShipOrientation.HORIZONTAL)) {
+			imageName += "_HORI.png";
+			layer.setWidth(ship.getLength()*50);
+			layer.setHeight(50);
+		}
+		else {
+			imageName += "_VERTI.png";
+			layer.setWidth(50);
+			layer.setHeight(ship.getLength()*50);
+		}
+		System.out.println(imageName);
+		Image image = new Image(imageName);
+		ImageView imageView = new ImageView(image);
+		imageView.setTranslateX(70+ship.getStartCoordinate().getCol() * 50);
+		imageView.setTranslateY(30+ship.getStartCoordinate().getRow() * 50);
+		layer.setTranslateX(70+ship.getStartCoordinate().getCol() * 50);
+		layer.setTranslateY(30+ship.getStartCoordinate().getRow() * 50);
+		layer.setFill(Color.RED);
+		layer.setId("destroyedShipLayer");
+		opponentBoardPane.getChildren().addAll(imageView,layer);
 	}
 }

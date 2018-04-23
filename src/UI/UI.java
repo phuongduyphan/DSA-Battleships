@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import UI.gui.WeaponPane;
 import gameBoard.cell.Cell;
 import gameBoard.player.Player;
+import gameBoard.ship.Ship;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -32,7 +33,7 @@ public interface UI {
 	
 	public void shootStage3(CommandStage3 cmd);
 	
-	public void displayStage3(final CommandStage3 cmd, final ArrayList<Cell> listOfExplosion);
+	public void displayStage3(final CommandStage3 cmd, final ArrayList<Cell> listOfExplosion, ArrayList<Ship> listOfDestroyedShip);
 	
 	public void switchPlayerStage3();
 	

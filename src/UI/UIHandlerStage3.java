@@ -5,6 +5,7 @@ import gameBoard.Configurations;
 import gameBoard.cell.Cell;
 import gameBoard.player.HumanPlayer;
 import gameBoard.player.Player;
+import gameBoard.ship.Ship;
 import gameBoard.weapon.Weapon;
 import gameStage.Stage3;
 
@@ -42,9 +43,9 @@ public class UIHandlerStage3 extends UIHandler {
         if (c.isCompleted()) c.onFinished();
 	}
 	
-	public void display(Command cmd, ArrayList<Cell> listOfExplosion) {
+	public void display(Command cmd, ArrayList<Cell> listOfExplosion, ArrayList<Ship> listOfDestroyedShips) {
 		for (int i=0; i<Configurations.listOfUI.size(); i++) {
-			Configurations.listOfUI.get(i).displayStage3((CommandStage3) cmd,listOfExplosion);
+			Configurations.listOfUI.get(i).displayStage3((CommandStage3) cmd,listOfExplosion,listOfDestroyedShips);
 		}
 	}
 	

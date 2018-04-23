@@ -32,4 +32,21 @@ public class ShipFactory {
 			    return null;
         }
     }
+    
+    public Ship create(ShipType type) {
+        switch (type) {
+            case AIRCRAFT_CARRIER:
+                return new AircraftCarrierShip(ShipType.AIRCRAFT_CARRIER);
+            case BATTLESHIP:
+                return new BattleshipShip(ShipType.BATTLESHIP);
+            case DESTROYER:
+                return new DestroyerShip(ShipType.DESTROYER);
+            case SUBMARINE:
+                return new SubmarineShip(ShipType.SUBMARINE);
+            case PATROL_BOAT:
+                return new PatrolBoatShip(ShipType.PATROL_BOAT);
+			default:
+			    return null;
+        }
+    }
 }

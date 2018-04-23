@@ -139,3 +139,7 @@
 #optionButton {
 	-fx-font-size:30px;
 }
+
+#destroyedShipLayer {
+	-fx-opacity:0.2;
+}

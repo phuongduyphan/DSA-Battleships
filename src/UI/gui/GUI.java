@@ -11,6 +11,7 @@ import gameBoard.cell.Cell;
 import gameBoard.cell.CellType;
 import gameBoard.player.HumanPlayer;
 import gameBoard.player.Player;
+import gameBoard.ship.Ship;
 import gameStage.Stage3;
 import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
@@ -136,7 +137,7 @@ public class GUI implements UI {
 		});
 	}
 
-	public void displayStage3(final CommandStage3 cmd, final ArrayList<Cell> listOfTargetableCells) {
+	public void displayStage3(final CommandStage3 cmd, final ArrayList<Cell> listOfTargetableCells,ArrayList<Ship> listOfDestroyedShips) {
 
 		if ((Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer) == false) {
 			Image weaponImage = new Image(
@@ -220,6 +221,9 @@ public class GUI implements UI {
 					opponentBoardStage3.setButtonImage(listOfTargetableCells.get(i).getCoordinate().getRow(),
 							listOfTargetableCells.get(i).getCoordinate().getCol(), false);
 				}
+			}
+			for (int i = 0; i < listOfDestroyedShips.size(); i++) {
+				opponentBoardStage3.setDestroyedShips(listOfDestroyedShips.get(i));
 			}
 			Stage3.getInstance().displayFinish(cmd);
 		}

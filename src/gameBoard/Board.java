@@ -18,6 +18,7 @@ public class Board {
 	private CellFactory cellFactory = CellFactory.getInstance();
 	private ShipFactory shipFactory = ShipFactory.getInstance();
 	private ArrayList<Cell> listOfTargetableCells = new ArrayList<>();
+	private ArrayList<Ship> listOfDestroyedShips = new ArrayList<>();
 
 	public Board(Integer row, Integer col) {
 		this.numberOfRows = row;
@@ -83,8 +84,10 @@ public class Board {
 	            
 	            if (targetCell.getType().equals(CellType.SHIP)) {
 	                Ship ship = targetCell.getShip();
-	                if (ship.getListOfCoors().isEmpty())
+	                if (ship.getListOfCoors().isEmpty()) {
+	                	listOfDestroyedShips.add(ship);
 	                    listOfShips.remove(ship);
+	                }
 	            }
 	            
 	            setCellAsType(coor, CellType.EXPLODED);
@@ -177,5 +180,10 @@ public class Board {
 	public void clearListOfExplosion() {
 		listOfTargetableCells.clear();
 	}
+
+	public ArrayList<Ship> getListOfDestroyedShips() {
+		return listOfDestroyedShips;
+	}
+	
 
 }

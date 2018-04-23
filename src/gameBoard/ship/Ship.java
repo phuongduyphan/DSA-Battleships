@@ -15,6 +15,10 @@ public abstract class Ship implements IClickable {
 	private int length;
 	private ShipType type;
 	
+	public Ship(ShipType type) {
+		this.type = type;
+	}
+	
 	public Ship(Coordinate startCoordinate, ShipOrientation orientation) {
 		this.startCoordinate = startCoordinate;
 		this.orientation = orientation;
