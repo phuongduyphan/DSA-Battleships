@@ -22,6 +22,7 @@ public abstract class Strategy implements IClickable {
 		return bot;
 	}
 	
+	public abstract void createHuman(HumanPlayer player);
 	public abstract void create();
 	public abstract Player pickOpponent();
 	public abstract Coordinate pickCoordinate(); 

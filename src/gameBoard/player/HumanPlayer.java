@@ -11,6 +11,7 @@ import gameBoard.weapon.WeaponType;
 import gameStage.Stage3;
 
 public class HumanPlayer extends Player{
+	private Strategy mode;
 	
 	public HumanPlayer() {
 		super();
@@ -28,18 +29,21 @@ public class HumanPlayer extends Player{
 		Stage3.getInstance().getUIHandler().enableInput();
 	}
 	
-	public void create() {
-		super.setBoard(new Board(8,8));
-		super.getBoard().setPlayer(this);
-		
-		ArrayList<Weapon> listWeaponOfHuman = new ArrayList<>();
-		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT,
-				Configurations.numberOfColumns * Configurations.numberOfRows));
-		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.ROCKET, 3));
-		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.HORIZONTAL_BOMBING, 1));
-		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.VERTICAL_BOMBING, 2));
-		 
-		super.setListOfWeapon(listWeaponOfHuman);
+	public void createGUI() {
 		super.setUi(new GUI(this));
 	}
+	
+	public void create(Strategy mode) {
+		this.mode = mode;
+		mode.createHuman(this);
+	}
+
+	public Strategy getMode() {
+		return mode;
+	}
+
+	public void setMode(Strategy mode) {
+		this.mode = mode;
+	}
+	
 }

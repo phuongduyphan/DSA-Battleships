@@ -25,15 +25,23 @@ public class NormalMode extends Strategy {
 	private int[][] flagBoard;
 	private int[][] stateBoard;
 
+	public void createHuman(HumanPlayer player) {
+		player.setBoard(new Board(8, 8));
+		player.getBoard().setPlayer(player);
+
+		ArrayList<Weapon> listWeaponOfHuman = new ArrayList<>();
+		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT,
+				Configurations.numberOfColumns * Configurations.numberOfRows));
+
+		player.setListOfWeapon(listWeaponOfHuman);
+	}
+
 	public void create() {
 		super.getBot().setBoard(new Board(8, 8));
 		super.getBot().getBoard().setPlayer(super.getBot());
 		ArrayList<Weapon> listWeaponOfBot = new ArrayList<>();
 		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT,
 				Configurations.numberOfColumns * Configurations.numberOfRows));
-		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.HORIZONTAL_BOMBING, 1));
-		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.VERTICAL_BOMBING, 1));
-		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.ROCKET, 1));
 		super.getBot().setListOfWeapon(listWeaponOfBot);
 
 		placeShip();
@@ -129,7 +137,8 @@ public class NormalMode extends Strategy {
 			}
 			for (int i = 0; i < Configurations.numberOfRows; i++) {
 				for (int j = 0; j < Configurations.numberOfColumns; j++) {
-					if (flagBoard[i][j] == maxFlagCoor) listOfPotentialCoor.add(new Coordinate(i, j));
+					if (flagBoard[i][j] == maxFlagCoor)
+						listOfPotentialCoor.add(new Coordinate(i, j));
 				}
 			}
 		} else {
@@ -151,30 +160,36 @@ public class NormalMode extends Strategy {
 					}
 					if (length > 0 && length < getMaxLengthOfShips()) {
 						int expandLength = 0;
-						for (int k = j - 1; k >=0; k--) {
-							if (stateBoard[i][k] != 0 && stateBoard[i][k] != 2) break;
-							else expandLength++;
+						for (int k = j - 1; k >= 0; k--) {
+							if (stateBoard[i][k] != 0 && stateBoard[i][k] != 2)
+								break;
+							else
+								expandLength++;
 						}
 						for (int k = j + length; k < Configurations.numberOfColumns; k++) {
-							if (stateBoard[i][k] != 0 && stateBoard[i][k] != 2) break;
-							else expandLength++;
+							if (stateBoard[i][k] != 0 && stateBoard[i][k] != 2)
+								break;
+							else
+								expandLength++;
 						}
 						if (length + expandLength >= getMinLengthOfShips() && length >= shootLength) {
-							if (checkRange(new Coordinate(i, j-1)) && stateBoard[i][j-1] == 0) {
-								if (length > shootLength) listOfPotentialCoor.clear();
+							if (checkRange(new Coordinate(i, j - 1)) && stateBoard[i][j - 1] == 0) {
+								if (length > shootLength)
+									listOfPotentialCoor.clear();
 								shootLength = length;
-								listOfPotentialCoor.add(new Coordinate(i, j-1));
+								listOfPotentialCoor.add(new Coordinate(i, j - 1));
 							}
-							if (checkRange(new Coordinate(i, j+length)) && stateBoard[i][j+length] == 0) {
-								if (length > shootLength) listOfPotentialCoor.clear();
+							if (checkRange(new Coordinate(i, j + length)) && stateBoard[i][j + length] == 0) {
+								if (length > shootLength)
+									listOfPotentialCoor.clear();
 								shootLength = length;
-								listOfPotentialCoor.add(new Coordinate(i, j+length));
+								listOfPotentialCoor.add(new Coordinate(i, j + length));
 							}
 						}
 					}
 				}
 			}
-			//vertical
+			// vertical
 			initializeVisitBoard(visitBoard);
 			for (int i = 0; i < Configurations.numberOfRows; i++) {
 				for (int j = 0; j < Configurations.numberOfColumns; j++) {
@@ -189,37 +204,43 @@ public class NormalMode extends Strategy {
 					}
 					if (length > 0 && length < getMaxLengthOfShips()) {
 						int expandLength = 0;
-						for (int k = i - 1; k >=0; k--) {
-							if (stateBoard[k][j] != 0 && stateBoard[k][j] != 2) break;
-							else expandLength++;
+						for (int k = i - 1; k >= 0; k--) {
+							if (stateBoard[k][j] != 0 && stateBoard[k][j] != 2)
+								break;
+							else
+								expandLength++;
 						}
 						for (int k = i + length; k < Configurations.numberOfRows; k++) {
-							if (stateBoard[k][j] != 0 && stateBoard[k][j] != 2) break;
-							else expandLength++;
+							if (stateBoard[k][j] != 0 && stateBoard[k][j] != 2)
+								break;
+							else
+								expandLength++;
 						}
 						if (length + expandLength >= getMinLengthOfShips() && length >= shootLength) {
-							
-							if (checkRange(new Coordinate(i-1, j)) && stateBoard[i-1][j] == 0) {
-								if (length > shootLength) listOfPotentialCoor.clear();
+
+							if (checkRange(new Coordinate(i - 1, j)) && stateBoard[i - 1][j] == 0) {
+								if (length > shootLength)
+									listOfPotentialCoor.clear();
 								shootLength = length;
-								listOfPotentialCoor.add(new Coordinate(i-1, j));
+								listOfPotentialCoor.add(new Coordinate(i - 1, j));
 							}
-							if (checkRange(new Coordinate(i + length, j)) && stateBoard[i+length][j] == 0) {
-								if (length > shootLength) listOfPotentialCoor.clear();
+							if (checkRange(new Coordinate(i + length, j)) && stateBoard[i + length][j] == 0) {
+								if (length > shootLength)
+									listOfPotentialCoor.clear();
 								shootLength = length;
-								listOfPotentialCoor.add(new Coordinate(i+length, j));
+								listOfPotentialCoor.add(new Coordinate(i + length, j));
 							}
 						}
 					}
 				}
 			}
-			for (Coordinate coor:listOfPotentialCoor) {
+			for (Coordinate coor : listOfPotentialCoor) {
 				System.out.println("Potential Coor:" + coor.getRow() + " " + coor.getCol());
 			}
 		}
 		return listOfPotentialCoor.get(getRandomNumber(listOfPotentialCoor.size()));
 	}
-	
+
 	public void initializeVisitBoard(boolean[][] visitBoard) {
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
 			for (int j = 0; j < Configurations.numberOfColumns; j++) {
@@ -227,9 +248,9 @@ public class NormalMode extends Strategy {
 			}
 		}
 	}
-	
+
 	public boolean checkRange(Coordinate coor) {
-		return coor.getRow() < Configurations.numberOfRows && coor.getCol() < Configurations.numberOfColumns 
+		return coor.getRow() < Configurations.numberOfRows && coor.getCol() < Configurations.numberOfColumns
 				&& coor.getRow() >= 0 && coor.getCol() >= 0;
 	}
 
@@ -322,7 +343,7 @@ public class NormalMode extends Strategy {
 		super.setOpponent(pickOpponent());
 		super.setShootCoor(pickCoordinate());
 		super.setWeapon(pickWeapon());
-		
+
 		CommandStage3 cmd = new CommandStage3();
 		cmd.setTargetPlayer(super.getOpponent());
 		cmd.setCell(super.getOpponent().getBoard().getCellAt(super.getShootCoor()));
@@ -334,29 +355,33 @@ public class NormalMode extends Strategy {
 	// 1: exploded
 	// 2: ship exploded
 	public void update(ArrayList<Cell> listOfDestroyedCells, ArrayList<Ship> listOfDestroyedShips) {
-		for (Cell cell:listOfDestroyedCells) {
+		for (Cell cell : listOfDestroyedCells) {
+			System.out.println("Destroyed cell:" + cell.getCoordinate().getRow() + " " + cell.getCoordinate().getCol());
+			System.out.println(cell.getType());
 			if (cell.getType().equals(CellType.SHIP)) {
 				stateBoard[cell.getCoordinate().getRow()][cell.getCoordinate().getCol()] = 2;
-			}
-			else {
-				stateBoard[cell.getCoordinate().getRow()][cell.getCoordinate().getCol()] = 1;
+			} else {
+				if (stateBoard[cell.getCoordinate().getRow()][cell.getCoordinate().getCol()] != 2)
+					stateBoard[cell.getCoordinate().getRow()][cell.getCoordinate().getCol()] = 1;
 			}
 		}
-		
-		for (Ship ship:listOfDestroyedShips) {
-			for (Ship remainingShip:listOfRemainingShips) {
-				if (ship.getType().equals(remainingShip.getType())) { 
+
+		for (Ship ship : listOfDestroyedShips) {
+			for (Ship remainingShip : listOfRemainingShips) {
+				if (ship.getType().equals(remainingShip.getType())) {
 					listOfRemainingShips.remove(remainingShip);
 					break;
 				}
 			}
-			for (Coordinate coor:ship.getListOfFixedCoors()) {
+			for (Coordinate coor : ship.getListOfFixedCoors()) {
 				stateBoard[coor.getRow()][coor.getCol()] = 1;
 			}
 		}
+		System.out.println();
+		displayBoard(stateBoard);
 		updateHuntingMode();
 	}
-	
+
 	public void updateHuntingMode() {
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
 			for (int j = 0; j < Configurations.numberOfColumns; j++) {

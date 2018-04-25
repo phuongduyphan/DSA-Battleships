@@ -19,7 +19,21 @@ import gameBoard.weapon.WeaponType;
 import gameStage.Stage3;
 
 public class EasyMode extends Strategy {
-
+	
+	public void createHuman(HumanPlayer player) {
+		player.setBoard(new Board(8,8));
+		player.getBoard().setPlayer(player);
+		
+		ArrayList<Weapon> listWeaponOfHuman = new ArrayList<>();
+		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT,
+				Configurations.numberOfColumns * Configurations.numberOfRows));
+		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.ROCKET, 2));
+		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.HORIZONTAL_BOMBING, 1));
+		listWeaponOfHuman.add(WeaponFactory.getInstance().create(WeaponType.VERTICAL_BOMBING, 1));
+		 
+		player.setListOfWeapon(listWeaponOfHuman);
+	}
+	
 	public void create() {
 		super.getBot().setBoard(new Board(8, 8));
 		super.getBot().getBoard().setPlayer(super.getBot());
