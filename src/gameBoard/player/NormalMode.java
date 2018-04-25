@@ -31,6 +31,9 @@ public class NormalMode extends Strategy {
 		ArrayList<Weapon> listWeaponOfBot = new ArrayList<>();
 		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.BULLET_SHOT,
 				Configurations.numberOfColumns * Configurations.numberOfRows));
+		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.HORIZONTAL_BOMBING, 1));
+		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.VERTICAL_BOMBING, 1));
+		listWeaponOfBot.add(WeaponFactory.getInstance().create(WeaponType.ROCKET, 1));
 		super.getBot().setListOfWeapon(listWeaponOfBot);
 
 		placeShip();
@@ -231,16 +234,16 @@ public class NormalMode extends Strategy {
 	}
 
 	public void setFlagBoard() {
-		int minLength = getMinLengthOfShips();
+		int maxLength = getMaxLengthOfShips();
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
 			for (int j = 0; j < Configurations.numberOfColumns; j++) {
 				flagBoard[i][j] = 0;
 			}
 		}
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
-			for (int j = i % minLength; j < Configurations.numberOfColumns; j += minLength) {
+			for (int j = i % maxLength; j < Configurations.numberOfColumns; j += maxLength) {
 				for (int orientation = 0; orientation < 4; orientation++) {
-					if (checkValidFlag(i, j, orientation, minLength) && stateBoard[i][j] == 0) {
+					if (checkValidFlag(i, j, orientation, maxLength) && stateBoard[i][j] == 0) {
 						flagBoard[i][j] = 1;
 					}
 				}
