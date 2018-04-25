@@ -261,11 +261,20 @@ public class NormalMode extends Strategy {
 				flagBoard[i][j] = 0;
 			}
 		}
+//		for (int i = 0; i < Configurations.numberOfRows; i++) {
+//			for (int j = i % maxLength; j < Configurations.numberOfColumns; j += maxLength) {
+//				for (int orientation = 0; orientation < 4; orientation++) {
+//					if (checkValidFlag(i, j, orientation, maxLength) && stateBoard[i][j] == 0) {
+//						flagBoard[i][j] = 1;
+//					}
+//				}
+//			}
+//		}
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
-			for (int j = i % maxLength; j < Configurations.numberOfColumns; j += maxLength) {
+			for (int j = 0; j < Configurations.numberOfColumns; j ++) {
 				for (int orientation = 0; orientation < 4; orientation++) {
 					if (checkValidFlag(i, j, orientation, maxLength) && stateBoard[i][j] == 0) {
-						flagBoard[i][j] = 1;
+						flagBoard[i][j]++;
 					}
 				}
 			}
@@ -297,7 +306,7 @@ public class NormalMode extends Strategy {
 		case 0:
 			if (super.getBot().getBoard().checkRange(new Coordinate(row, col + length - 1))) {
 				for (int i = col + 1; i < col + length; i++) {
-					if (flagBoard[row][i] != 0 || stateBoard[row][i] != 0)
+					if (stateBoard[row][i] != 0)
 						return false;
 				}
 				return true;
@@ -306,7 +315,7 @@ public class NormalMode extends Strategy {
 		case 1:
 			if (super.getBot().getBoard().checkRange(new Coordinate(row + length - 1, col))) {
 				for (int i = row + 1; i < row + length; i++) {
-					if (flagBoard[i][col] != 0 || stateBoard[i][col] != 0)
+					if (stateBoard[i][col] != 0)
 						return false;
 				}
 				return true;
@@ -315,7 +324,7 @@ public class NormalMode extends Strategy {
 		case 2:
 			if (super.getBot().getBoard().checkRange(new Coordinate(row, col - length + 1))) {
 				for (int i = col - 1; i > col - length; i--) {
-					if (flagBoard[row][i] != 0 || stateBoard[row][i] != 0)
+					if (stateBoard[row][i] != 0)
 						return false;
 				}
 				return true;
@@ -324,7 +333,7 @@ public class NormalMode extends Strategy {
 		case 3:
 			if (super.getBot().getBoard().checkRange(new Coordinate(row - length + 1, col))) {
 				for (int i = row - 1; i > row - length; i--) {
-					if (flagBoard[i][col] != 0 || stateBoard[i][col] != 0)
+					if (stateBoard[i][col] != 0)
 						return false;
 				}
 				return true;

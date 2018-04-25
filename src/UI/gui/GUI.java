@@ -90,7 +90,7 @@ public class GUI implements UI {
 	}
 
 	public void enableInputStage3() {
-		TranslateTransition translate = new TranslateTransition(Duration.millis(1000),
+		TranslateTransition translate = new TranslateTransition(Duration.millis(700),
 				weaponPaneStage3.getWeaponPane());
 		translate.setByY(1);
 		translate.setFromY(0);
@@ -177,7 +177,7 @@ public class GUI implements UI {
 						gameBoardStage3.getGameBoardPane().getChildren().add(explosionView);
 					}
 
-					PauseTransition pause = new PauseTransition(Duration.millis(700));
+					PauseTransition pause = new PauseTransition(Duration.millis(500));
 					pause.play();
 
 					pause.setOnFinished(new EventHandler<ActionEvent>() {
