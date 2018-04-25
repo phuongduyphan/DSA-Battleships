@@ -10,13 +10,15 @@ public abstract class Ship implements IClickable {
 	private Coordinate startCoordinate;
 	private ShipOrientation orientation;
 	private ArrayList<Coordinate> listOfCoors = new ArrayList<>();
+	private ArrayList<Coordinate> listOfFixedCoors = new ArrayList<>();
 	//TODO verify data type of listOfShipParts
 //	private ArrayList<Image> listOfShipParts;
 	private int length;
 	private ShipType type;
 	
-	public Ship(ShipType type) {
+	public Ship(ShipType type,int length) {
 		this.type = type;
+		this.length = length;
 	}
 	
 	public Ship(Coordinate startCoordinate, ShipOrientation orientation) {
@@ -30,6 +32,9 @@ public abstract class Ship implements IClickable {
 		this.length = length;
 		this.type = type;
 		appendCoorToList();
+		for (Coordinate coor:listOfCoors) {
+			listOfFixedCoors.add(new Coordinate(coor.getRow(),coor.getCol()));
+		}
 //		setListOfShipParts();
 	}
 
@@ -100,6 +105,14 @@ public abstract class Ship implements IClickable {
 
 	public ShipType getType() {
 		return type;
+	}
+
+	public ArrayList<Coordinate> getListOfFixedCoors() {
+		return listOfFixedCoors;
+	}
+
+	public void setListOfFixedCoors(ArrayList<Coordinate> listOfFixedCoors) {
+		this.listOfFixedCoors = listOfFixedCoors;
 	}
 
 }

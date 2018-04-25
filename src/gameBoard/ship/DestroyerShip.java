@@ -5,7 +5,7 @@ import gameBoard.Coordinate;
 public class DestroyerShip extends Ship {
 
 	public DestroyerShip(ShipType type) {
-		super(type);
+		super(type,4);
 	}
 	
 	public DestroyerShip(Coordinate startCoor, ShipOrientation orientation,ShipType type) {

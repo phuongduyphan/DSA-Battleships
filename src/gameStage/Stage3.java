@@ -8,6 +8,7 @@ import UI.UIHandler;
 import UI.UIHandlerStage3;
 import UI.gui.Main;
 import gameBoard.Configurations;
+import gameBoard.player.BotPlayer;
 import gameBoard.player.Player;
 import javafx.scene.Scene;
 
@@ -72,15 +73,18 @@ public class Stage3 implements IStage {
 
 	public void processInput(CommandStage3 o) {
 		o.getTargetPlayer().update(o.getWeapon(), o.getCell().getCoordinate(),currentPlayer);
-		System.out.println(o.getTargetPlayer().getBoard().getListOfShips().size());
-		// ConsoleOutputHandler.getInstance().display(o.getTargetPlayer());
+		if (currentPlayer instanceof BotPlayer) ((BotPlayer) currentPlayer).getMode().update(o.getTargetPlayer().getBoard().getListOfDestroyedCells()
+				, o.getTargetPlayer().getBoard().getListOfDestroyedShips());
+		
 		((UIHandlerStage3) uiHandler).display(o, o.getTargetPlayer().getBoard().getListOfTargetableCells()
 				,o.getTargetPlayer().getBoard().getListOfDestroyedShips());
 	}
 
 	public void displayFinish(CommandStage3 o) {
 		// TODO Auto-generated method stub
-		o.getTargetPlayer().getBoard().clearListOfExplosion();
+		o.getTargetPlayer().getBoard().clearListOfTargetableCells();
+		o.getTargetPlayer().getBoard().clearListOfDestroyedCells();
+		o.getTargetPlayer().getBoard().clearListOfDestroyedShips();
 
 		if (!checkWin()) {
 			UIHandlerStage3 uiTemp = (UIHandlerStage3) uiHandler;

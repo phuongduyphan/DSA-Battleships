@@ -20,6 +20,7 @@ public class Board {
 	private ShipFactory shipFactory = ShipFactory.getInstance();
 	private ArrayList<Cell> listOfTargetableCells = new ArrayList<>();
 	private ArrayList<Ship> listOfDestroyedShips = new ArrayList<>();
+	private ArrayList<Cell> listOfDestroyedCells = new ArrayList<>();
 	private Player player;
 
 	public Board(Integer row, Integer col) {
@@ -79,6 +80,7 @@ public class Board {
 //		}
 	    
 	    if (checkRange(coor)) {
+	    	listOfDestroyedCells.add(getCellAt(coor));
 	        Cell targetCell = getCellAt(coor);
 	        targetCell.actWhenIsShot();
 	        
@@ -118,7 +120,7 @@ public class Board {
 		return grid[coor.getRow()][coor.getCol()];
 	}
 
-	private boolean checkRange(Coordinate coor) {
+	public boolean checkRange(Coordinate coor) {
 
 		return coor.getRow() < numberOfRows && coor.getCol() < numberOfColumns && coor.getRow() >= 0
 				&& coor.getCol() >= 0;
@@ -179,7 +181,7 @@ public class Board {
 		return listOfTargetableCells;
 	}
 
-	public void clearListOfExplosion() {
+	public void clearListOfTargetableCells() {
 		listOfTargetableCells.clear();
 	}
 
@@ -194,6 +196,16 @@ public class Board {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-	
 
+	public ArrayList<Cell> getListOfDestroyedCells() {
+		return listOfDestroyedCells;
+	}
+	
+	public void clearListOfDestroyedCells() {
+		listOfDestroyedCells.clear();
+	}
+	
+	public void clearListOfDestroyedShips() {
+		listOfDestroyedShips.clear();
+	}
 }
