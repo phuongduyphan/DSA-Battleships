@@ -110,7 +110,6 @@ public class OpponentBoard {
 			layer.setWidth(50);
 			layer.setHeight(ship.getLength()*50);
 		}
-		System.out.println(imageName);
 		Image image = new Image(imageName);
 		ImageView imageView = new ImageView(image);
 		imageView.setTranslateX(70+ship.getStartCoordinate().getCol() * 50);

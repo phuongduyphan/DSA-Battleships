@@ -27,7 +27,6 @@ public class UIHandlerStage2 extends UIHandler {
 		} else
 			throw new Error(i.getClass() + "is not a valid input for cmdstage2");
 		
-		System.out.println(c.isCompleted());
 		if (c.isCompleted())
 			c.onFinished();
 	}

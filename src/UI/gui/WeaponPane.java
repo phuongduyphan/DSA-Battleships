@@ -231,9 +231,6 @@ public class WeaponPane {
 		updateWeaponLabel(horizontalBombPane,0);
 	
 		for (int i=0; i < player.getListOfWeapon().size(); i++) {
-			System.out.println(player.getListOfWeapon().get(i));
-		}
-		for (int i=0; i < player.getListOfWeapon().size(); i++) {
 			if (player.getListOfWeapon().get(i) instanceof BulletWeapon) {
 				bulletPane.getChildren().get(0).setDisable(false);
 			}

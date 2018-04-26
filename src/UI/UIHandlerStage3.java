@@ -37,9 +37,6 @@ public class UIHandlerStage3 extends UIHandler {
         else if (i instanceof Cell) c.setCell((Cell)i);
         else throw new Error(i.getClass() + "is not a valid input for cmdstage3");
       
-        System.out.println(c.getWeapon());
-        System.out.println(c.getCell());
-        System.out.println(c.isCompleted());
         if (c.isCompleted()) c.onFinished();
 	}
 	

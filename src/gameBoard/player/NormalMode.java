@@ -470,6 +470,7 @@ public class NormalMode extends Strategy {
 			}
 			System.out.println();
 		}
+		System.out.println();
 	}
 
 	public void setHuntingMode(boolean huntingMode) {

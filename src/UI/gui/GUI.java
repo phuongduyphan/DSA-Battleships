@@ -146,7 +146,6 @@ public class GUI implements UI {
 	private void setEffectShootingOpponent(final CommandStage3 cmd, final ArrayList<Cell> listOfTargetableCells,
 			ArrayList<Ship> listOfDestroyedShips) {
 		for (int i = 0; i < listOfTargetableCells.size(); i++) {
-			// System.out.println(listOfExplosion.get(i).getType());
 			if (listOfTargetableCells.get(i).getType() == CellType.SHIP) {
 				opponentBoardStage3.setButtonImage(listOfTargetableCells.get(i).getCoordinate().getRow(),
 						listOfTargetableCells.get(i).getCoordinate().getCol(), true);

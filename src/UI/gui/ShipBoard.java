@@ -371,9 +371,6 @@ public class ShipBoard {
 		}
 		else filepath += "_verti.png";
 		
-		System.out.println(filepath);
-		System.out.println(70+coor.getCol()*50);
-		System.out.println(345+coor.getRow()*50);
 		Image image = new Image(filepath);
 		ImageView imageView = new ImageView(image);
 		imageView.setTranslateX(70+coor.getCol()*50);
