@@ -1,5 +1,6 @@
 package gameBoard.cell;
 
+
 import UI.Command;
 import UI.CommandStage2;
 import UI.CommandStage3;
@@ -72,8 +73,8 @@ public abstract class Cell implements IClickable {
         } else throw new Error("In Cell.java, onClick(), the targetCmd is not the right type of Cmd to be used with Cell");
     }
 
-    public void display() {
-        // TODO Auto-generated method stub
-        System.out.print(notation + " ");
-    }
+	public char getNotation() {
+		return notation;
+	}
+    
 }

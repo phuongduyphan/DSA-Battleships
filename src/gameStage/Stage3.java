@@ -2,6 +2,7 @@ package gameStage;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.logging.Level;
 
 import UI.CommandStage3;
 import UI.UIHandler;
@@ -11,6 +12,7 @@ import gameBoard.Configurations;
 import gameBoard.player.BotPlayer;
 import gameBoard.player.Player;
 import javafx.scene.Scene;
+import log.Log;
 
 public class Stage3 implements IStage {
 	private static Stage3 instance = null;
@@ -69,7 +71,7 @@ public class Stage3 implements IStage {
 			currentTurn++;
 		}
 		currentPlayer = iterator.next();
-		System.out.println(currentPlayer.getClass());
+		Log.logger.log(Level.INFO, ""+currentPlayer.getClass());
 		currentPlayer.play();
 	}
 

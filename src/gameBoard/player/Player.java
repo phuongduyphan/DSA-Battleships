@@ -28,7 +28,6 @@ public abstract class Player implements IClickable {
     
 	public void setListOfWeapon(ArrayList<Weapon> listOfWeapon) {
 		this.listOfWeapon = listOfWeapon;
-		System.out.println(listOfWeapon);
 	}
 
 	public ArrayList<Weapon> getListOfWeapon() {

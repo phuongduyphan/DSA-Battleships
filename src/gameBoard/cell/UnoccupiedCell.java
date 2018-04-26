@@ -1,7 +1,10 @@
 package gameBoard.cell;
 
+import java.util.logging.Level;
+
 import gameBoard.Coordinate;
 import gameBoard.cell.Cell;
+import log.Log;
 
 public class UnoccupiedCell extends Cell {
 	public UnoccupiedCell(Coordinate coor) {
@@ -16,13 +19,13 @@ public class UnoccupiedCell extends Cell {
 	@Override
 	public void actWhenIsSelected() {
 		//TODO GUI
-	    System.out.println("Cell " + coordinate + " is now selected");
+	    Log.logger.log(Level.INFO,"Cell " + coordinate + " is now selected");
 	}
 
 	@Override
 	public void actWhenIsShot() {
 		//TODO GUI
-	    System.out.println("Ship at " + coordinate + " is shot");
+	    Log.logger.log(Level.INFO,"Ship at " + coordinate + " is shot");
 	}
 
 }

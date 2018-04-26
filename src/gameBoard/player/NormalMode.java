@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+import java.util.logging.Level;
 
 import UI.Command;
 import UI.CommandStage3;
@@ -20,6 +21,7 @@ import gameBoard.weapon.Weapon;
 import gameBoard.weapon.WeaponFactory;
 import gameBoard.weapon.WeaponType;
 import gameStage.Stage3;
+import log.Log;
 
 public class NormalMode extends Strategy {
 	private boolean huntingMode;
@@ -309,7 +311,6 @@ public class NormalMode extends Strategy {
 				}
 			}
 		}
-		System.out.println();
 		displayBoard(flagBoard);
 	}
 
@@ -464,13 +465,14 @@ public class NormalMode extends Strategy {
 	}
 
 	public void displayBoard(int[][] board) {
+		String msg = "\n";
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
 			for (int j = 0; j < Configurations.numberOfColumns; j++) {
-				System.out.print(board[i][j] + " ");
+				msg += board[i][j] + " ";
 			}
-			System.out.println();
+			msg += "\n";
 		}
-		System.out.println();
+		Log.logger.log(Level.INFO, msg);
 	}
 
 	public void setHuntingMode(boolean huntingMode) {

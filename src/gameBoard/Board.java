@@ -8,9 +8,11 @@ import gameBoard.ship.Ship;
 import gameBoard.ship.ShipFactory;
 import gameBoard.ship.ShipOrientation;
 import gameBoard.ship.ShipType;
+import log.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 public class Board {
 	private Cell grid[][];
@@ -140,7 +142,7 @@ public class Board {
 		for (Coordinate coor : ship.getListOfCoors()) {
 
 			if (!checkRange(coor)) {
-				System.out.println("Boundary exceeded: " + startCoor);
+				Log.logger.log(Level.INFO,"Boundary exceeded: " + startCoor);
 				ship = null;
 				return false;
 			}
@@ -149,7 +151,7 @@ public class Board {
 			cell.actWhenIsSelected();
 
 			if (!cell.getCanChangeWhenIsSelected()) {
-				System.out.println("Cannot place ship here");
+				Log.logger.log(Level.INFO,"Cannot place ship here");
 				ship = null;
 				return false;
 			}
@@ -159,12 +161,12 @@ public class Board {
 	}
 
 	public void displayBoard() {
-	    System.out.println("");
+		String msg = "\n";
 		for (int i = 0; i < numberOfRows; i++) {
 			for (int j = 0; j < numberOfColumns; j++) {
 				Cell cell = getCellAt(new Coordinate(i, j));
 //				System.out.print(cell.getType() + " ");
-				cell.display();
+				msg += cell.getNotation() + " ";
 
 				// if (cell instanceof ShipCell)
 				// System.out.print("S ");
@@ -173,10 +175,11 @@ public class Board {
 				// else if (cell instanceof UnoccupiedCell)
 				// System.out.print("O ");
 			}
-			System.out.println("");
+			msg += "\n";
 		}
+		Log.logger.log(Level.INFO, msg);
 	}
-
+	
 	public ArrayList<Cell> getListOfTargetableCells() {
 		return listOfTargetableCells;
 	}

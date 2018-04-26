@@ -1,6 +1,7 @@
 package UI.gui;
 
 import java.io.IOException;
+import java.util.logging.Level;
 
 import gameStage.Stage1;
 import gameStage.App;
@@ -14,6 +15,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		new Log("game.log");
+		Log.logger.log(Level.INFO, "\n START GAME !!!");
 		primaryStage.setTitle("BattleShip");
 		primaryStage.setResizable(false);
 		

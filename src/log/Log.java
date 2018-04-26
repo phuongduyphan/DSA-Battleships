@@ -10,8 +10,8 @@ public class Log {
 	
 	public Log(String file_name) {
 		try {
-			FileHandler handler = new FileHandler(file_name);
-			SimpleFormatter formatter = new SimpleFormatter();
+			FileHandler handler = new FileHandler(file_name,10240000,1,true);
+			VerySimpleFormatter formatter = new VerySimpleFormatter();
 			
 			handler.setFormatter(formatter);
 			logger = Logger.getLogger("");

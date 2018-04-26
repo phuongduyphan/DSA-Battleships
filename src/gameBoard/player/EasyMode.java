@@ -2,6 +2,7 @@ package gameBoard.player;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
 
 import UI.Command;
 import UI.CommandStage3;
@@ -17,6 +18,7 @@ import gameBoard.weapon.Weapon;
 import gameBoard.weapon.WeaponFactory;
 import gameBoard.weapon.WeaponType;
 import gameStage.Stage3;
+import log.Log;
 
 public class EasyMode extends Strategy {
 	
@@ -111,7 +113,6 @@ public class EasyMode extends Strategy {
 
 	public Player pickOpponent() {
 		Random rand = new Random();
-		System.out.print(super.getBot().getListOfOpponents().size());
 		int index = rand.nextInt(super.getBot().getListOfOpponents().size());
 		return super.getBot().getListOfOpponents().get(index);
 	}
@@ -136,7 +137,6 @@ public class EasyMode extends Strategy {
 
 	public Weapon pickWeapon() {
 		Random rand = new Random();
-		System.out.println(super.getBot().getListOfWeapon().size());
 		int index = rand.nextInt(super.getBot().getListOfWeapon().size());
 		return super.getBot().getListOfWeapon().get(index);
 	}

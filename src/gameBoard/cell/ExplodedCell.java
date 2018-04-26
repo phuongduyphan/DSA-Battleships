@@ -1,7 +1,10 @@
 package gameBoard.cell;
 
+import java.util.logging.Level;
+
 import gameBoard.Coordinate;
 import gameBoard.cell.Cell;
+import log.Log;
 
 public class ExplodedCell extends Cell {
 	
@@ -17,13 +20,13 @@ public class ExplodedCell extends Cell {
 	@Override
 	public void actWhenIsSelected() {
 		//TODO GUI
-		System.out.println("Cell" + coordinate + "cannot be selected");
+		Log.logger.log(Level.INFO,"Cell" + coordinate + "cannot be selected");
 	}
 
 	@Override
 	public void actWhenIsShot() {
 		//TODO GUI
-		System.out.println("Cell" + coordinate + "cannot be shot");
+		Log.logger.log(Level.INFO,"Cell" + coordinate + "cannot be shot");
 	}
 
 }

@@ -2,7 +2,11 @@
 package gameBoard.ship;
 
 import gameBoard.Coordinate;
+import log.Log;
+
 import java.util.ArrayList;
+import java.util.logging.Level;
+
 import UI.Command;
 import UI.IClickable;
 
@@ -66,7 +70,7 @@ public abstract class Ship implements IClickable {
 			appendCoorsHorizontally(startRow, startCol);
 			break;
 		default:
-			System.out.println("Wrong orientation");	
+			Log.logger.log(Level.INFO,"Wrong orientation");
 			break;
 		}
 		
