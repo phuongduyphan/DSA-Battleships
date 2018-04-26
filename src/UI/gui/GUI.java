@@ -291,6 +291,7 @@ public class GUI implements UI {
 		else {
 			label.setText("YOU LOSE !!!");
 			label.setId("loseLabel");
+			opponentBoardStage3.displayRemainingShips(Configurations.listOfPlayer.get(1));
 		}
 		
 		TranslateTransition translate = new TranslateTransition(Duration.millis(500),label);
@@ -305,7 +306,7 @@ public class GUI implements UI {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				PauseTransition pause = new PauseTransition(Duration.millis(1000));
+				PauseTransition pause = new PauseTransition(Duration.millis(3000));
 				pause.play();
 				pause.setOnFinished(new EventHandler<ActionEvent>() {
 					

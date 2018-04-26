@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import gameBoard.Configurations;
 import gameBoard.Coordinate;
+import gameBoard.player.Player;
 import gameBoard.ship.Ship;
 import gameBoard.ship.ShipOrientation;
 import gameStage.Stage3;
@@ -119,5 +120,24 @@ public class OpponentBoard {
 		layer.setFill(Color.RED);
 		layer.setId("destroyedShipLayer");
 		opponentBoardPane.getChildren().addAll(imageView,layer);
+	}
+	
+	public void displayRemainingShips(Player bot) {
+		System.out.println("LOSE");
+		for (Ship ship:bot.getBoard().getListOfShips()) {
+			System.out.println(ship.getType());
+			String imageName = "file:///../resources/" + Configurations.mapShipImage.get(ship.getType());
+			if (ship.getOrientation().equals(ShipOrientation.HORIZONTAL)) {
+				imageName += "_HORI.png";
+			}
+			else {
+				imageName += "_VERTI.png";
+			}
+			Image image = new Image(imageName);
+			ImageView imageView = new ImageView(image);
+			imageView.setTranslateX(70+ship.getStartCoordinate().getCol() * 50);
+			imageView.setTranslateY(30+ship.getStartCoordinate().getRow() * 50);
+			opponentBoardPane.getChildren().addAll(imageView);
+		}
 	}
 }
