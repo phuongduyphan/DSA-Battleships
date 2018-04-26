@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" automaticImage="PNG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="gameStage.App" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameStage/App.java" binary="false" label="app" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="655" width="0" x="0" y="81"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="601" width="0" x="0" y="117"/>    
+    </execution>  
+  </object>  
+  <object id="7" language="java" name="gameStage.Stage3" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameStage/Stage3.java" binary="false" label="stage3" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="556" width="0" x="0" y="144"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="502" width="0" x="0" y="180"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="179" width="7" x="97" y="449"/>    
+    </execution>    
+    <execution id="13">      
+      <position height="18" width="7" x="94" y="639"/>    
+    </execution>  
+  </object>  
+  <object id="17" language="java" name="gameBoard.player.BotPlayer" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameBoard/player/BotPlayer.java" binary="false" label="botPlayer" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="11">      
+      <position height="457" width="0" x="0" y="207"/>    
+    </execution>  
+  </object>  
+  <object id="20" language="java" name="gameBoard.player.Strategy" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameBoard/player/Strategy.java" binary="false" label="strategy" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="19">      
+      <position height="421" width="0" x="0" y="225"/>    
+    </execution>    
+    <execution id="22">      
+      <position height="18" width="7" x="254" y="277"/>    
+    </execution>    
+    <execution id="24">      
+      <position height="18" width="7" x="254" y="343"/>    
+    </execution>    
+    <execution id="26">      
+      <position height="18" width="7" x="254" y="401"/>    
+    </execution>  
+  </object>  
+  <object id="28" language="java" name="gameBoard.player.Player" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameBoard/player/Player.java" binary="false" label="opponent" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="16">      
+      <position height="114" width="7" x="407" y="496"/>    
+    </execution>  
+  </object>  
+  <object id="31" language="java" name="gameBoard.weapon.Weapon" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameBoard/weapon/Weapon.java" binary="false" label="weapon" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="30">      
+      <position height="65" width="7" x="496" y="527"/>    
+    </execution>  
+  </object>  
+  <object id="34" language="java" name="gameBoard.Board" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameBoard/Board.java" binary="false" label="board" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="33">      
+      <position height="18" width="58" x="548" y="556"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="start():void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="handle():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="8" operation="nextTurn():void" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="10" operation="play():void" asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="12" operation="checkWin():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="15" operation="update(gameBoard.weapon.Weapon,gameBoard.Coordinate,gameBoard.player.Player):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="18" operation="runMode():void" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="21" operation="pickOpponent():gameBoard.player.Player" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="23" operation="pickCoordinate():gameBoard.Coordinate" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="25" operation="pickWeapon():gameBoard.weapon.Weapon" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="26"/>  
+  </message>  
+  <message id="27" operation="processInput(UI.CommandStage3):void" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="29" operation="act(gameBoard.Board,gameBoard.Coordinate,gameBoard.player.Player):void" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="30"/>  
+  </message>  
+  <message id="32" operation="shootAt(gameBoard.Coordinate):void" asynchronous="false">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="33"/>  
+  </message>
+</sequence-diagram>

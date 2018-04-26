@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" automaticImage="PNG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="UI.UIHandlerStage2" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/UI/UIHandlerStage2.java" binary="false" label="uiHandlerStage2" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="351" width="0" x="0" y="77"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="247" width="7" x="62" y="145"/>    
+    </execution>  
+  </object>  
+  <object id="8" language="java" name="UI.CommandStage2" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/UI/CommandStage2.java" binary="false" label="commandStage2" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="4">      
+      <position height="315" width="0" x="0" y="95"/>    
+    </execution>  
+  </object>  
+  <object id="10" language="java" name="gameStage.Stage2" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameStage/Stage2.java" binary="false" label="stage2" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="7">      
+      <position height="180" width="63" x="379" y="194"/>    
+    </execution>  
+  </object>  
+  <object id="13" language="java" name="gameBoard.Board" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameBoard/Board.java" binary="false" label="board" type="class" autoSize="false">    
+    <position height="373" width="80" x="317" y="0"/>    
+    <execution id="12">      
+      <position height="144" width="58" x="446" y="212"/>    
+    </execution>    
+    <execution id="17">      
+      <position height="18" width="0" x="0" y="320"/>    
+    </execution>  
+  </object>  
+  <object id="18" language="java" name="gameBoard.ship.ShipFactory" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameBoard/ship/ShipFactory.java" binary="false" label="shipFactory" type="class" 
+    autoSize="false">    
+    <position height="278" width="96" x="422" y="0"/>    
+    <execution id="15">      
+      <position height="18" width="0" x="0" y="243"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="19" interaction-operator="ALT">    
+    <interaction-operand id="20" constraint="canPlaceShip(startCoor, orientation, ship) == true">      
+      <fragment refId="16"/>    
+    </interaction-operand>    
+    <interaction-operand id="21" constraint="else"/>  
+  </combined-fragment>  
+  <message id="3" operation="onFinished():void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="processInput(UI.CommandStage2):void" asynchronous="false">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="9" operation="placeShip():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </message>  
+  <message id="11" 
+    operation="createShip(gameBoard.Coordinate,gameBoard.ship.ShipOrientation,gameBoard.ship.ShipType):boolean" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="14" 
+    operation="create(gameBoard.Coordinate,gameBoard.ship.ShipOrientation,gameBoard.ship.ShipType):gameBoard.ship.Ship" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="16" operation="placeShipToBoard(gameBoard.ship.Ship):void" asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>
+</sequence-diagram>

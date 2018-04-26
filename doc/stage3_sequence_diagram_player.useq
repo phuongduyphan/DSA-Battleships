@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" automaticImage="PNG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="gameStage.App" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameStage/App.java" binary="false" label="app" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="471" width="0" x="0" y="70"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="417" width="0" x="0" y="106"/>    
+    </execution>  
+  </object>  
+  <object id="7" language="java" name="gameStage.Stage3" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameStage/Stage3.java" binary="false" label="stage3" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="372" width="0" x="0" y="133"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="318" width="0" x="0" y="169"/>    
+    </execution>  
+  </object>  
+  <object id="12" language="java" name="gameBoard.player.HumanPlayer" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/gameBoard/player/HumanPlayer.java" binary="false" label="humanPlayer" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="11">      
+      <position height="273" width="0" x="0" y="196"/>    
+    </execution>  
+  </object>  
+  <object id="15" language="java" name="UI.UIHandlerStage3" project="DSA-Battleships" 
+    file="/DSA-Battleships/src/UI/UIHandlerStage3.java" binary="false" label="uiHandlerStage3" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="275" y="0"/>    
+    <execution id="14">      
+      <position height="237" width="120" x="235" y="214"/>    
+    </execution>    
+    <execution id="17">      
+      <position height="18" width="0" x="0" y="250"/>    
+    </execution>    
+    <execution id="19">      
+      <position height="18" width="0" x="0" y="356"/>    
+    </execution>  
+  </object>  
+  <object id="22" language="java" name="UI.UI" project="DSA-Battleships" file="/DSA-Battleships/src/UI/UI.java" 
+    binary="false" label="currentUI" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="21">      
+      <position height="18" width="0" x="0" y="415"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="23" interaction-operator="OPT">    
+    <interaction-operand id="24" constraint="Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer">      
+      <fragment refId="18"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <message id="3" operation="start():void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="handle():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="8" operation="nextTurn():void" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="10" operation="play():void" asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="13" operation="enableInput():void" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="16" operation="setCmd(UI.Command):void" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="18" operation="updateCommand(UI.IClickable):void" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="20" operation="enableInputStage3():void" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>
+</sequence-diagram>
