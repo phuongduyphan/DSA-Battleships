@@ -4,10 +4,7 @@ import java.util.ArrayList;
 
 import UI.gui.GUI;
 import gameBoard.Board;
-import gameBoard.Configurations;
 import gameBoard.weapon.Weapon;
-import gameBoard.weapon.WeaponFactory;
-import gameBoard.weapon.WeaponType;
 import gameStage.Stage3;
 
 public class HumanPlayer extends Player{

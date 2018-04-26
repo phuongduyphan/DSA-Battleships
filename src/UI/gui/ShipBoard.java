@@ -240,12 +240,7 @@ public class ShipBoard {
 						
 						String str = reverseButton.getText();
 						ShipOrientation orientation;
-						if (str.equals("Horizontal")) {
-							orientation = ShipOrientation.HORIZONTAL;
-						}
-						else {
-							orientation = ShipOrientation.VERTICAL;
-						}
+						orientation = getOrientation(str);
 						
 						CommandStage2 cmd = (CommandStage2) Stage2.getInstance().getUIHandler().getCmd(); 
 						if (cmd.getShipType() != null) {
@@ -279,7 +274,6 @@ public class ShipBoard {
 							}
 						}
 					}
-					
 				});
 				
 				button.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<Event>() {
@@ -327,12 +321,7 @@ public class ShipBoard {
 						// TODO Auto-generated method stub
 						String str = reverseButton.getText();
 						ShipOrientation orientation;
-						if (str.equals("Horizontal")) {
-							orientation = ShipOrientation.HORIZONTAL;
-						}
-						else {
-							orientation = ShipOrientation.VERTICAL;
-						}
+						orientation = getOrientation(str);
 						
 						CommandStage2 cmd = (CommandStage2) Stage2.getInstance().getUIHandler().getCmd(); 
 						if (cmd.getShipType() != null) {
@@ -357,6 +346,17 @@ public class ShipBoard {
 		}
 		shipBoardPane.getChildren().add(gridPane);
 		shipBoard.getChildren().addAll(shipBoardHeader,shipBoardPane);
+	}
+	
+	private ShipOrientation getOrientation(String str) {
+		ShipOrientation orientation;
+		if (str.equals("Horizontal")) {
+			orientation = ShipOrientation.HORIZONTAL;
+		}
+		else {
+			orientation = ShipOrientation.VERTICAL;
+		}
+		return orientation;
 	}
 
 	public VBox getShipBoard() {

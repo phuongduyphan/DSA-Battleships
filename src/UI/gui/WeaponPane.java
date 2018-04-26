@@ -229,9 +229,7 @@ public class WeaponPane {
 		updateWeaponLabel(rocketPane,0);
 		updateWeaponLabel(verticalBombPane,0);
 		updateWeaponLabel(horizontalBombPane,0);
-		
-		System.out.println(player);
-		System.out.println(player.getListOfWeapon().size());
+	
 		for (int i=0; i < player.getListOfWeapon().size(); i++) {
 			System.out.println(player.getListOfWeapon().get(i));
 		}

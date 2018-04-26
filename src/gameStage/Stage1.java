@@ -68,7 +68,7 @@ public class Stage1 implements IStage {
 	public void createGame(CommandStage1 cmd) {
 		Player human = Configurations.listOfPlayer.get(0);
 		Strategy humanStrategy = cmd.getMode();
-		((HumanPlayer) human).create(cmd.getMode());
+		((HumanPlayer) human).create(humanStrategy);
 		
 		Strategy botStrategy = cmd.getMode();
 		Player bot = new BotPlayer();

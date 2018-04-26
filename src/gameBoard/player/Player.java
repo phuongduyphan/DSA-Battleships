@@ -1,6 +1,6 @@
 package gameBoard.player;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import UI.Command;
 import UI.CommandStage3;
 import UI.IClickable;

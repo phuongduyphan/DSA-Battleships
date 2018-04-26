@@ -17,6 +17,7 @@ public class Stage3 implements IStage {
 	private Iterator<Player> iterator;
 	private Player currentPlayer;
 	private UIHandler uiHandler;
+	private int currentTurn;
 
 	private Stage3() {
 		uiHandler = new UIHandlerStage3();
@@ -65,6 +66,7 @@ public class Stage3 implements IStage {
 	public void nextTurn() {
 		if (!iterator.hasNext()) {
 			iterator = Configurations.listOfPlayer.iterator();
+			currentTurn++;
 		}
 		currentPlayer = iterator.next();
 		System.out.println(currentPlayer.getClass());
@@ -122,4 +124,9 @@ public class Stage3 implements IStage {
 	public UIHandler getUIHandler() {
 		return uiHandler;
 	}
+
+	public int getCurrentTurn() {
+		return currentTurn;
+	}
+	
 }

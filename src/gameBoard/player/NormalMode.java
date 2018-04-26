@@ -26,6 +26,7 @@ public class NormalMode extends Strategy {
 	private ArrayList<Ship> listOfRemainingShips;
 	private int[][] flagBoard;
 	private int[][] stateBoard;
+	private int numberOfHuntingMode;
 
 	public void createHuman(HumanPlayer player) {
 		player.setBoard(new Board(8, 8));
@@ -57,6 +58,7 @@ public class NormalMode extends Strategy {
 		listOfRemainingShips.add(ShipFactory.getInstance().create(ShipType.DESTROYER));
 		listOfRemainingShips.add(ShipFactory.getInstance().create(ShipType.SUBMARINE));
 		listOfRemainingShips.add(ShipFactory.getInstance().create(ShipType.PATROL_BOAT));
+		numberOfHuntingMode = 0;
 	}
 
 	public void placeShip() {
@@ -126,134 +128,155 @@ public class NormalMode extends Strategy {
 	public Coordinate pickCoordinate() {
 		ArrayList<Coordinate> listOfPotentialCoor = new ArrayList<>();
 		if (huntingMode) {
-			setFlagBoard();
-			int maxFlagCoor = -1;
-			Coordinate coorTemp = null;
-
-			for (int i = 0; i < Configurations.numberOfRows; i++) {
-				for (int j = 0; j < Configurations.numberOfColumns; j++) {
-					if (flagBoard[i][j] > maxFlagCoor) {
-						maxFlagCoor = flagBoard[i][j];
-					}
-				}
+			numberOfHuntingMode++;
+			if (numberOfHuntingMode <= 3) {
+				pickRandomCoordinate(listOfPotentialCoor);
+			} else {
+				setFlagBoard();
+				pickPriorityCoordinate(listOfPotentialCoor);
 			}
-			ArrayList<Coordinate> listTemp = new ArrayList<>();
-			int maxDist = -1;
-			for (int i = 0; i < Configurations.numberOfRows; i++) {
-				for (int j = 0; j < Configurations.numberOfColumns; j++) {
-					if (flagBoard[i][j] == maxFlagCoor)
-						listTemp.add(new Coordinate(i, j));
-				}
-			}
-			for (int i = 0 ; i < listTemp.size(); i++) {
-				int currentMinDist = findMinimumDistance(listTemp.get(i));
-				System.out.println("listTemp: " + listTemp.get(i).getRow() + " " + listTemp.get(i).getCol());
-				System.out.println(currentMinDist);
-				if (currentMinDist >= maxDist) {
-					if (currentMinDist > maxDist) listOfPotentialCoor.clear();
-					maxDist = currentMinDist;
-					listOfPotentialCoor.add(listTemp.get(i));
-				}
-			}
-			System.out.println(maxDist);
 		} else {
 			boolean[][] visitBoard = new boolean[Configurations.numberOfRows][Configurations.numberOfColumns];
 			int shootLength = -1;
+			shootLength = searchHorizontalDirection(listOfPotentialCoor, visitBoard, shootLength);
+			shootLength = searchVerticalDirection(listOfPotentialCoor, visitBoard, shootLength);
+		}
+		return listOfPotentialCoor.get(getRandomNumber(listOfPotentialCoor.size()));
+	}
 
-			// horizontal
-			initializeVisitBoard(visitBoard);
-			for (int i = 0; i < Configurations.numberOfRows; i++) {
-				for (int j = 0; j < Configurations.numberOfColumns; j++) {
-					int length = 0;
-					for (int k = j; k < Configurations.numberOfColumns; k++) {
-						if (stateBoard[i][k] != 2 || visitBoard[i][k])
-							break;
-						else {
-							length++;
-							visitBoard[i][k] = true;
-						}
+	private int searchVerticalDirection(ArrayList<Coordinate> listOfPotentialCoor, boolean[][] visitBoard,
+			int shootLength) {
+		initializeVisitBoard(visitBoard);
+		for (int i = 0; i < Configurations.numberOfRows; i++) {
+			for (int j = 0; j < Configurations.numberOfColumns; j++) {
+				int length = 0;
+				for (int k = i; k < Configurations.numberOfRows; k++) {
+					if (stateBoard[k][j] != 2 || visitBoard[k][j])
+						break;
+					else {
+						length++;
+						visitBoard[k][j] = true;
 					}
-					if (length > 0 && length < getMaxLengthOfShips()) {
-						int expandLength = 0;
-						for (int k = j - 1; k >= 0; k--) {
-							if (stateBoard[i][k] != 0 && stateBoard[i][k] != 2)
-								break;
-							else
-								expandLength++;
+				}
+				if (length > 0 && length < getMaxLengthOfShips()) {
+					int expandLength = 0;
+					for (int k = i - 1; k >= 0; k--) {
+						if (stateBoard[k][j] != 0 && stateBoard[k][j] != 2)
+							break;
+						else
+							expandLength++;
+					}
+					for (int k = i + length; k < Configurations.numberOfRows; k++) {
+						if (stateBoard[k][j] != 0 && stateBoard[k][j] != 2)
+							break;
+						else
+							expandLength++;
+					}
+					if (length + expandLength >= getMinLengthOfShips() && length >= shootLength) {
+
+						if (checkRange(new Coordinate(i - 1, j)) && stateBoard[i - 1][j] == 0) {
+							if (length > shootLength)
+								listOfPotentialCoor.clear();
+							shootLength = length;
+							listOfPotentialCoor.add(new Coordinate(i - 1, j));
 						}
-						for (int k = j + length; k < Configurations.numberOfColumns; k++) {
-							if (stateBoard[i][k] != 0 && stateBoard[i][k] != 2)
-								break;
-							else
-								expandLength++;
-						}
-						if (length + expandLength >= getMinLengthOfShips() && length >= shootLength) {
-							if (checkRange(new Coordinate(i, j - 1)) && stateBoard[i][j - 1] == 0) {
-								if (length > shootLength)
-									listOfPotentialCoor.clear();
-								shootLength = length;
-								listOfPotentialCoor.add(new Coordinate(i, j - 1));
-							}
-							if (checkRange(new Coordinate(i, j + length)) && stateBoard[i][j + length] == 0) {
-								if (length > shootLength)
-									listOfPotentialCoor.clear();
-								shootLength = length;
-								listOfPotentialCoor.add(new Coordinate(i, j + length));
-							}
+						if (checkRange(new Coordinate(i + length, j)) && stateBoard[i + length][j] == 0) {
+							if (length > shootLength)
+								listOfPotentialCoor.clear();
+							shootLength = length;
+							listOfPotentialCoor.add(new Coordinate(i + length, j));
 						}
 					}
 				}
 			}
-			// vertical
-			initializeVisitBoard(visitBoard);
-			for (int i = 0; i < Configurations.numberOfRows; i++) {
-				for (int j = 0; j < Configurations.numberOfColumns; j++) {
-					int length = 0;
-					for (int k = i; k < Configurations.numberOfRows; k++) {
-						if (stateBoard[k][j] != 2 || visitBoard[k][j])
-							break;
-						else {
-							length++;
-							visitBoard[k][j] = true;
-						}
-					}
-					if (length > 0 && length < getMaxLengthOfShips()) {
-						int expandLength = 0;
-						for (int k = i - 1; k >= 0; k--) {
-							if (stateBoard[k][j] != 0 && stateBoard[k][j] != 2)
-								break;
-							else
-								expandLength++;
-						}
-						for (int k = i + length; k < Configurations.numberOfRows; k++) {
-							if (stateBoard[k][j] != 0 && stateBoard[k][j] != 2)
-								break;
-							else
-								expandLength++;
-						}
-						if (length + expandLength >= getMinLengthOfShips() && length >= shootLength) {
+		}
+		return shootLength;
+	}
 
-							if (checkRange(new Coordinate(i - 1, j)) && stateBoard[i - 1][j] == 0) {
-								if (length > shootLength)
-									listOfPotentialCoor.clear();
-								shootLength = length;
-								listOfPotentialCoor.add(new Coordinate(i - 1, j));
-							}
-							if (checkRange(new Coordinate(i + length, j)) && stateBoard[i + length][j] == 0) {
-								if (length > shootLength)
-									listOfPotentialCoor.clear();
-								shootLength = length;
-								listOfPotentialCoor.add(new Coordinate(i + length, j));
-							}
+	private int searchHorizontalDirection(ArrayList<Coordinate> listOfPotentialCoor, boolean[][] visitBoard,
+			int shootLength) {
+		initializeVisitBoard(visitBoard);
+		for (int i = 0; i < Configurations.numberOfRows; i++) {
+			for (int j = 0; j < Configurations.numberOfColumns; j++) {
+				int length = 0;
+				for (int k = j; k < Configurations.numberOfColumns; k++) {
+					if (stateBoard[i][k] != 2 || visitBoard[i][k])
+						break;
+					else {
+						length++;
+						visitBoard[i][k] = true;
+					}
+				}
+				if (length > 0 && length < getMaxLengthOfShips()) {
+					int expandLength = 0;
+					for (int k = j - 1; k >= 0; k--) {
+						if (stateBoard[i][k] != 0 && stateBoard[i][k] != 2)
+							break;
+						else
+							expandLength++;
+					}
+					for (int k = j + length; k < Configurations.numberOfColumns; k++) {
+						if (stateBoard[i][k] != 0 && stateBoard[i][k] != 2)
+							break;
+						else
+							expandLength++;
+					}
+					if (length + expandLength >= getMinLengthOfShips() && length >= shootLength) {
+						if (checkRange(new Coordinate(i, j - 1)) && stateBoard[i][j - 1] == 0) {
+							if (length > shootLength)
+								listOfPotentialCoor.clear();
+							shootLength = length;
+							listOfPotentialCoor.add(new Coordinate(i, j - 1));
+						}
+						if (checkRange(new Coordinate(i, j + length)) && stateBoard[i][j + length] == 0) {
+							if (length > shootLength)
+								listOfPotentialCoor.clear();
+							shootLength = length;
+							listOfPotentialCoor.add(new Coordinate(i, j + length));
 						}
 					}
 				}
-			}	
+			}
 		}
-//		for (Coordinate coor : listOfPotentialCoor) {
-//			System.out.println("Potential Coor:" + coor.getRow() + " " + coor.getCol());
-//		}
-		return listOfPotentialCoor.get(getRandomNumber(listOfPotentialCoor.size()));
+		return shootLength;
+	}
+
+	private void pickPriorityCoordinate(ArrayList<Coordinate> listOfPotentialCoor) {
+		int maxFlagCoor = -1;
+
+		for (int i = 0; i < Configurations.numberOfRows; i++) {
+			for (int j = 0; j < Configurations.numberOfColumns; j++) {
+				if (flagBoard[i][j] > maxFlagCoor) {
+					maxFlagCoor = flagBoard[i][j];
+				}
+			}
+		}
+		ArrayList<Coordinate> listTemp = new ArrayList<>();
+		int maxDist = -1;
+		for (int i = 0; i < Configurations.numberOfRows; i++) {
+			for (int j = 0; j < Configurations.numberOfColumns; j++) {
+				if (flagBoard[i][j] == maxFlagCoor)
+					listTemp.add(new Coordinate(i, j));
+			}
+		}
+		for (int i = 0; i < listTemp.size(); i++) {
+			int currentMinDist = findMinimumDistance(listTemp.get(i));
+			if (currentMinDist >= maxDist) {
+				if (currentMinDist > maxDist)
+					listOfPotentialCoor.clear();
+				maxDist = currentMinDist;
+				listOfPotentialCoor.add(listTemp.get(i));
+			}
+		}
+	}
+
+	private void pickRandomCoordinate(ArrayList<Coordinate> listOfPotentialCoor) {
+		for (int i = 0; i < Configurations.numberOfRows; i++) {
+			for (int j = 0; j < Configurations.numberOfColumns; j++) {
+				if (stateBoard[i][j] == 0)
+					listOfPotentialCoor.add(new Coordinate(i, j));
+			}
+		}
 	}
 
 	public void initializeVisitBoard(boolean[][] visitBoard) {
@@ -278,7 +301,7 @@ public class NormalMode extends Strategy {
 		}
 
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
-			for (int j = 0; j < Configurations.numberOfColumns; j ++) {
+			for (int j = 0; j < Configurations.numberOfColumns; j++) {
 				for (int orientation = 0; orientation < 4; orientation++) {
 					if (checkValidFlag(i, j, orientation, maxLength) && stateBoard[i][j] == 0) {
 						flagBoard[i][j]++;
@@ -349,30 +372,31 @@ public class NormalMode extends Strategy {
 		}
 		return false;
 	}
-	
+
 	public int findMinimumDistance(Coordinate coor) {
-		int[] hDir = {0,1,0,-1};
-		int[] vDir = {1,0,-1,0};
+		int[] hDir = { 0, 1, 0, -1 };
+		int[] vDir = { 1, 0, -1, 0 };
 		boolean[][] visitBoard = new boolean[Configurations.numberOfRows][Configurations.numberOfColumns];
 		initializeVisitBoard(visitBoard);
 		Queue<Coordinate> que = new LinkedList<>();
-		Queue<Integer> dist = new LinkedList<>(); 
+		Queue<Integer> dist = new LinkedList<>();
 		que.add(coor);
 		dist.add(0);
 		visitBoard[coor.getRow()][coor.getCol()] = true;
-		
+
 		while (que.peek() != null) {
 			int curRow = que.peek().getRow();
 			int curCol = que.peek().getCol();
 			int curDist = dist.peek();
 			que.remove();
 			dist.remove();
-			
+
 			for (int i = 0; i <= 3; i++) {
 				int row = curRow + hDir[i];
 				int col = curCol + vDir[i];
 				if (checkRange(new Coordinate(row, col)) && !visitBoard[row][col]) {
-					if (stateBoard[row][col] != 0) return curDist + 1;
+					if (stateBoard[row][col] != 0)
+						return curDist + 1;
 					visitBoard[row][col] = true;
 					que.add(new Coordinate(row, col));
 					dist.add(curDist + 1);
@@ -399,13 +423,11 @@ public class NormalMode extends Strategy {
 		Stage3.getInstance().processInput(cmd);
 	}
 
-	// 0: not shooted
+	// 0: not shot
 	// 1: exploded
 	// 2: ship exploded
 	public void update(ArrayList<Cell> listOfDestroyedCells, ArrayList<Ship> listOfDestroyedShips) {
 		for (Cell cell : listOfDestroyedCells) {
-			System.out.println("Destroyed cell:" + cell.getCoordinate().getRow() + " " + cell.getCoordinate().getCol());
-			System.out.println(cell.getType());
 			if (cell.getType().equals(CellType.SHIP)) {
 				stateBoard[cell.getCoordinate().getRow()][cell.getCoordinate().getCol()] = 2;
 			} else {
@@ -425,7 +447,6 @@ public class NormalMode extends Strategy {
 				stateBoard[coor.getRow()][coor.getCol()] = 1;
 			}
 		}
-		System.out.println();
 		displayBoard(stateBoard);
 		updateHuntingMode();
 	}
