@@ -154,7 +154,7 @@ public class EasyMode extends Strategy {
 	}
 
 	public void update(ArrayList<Cell> listOfDestroyedCells, ArrayList<Ship> listOfDestroyedShips) {
-
+		//TODO
 	}
 
 	@Override

@@ -136,7 +136,7 @@ public class GUI implements UI {
 
 	public void displayStage3(final CommandStage3 cmd, final ArrayList<Cell> listOfTargetableCells,ArrayList<Ship> listOfDestroyedShips) {
 
-		if ((Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer) == false) {
+		if (!(Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer)) {
 			setEffectShootingPlayer(cmd, listOfTargetableCells);
 		} else {
 			setEffectShootingOpponent(cmd, listOfTargetableCells, listOfDestroyedShips);

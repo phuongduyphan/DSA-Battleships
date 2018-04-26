@@ -251,7 +251,7 @@ public class ShipBoard {
 								id = "seaButton";
 								Stage2.getInstance().getUIHandler().updateCommand(Configurations.listOfPlayer.get(0)
 										.getBoard().getCellAt(new Coordinate(row, column)));
-								if (str == "Horizontal") {
+								if (str.equals("Horizontal")) {
 									Stage2.getInstance().getUIHandler().updateCommand(ShipOrientation.HORIZONTAL);
 								}
 								else {
@@ -260,7 +260,7 @@ public class ShipBoard {
 							}
 							else id = "shipBoardButton_INVALID";
 							
-							if (orientation == ShipOrientation.HORIZONTAL) {
+							if (orientation.equals(ShipOrientation.HORIZONTAL)) {
 								int columnBoundary = Math.min(column+ship.getLength(), numberOfColumns);
 								for (int i=column; i < columnBoundary ; i++) {
 									buttonGrid[row][i].setId(id);

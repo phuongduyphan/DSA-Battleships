@@ -90,7 +90,7 @@ public class OpponentBoard {
 	}
 
 	public void setButtonImage(int row,int col, boolean hit) {
-		if (hit == true) {
+		if (hit) {
 			buttonGrid[row][col].setId("hitCoor");
 		}
 		else {

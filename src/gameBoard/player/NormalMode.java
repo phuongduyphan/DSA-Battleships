@@ -6,6 +6,8 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.logging.Level;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
+
 import UI.Command;
 import UI.CommandStage3;
 import gameBoard.Board;
@@ -370,8 +372,10 @@ public class NormalMode extends Strategy {
 				return true;
 			}
 			return false;
+		default:
+			return false;
 		}
-		return false;
+		
 	}
 
 	public int findMinimumDistance(Coordinate coor) {
