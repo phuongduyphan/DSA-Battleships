@@ -3,7 +3,6 @@ package log;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 public class Log {
 	public static Logger logger;
