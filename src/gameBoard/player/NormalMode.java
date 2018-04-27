@@ -1,12 +1,8 @@
 package gameBoard.player;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Random;
 import java.util.logging.Level;
-
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
 import UI.Command;
 import UI.CommandStage3;
@@ -30,7 +26,6 @@ public class NormalMode extends Strategy {
 	private ArrayList<Ship> listOfRemainingShips;
 	private int[][] flagBoard;
 	private int[][] stateBoard;
-	private int numberOfHuntingMode;
 
 	public void createHuman(HumanPlayer player) {
 		player.setBoard(new Board(8, 8));
@@ -62,7 +57,6 @@ public class NormalMode extends Strategy {
 		listOfRemainingShips.add(ShipFactory.getInstance().create(ShipType.DESTROYER));
 		listOfRemainingShips.add(ShipFactory.getInstance().create(ShipType.SUBMARINE));
 		listOfRemainingShips.add(ShipFactory.getInstance().create(ShipType.PATROL_BOAT));
-		numberOfHuntingMode = 0;
 	}
 
 	public void placeShip() {
@@ -132,13 +126,8 @@ public class NormalMode extends Strategy {
 	public Coordinate pickCoordinate() {
 		ArrayList<Coordinate> listOfPotentialCoor = new ArrayList<>();
 		if (huntingMode) {
-			numberOfHuntingMode++;
-			if (numberOfHuntingMode <= 3) {
-				pickRandomCoordinate(listOfPotentialCoor);
-			} else {
-				setFlagBoard();
-				pickPriorityCoordinate(listOfPotentialCoor);
-			}
+			setFlagBoard();
+			pickPriorityCoordinate(listOfPotentialCoor);
 		} else {
 			boolean[][] visitBoard = new boolean[Configurations.numberOfRows][Configurations.numberOfColumns];
 			int shootLength = -1;
@@ -255,29 +244,9 @@ public class NormalMode extends Strategy {
 				}
 			}
 		}
-		ArrayList<Coordinate> listTemp = new ArrayList<>();
-		int maxDist = -1;
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
 			for (int j = 0; j < Configurations.numberOfColumns; j++) {
 				if (flagBoard[i][j] == maxFlagCoor)
-					listTemp.add(new Coordinate(i, j));
-			}
-		}
-		for (int i = 0; i < listTemp.size(); i++) {
-			int currentMinDist = findMinimumDistance(listTemp.get(i));
-			if (currentMinDist >= maxDist) {
-				if (currentMinDist > maxDist)
-					listOfPotentialCoor.clear();
-				maxDist = currentMinDist;
-				listOfPotentialCoor.add(listTemp.get(i));
-			}
-		}
-	}
-
-	private void pickRandomCoordinate(ArrayList<Coordinate> listOfPotentialCoor) {
-		for (int i = 0; i < Configurations.numberOfRows; i++) {
-			for (int j = 0; j < Configurations.numberOfColumns; j++) {
-				if (stateBoard[i][j] == 0)
 					listOfPotentialCoor.add(new Coordinate(i, j));
 			}
 		}
@@ -305,15 +274,50 @@ public class NormalMode extends Strategy {
 		}
 
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
-			for (int j = 0; j < Configurations.numberOfColumns; j++) {
-				for (int orientation = 0; orientation < 4; orientation++) {
-					if (checkValidFlag(i, j, orientation, maxLength) && stateBoard[i][j] == 0) {
-						flagBoard[i][j]++;
+			for (int j = i % 2; j < Configurations.numberOfColumns; j += 2) {
+				if (stateBoard[i][j] != 1) {
+					int expandLengthRight = 0;
+					for (int k = j + 1; k < Configurations.numberOfColumns; k++) {
+						if (stateBoard[i][k] != 0 || expandLengthRight == maxLength - 1)
+							break;
+						else
+							expandLengthRight++;
+					}
+					int expandLengthLeft = 0;
+					for (int k = j - 1; k >= 0; k--) {
+						if (stateBoard[i][k] != 0 || expandLengthLeft == maxLength - 1)
+							break;
+						else
+							expandLengthLeft++;
+					}
+					int expandLength = expandLengthLeft + expandLengthRight + 1;
+					if (expandLength >= maxLength) {
+						flagBoard[i][j] += expandLength - maxLength + 1;
+					}
+
+					int expandLengthTop = 0;
+					for (int k = i - 1; k >= 0; k--) {
+						if (stateBoard[k][j] != 0 || expandLengthTop == maxLength - 1)
+							break;
+						else
+							expandLengthTop++;
+					}
+					int expandLengthBottom = 0;
+					for (int k = i + 1; k < Configurations.numberOfRows; k++) {
+						if (stateBoard[k][j] != 0 || expandLengthBottom == maxLength - 1)
+							break;
+						else
+							expandLengthBottom++;
+					}
+
+					expandLength = expandLengthTop + expandLengthBottom + 1;
+					if (expandLength >= maxLength) {
+						flagBoard[i][j] += expandLength - maxLength + 1;
 					}
 				}
 			}
 		}
-		displayBoard(flagBoard);
+		displayBoard(flagBoard, "FlagBoard: ");
 	}
 
 	public int getMaxLengthOfShips() {
@@ -375,40 +379,7 @@ public class NormalMode extends Strategy {
 		default:
 			return false;
 		}
-		
-	}
 
-	public int findMinimumDistance(Coordinate coor) {
-		int[] hDir = { 0, 1, 0, -1 };
-		int[] vDir = { 1, 0, -1, 0 };
-		boolean[][] visitBoard = new boolean[Configurations.numberOfRows][Configurations.numberOfColumns];
-		initializeVisitBoard(visitBoard);
-		Queue<Coordinate> que = new LinkedList<>();
-		Queue<Integer> dist = new LinkedList<>();
-		que.add(coor);
-		dist.add(0);
-		visitBoard[coor.getRow()][coor.getCol()] = true;
-
-		while (que.peek() != null) {
-			int curRow = que.peek().getRow();
-			int curCol = que.peek().getCol();
-			int curDist = dist.peek();
-			que.remove();
-			dist.remove();
-
-			for (int i = 0; i <= 3; i++) {
-				int row = curRow + hDir[i];
-				int col = curCol + vDir[i];
-				if (checkRange(new Coordinate(row, col)) && !visitBoard[row][col]) {
-					if (stateBoard[row][col] != 0)
-						return curDist + 1;
-					visitBoard[row][col] = true;
-					que.add(new Coordinate(row, col));
-					dist.add(curDist + 1);
-				}
-			}
-		}
-		return Integer.MAX_VALUE;
 	}
 
 	public Weapon pickWeapon() {
@@ -416,7 +387,7 @@ public class NormalMode extends Strategy {
 	}
 
 	public void runMode() {
-		displayBoard(stateBoard);
+		displayBoard(stateBoard, "StateBoard:");
 		super.setOpponent(pickOpponent());
 		super.setShootCoor(pickCoordinate());
 		super.setWeapon(pickWeapon());
@@ -452,7 +423,7 @@ public class NormalMode extends Strategy {
 				stateBoard[coor.getRow()][coor.getCol()] = 1;
 			}
 		}
-		displayBoard(stateBoard);
+		displayBoard(stateBoard, "StateBoard:");
 		updateHuntingMode();
 	}
 
@@ -468,8 +439,8 @@ public class NormalMode extends Strategy {
 		huntingMode = true;
 	}
 
-	public void displayBoard(int[][] board) {
-		String msg = "\n";
+	public void displayBoard(int[][] board, String msg) {
+		msg += "\n";
 		for (int i = 0; i < Configurations.numberOfRows; i++) {
 			for (int j = 0; j < Configurations.numberOfColumns; j++) {
 				msg += board[i][j] + " ";

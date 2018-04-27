@@ -2,7 +2,6 @@ package gameBoard.player;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.logging.Level;
 
 import UI.Command;
 import UI.CommandStage3;
@@ -18,7 +17,6 @@ import gameBoard.weapon.Weapon;
 import gameBoard.weapon.WeaponFactory;
 import gameBoard.weapon.WeaponType;
 import gameStage.Stage3;
-import log.Log;
 
 public class EasyMode extends Strategy {
 	
