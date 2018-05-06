@@ -63,8 +63,10 @@ public class WeaponPane {
 		shootButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				UIHandlerStage3 uiHandler = (UIHandlerStage3) Stage3.getInstance().getUIHandler();
-				uiHandler.shoot();
+				if (shootButton.isSelected()) {
+					UIHandlerStage3 uiHandler = (UIHandlerStage3) Stage3.getInstance().getUIHandler();
+					uiHandler.shoot();
+				}
 			}
 		});
 

@@ -240,6 +240,7 @@ public class GUI implements UI {
 
 	public void switchPlayerStage3() {
 		if (Stage3.getInstance().getCurrentPlayer() instanceof HumanPlayer) {
+			opponentBoardStage3.disable();
 			TranslateTransition translate = new TranslateTransition(Duration.millis(1000),
 					weaponPaneStage3.getWeaponPane());
 			translate.setByY(1);

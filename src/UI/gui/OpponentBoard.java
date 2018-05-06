@@ -51,7 +51,6 @@ public class OpponentBoard {
 				button.setPrefHeight(50);
 				button.setPrefWidth(50);
 				button.setToggleGroup(radarGroup);
-				button.setDisable(true);
 				buttonGrid[i][j] = button;
 				buttonGrid[i][j].setId("radarButton");
 				final int row = i;
@@ -81,6 +80,17 @@ public class OpponentBoard {
 		for (int i = 0; i < numberOfRows; i++) {
 			for (int j = 0; j < numberOfColumns; j++) {
 				buttonGrid[i][j].setDisable(false);
+			}
+		}
+	}
+	
+	public void disable() {
+		int numberOfRows = Configurations.numberOfRows;
+		int numberOfColumns = Configurations.numberOfColumns;
+		
+		for (int i = 0; i < numberOfRows; i++) {
+			for (int j = 0; j < numberOfColumns; j++) {
+				buttonGrid[i][j].setDisable(true);
 			}
 		}
 	}
