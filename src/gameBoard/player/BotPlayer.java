@@ -6,7 +6,6 @@ import gameBoard.Configurations;
 import gameBoard.weapon.Weapon;
 
 public class BotPlayer extends Player {
-	private Strategy mode;
 	private ArrayList<Player> listOfOpponents;
 
 	public BotPlayer() {

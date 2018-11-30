@@ -18,8 +18,8 @@ public class Stage4 implements IStage{
 		//TODO implement each state handle
 		Configurations.listOfUI.get(0).createStage4();
 		Scene scene = new Scene(Configurations.listOfUI.get(0).getContainerStage4(), 540, 920);
-		String url = "file:/D:/IU/DSA/DSA-Battleships/target/classes/UI/gui/application.css";
-		scene.getStylesheets().add(url);
+		String css = getClass().getResource("/styles/application.css").toString();
+		scene.getStylesheets().add(css);
 		Main.primaryStage.setScene(scene);
 	}
 	

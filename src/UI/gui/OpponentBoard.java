@@ -109,15 +109,15 @@ public class OpponentBoard {
 	}
 	
 	public void setDestroyedShips(Ship ship) {
-		String imageName = "file:///../resources/" + Configurations.mapShipImage.get(ship.getType());
+		String imageName = "/" + Configurations.mapShipImage.get(ship.getType());
 		Rectangle layer = new Rectangle();
 		if (ship.getOrientation().equals(ShipOrientation.HORIZONTAL)) {
-			imageName += "_HORI.png";
+			imageName += "_hori.png";
 			layer.setWidth(ship.getLength()*50);
 			layer.setHeight(50);
 		}
 		else {
-			imageName += "_VERTI.png";
+			imageName += "_verti.png";
 			layer.setWidth(50);
 			layer.setHeight(ship.getLength()*50);
 		}
@@ -136,12 +136,12 @@ public class OpponentBoard {
 		System.out.println("LOSE");
 		for (Ship ship:bot.getBoard().getListOfShips()) {
 			System.out.println(ship.getType());
-			String imageName = "file:///../resources/" + Configurations.mapShipImage.get(ship.getType());
+			String imageName = "/" + Configurations.mapShipImage.get(ship.getType());
 			if (ship.getOrientation().equals(ShipOrientation.HORIZONTAL)) {
-				imageName += "_HORI.png";
+				imageName += "_hori.png";
 			}
 			else {
-				imageName += "_VERTI.png";
+				imageName += "_verti.png";
 			}
 			Image image = new Image(imageName);
 			ImageView imageView = new ImageView(image);

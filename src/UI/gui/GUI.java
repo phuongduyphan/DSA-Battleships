@@ -106,7 +106,7 @@ public class GUI implements UI {
 	}
 
 	public void shootStage3(final CommandStage3 cmd) {
-		Image image = new Image("file:///../resources/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
+		Image image = new Image("/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 		final ImageView imageView = new ImageView(image);
 		imageView.setFitHeight(50);
 		imageView.setFitWidth(50);
@@ -162,7 +162,7 @@ public class GUI implements UI {
 
 	private void setEffectShootingPlayer(final CommandStage3 cmd, final ArrayList<Cell> listOfTargetableCells) {
 		Image weaponImage = new Image(
-				"file:///../resources/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
+				"/" + Configurations.mapWeaponImage.get(cmd.getWeapon().getType()));
 		final ImageView weaponImageView = new ImageView(weaponImage);
 		weaponImageView.setFitHeight(50);
 		weaponImageView.setFitWidth(50);
@@ -187,7 +187,7 @@ public class GUI implements UI {
 				final ArrayList<ImageView> listOfExplosionView = new ArrayList<>();
 
 				for (int i = 0; i < listOfTargetableCells.size(); i++) {
-					Image explosion = new Image("file:///../resources/explosion.gif");
+					Image explosion = new Image("/explosion.gif");
 					ImageView explosionView = new ImageView(explosion);
 					explosionView.setFitHeight(60);
 					explosionView.setFitWidth(60);
@@ -220,7 +220,7 @@ public class GUI implements UI {
 					Image image;
 					ImageView imageView;
 					if (listOfTargetableCells.get(i).getType() == CellType.SHIP) {
-						image = new Image("file:///../resources/flame.gif");
+						image = new Image("/flame.gif");
 						imageView = new ImageView(image);
 						imageView.setTranslateX(70 + listOfTargetableCells.get(i).getCoordinate().getCol() * 50);
 						imageView.setTranslateY(30 + 50 * listOfTargetableCells.get(i).getCoordinate().getRow() - 10);

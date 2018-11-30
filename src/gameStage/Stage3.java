@@ -55,8 +55,8 @@ public class Stage3 implements IStage {
 		try {
 			Configurations.listOfUI.get(0).createStage3();
 			Scene scene = new Scene(Configurations.listOfUI.get(0).getContainerStage3(), 540, 920);
-			String url = "file:/D:/IU/DSA/DSA-Battleships/target/classes/UI/gui/application.css";
-			scene.getStylesheets().add(url);
+			String css = getClass().getResource("/styles/application.css").toString();
+			scene.getStylesheets().add(css);
 			Main.primaryStage.setScene(scene);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

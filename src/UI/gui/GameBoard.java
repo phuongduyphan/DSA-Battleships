@@ -65,9 +65,9 @@ public class GameBoard {
 		for (int i=0 ; i < board.getListOfShips().size(); i++) {
 			Ship ship = board.getListOfShips().get(i);
 			
-			String imageName = "file:///../resources/" + Configurations.mapShipImage.get(ship.getType());
-			if (ship.getOrientation() == ShipOrientation.HORIZONTAL) imageName += "_HORI.png";
-			else imageName += "_VERTI.png";
+			String imageName = "/" + Configurations.mapShipImage.get(ship.getType());
+			if (ship.getOrientation() == ShipOrientation.HORIZONTAL) imageName += "_hori.png";
+			else imageName += "_verti.png";
 			
 			Image shipImage = new Image(imageName);
 			ImageView shipImageView = new ImageView(shipImage);

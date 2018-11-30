@@ -43,19 +43,19 @@ public class Stage1 implements IStage {
 		Configurations.mapWeaponImage.put(WeaponType.ROCKET, "rocket.png");
 		Configurations.mapWeaponImage.put(WeaponType.HORIZONTAL_BOMBING, "rocket.png");
 		Configurations.mapWeaponImage.put(WeaponType.VERTICAL_BOMBING, "rocket.png");
-		Configurations.mapShipImage.put(ShipType.AIRCRAFT_CARRIER, "AIRCRAFT_CARRIER");
-		Configurations.mapShipImage.put(ShipType.BATTLESHIP, "BATTLESHIP");
-		Configurations.mapShipImage.put(ShipType.DESTROYER, "DESTROYER");
-		Configurations.mapShipImage.put(ShipType.PATROL_BOAT, "PATROL_BOAT");
-		Configurations.mapShipImage.put(ShipType.SUBMARINE, "SUBMARINE");
+		Configurations.mapShipImage.put(ShipType.AIRCRAFT_CARRIER, "aircraft_carrier");
+		Configurations.mapShipImage.put(ShipType.BATTLESHIP, "battleship");
+		Configurations.mapShipImage.put(ShipType.DESTROYER, "destroyer");
+		Configurations.mapShipImage.put(ShipType.PATROL_BOAT, "patrol_boat");
+		Configurations.mapShipImage.put(ShipType.SUBMARINE, "submarine");
 		Configurations.listOfUI.add(human.getUi());
 		
 		try {
 			Configurations.listOfUI.get(0).createStage1();
 			StackPane menuBoard = Configurations.listOfUI.get(0).getContainerStage1();
 			Scene scene = new Scene(menuBoard,1280,720);
-			String url = "file:/D:/IU/DSA/DSA-Battleships/target/classes/UI/gui/application.css";
-			scene.getStylesheets().add(url);
+			String css = getClass().getResource("/styles/application.css").toString();
+			scene.getStylesheets().add(css);
 			Main.primaryStage.setScene(scene);
 			Main.primaryStage.centerOnScreen();
 		} catch (IOException e) {

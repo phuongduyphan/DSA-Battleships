@@ -70,7 +70,7 @@ public class WeaponPane {
 			}
 		});
 
-		Image image = new Image("file:///../resources/shoot-icon.png");
+		Image image = new Image("/shoot-icon.png");
 		ImageView imageView = new ImageView(image);
 		imageView.setFitHeight(100);
 		imageView.setFitWidth(100);
@@ -89,7 +89,7 @@ public class WeaponPane {
 		ToggleButton bullet = new ToggleButton();
 		bullet.setPrefHeight(80);
 		bullet.setPrefWidth(110);
-		image = new Image("file:///../resources/bullet-icon.png");
+		image = new Image("/bullet-icon.png");
 		imageView = new ImageView(image);
 		imageView.setFitHeight(60);
 		imageView.setFitWidth(60);
@@ -120,7 +120,7 @@ public class WeaponPane {
 		ToggleButton rocket = new ToggleButton();
 		rocket.setPrefHeight(80);
 		rocket.setPrefWidth(110);
-		image = new Image("file:///../resources/rocket-icon.png");
+		image = new Image("/rocket-icon.png");
 		imageView = new ImageView(image);
 		imageView.setFitHeight(60);
 		imageView.setFitWidth(60);
@@ -150,7 +150,7 @@ public class WeaponPane {
 		ToggleButton verticalBomb = new ToggleButton();
 		verticalBomb.setPrefHeight(80);
 		verticalBomb.setPrefWidth(110);
-		image = new Image("file:///../resources/verti-bomb-icon.png");
+		image = new Image("/verti-bomb-icon.png");
 		imageView = new ImageView(image);
 		imageView.setFitHeight(70);
 		imageView.setFitWidth(23);
@@ -181,7 +181,7 @@ public class WeaponPane {
 		ToggleButton horizontalBomb = new ToggleButton();
 		horizontalBomb.setPrefHeight(80);
 		horizontalBomb.setPrefWidth(110);
-		image = new Image("file:///../resources/hori-bomb-icon.png");
+		image = new Image("/hori-bomb-icon.png");
 		imageView = new ImageView(image);
 		imageView.setFitHeight(30);
 		imageView.setFitWidth(90);

@@ -1,6 +1,6 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 #seaPane {
-	-fx-background-image:url('../../../../resources/sea-background.jpg');
+	-fx-background-image:url('/sea-background.jpg');
 	-fx-background-repeat:no-repeat;
 	-fx-background-size:540px 460px;
 }
@@ -20,7 +20,7 @@
 
 
 #radarPane {
-	-fx-background-image:url('../../../../resources/radar-background.gif');
+	-fx-background-image:url('/radar-background.gif');
 	-fx-background-repeat:no-repeat;
 	-fx-background-size:400px 400px;
 	
@@ -35,7 +35,7 @@
 }
 
 #radarButton:selected {
-	-fx-background-image:url('../../../../resources/cross-hair2.png');
+	-fx-background-image:url('/cross-hair2.png');
 	-fx-background-color:#59EF00;
 	-fx-background-size:50px 50px;
 	-fx-opacity:0.5;
@@ -55,13 +55,13 @@
 }
 
 #hitCoor {
-	-fx-background-image:url('../../../../resources/hit.jpg');
+	-fx-background-image:url('/hit.jpg');
 	-fx-background-size:50px 50px;
 	-fx-opacity:0.8;
 }
 
 #missCoor {
-	-fx-background-image:url('../../../../resources/miss.jpg');
+	-fx-background-image:url('/miss.jpg');
 	-fx-background-size:50px 50px;
 	-fx-opacity:0.8;
 }
@@ -72,19 +72,19 @@
 }
 
 #missCoorGameBoard {
-	-fx-background-image:url('../../../../resources/cross_gameBoard.png');
+	-fx-background-image:url('/cross_gameBoard.png');
 	-fx-background-size:50px 50px;
 	-fx-opacity:0.4;
 }
 
 #shipBoardHeader {
-	-fx-background-image:url('../../../../resources/battleship_header.jpg');
+	-fx-background-image:url('/battleship_header.jpg');
 	-fx-background-repeat:no-repeat;
 	-fx-background-size:540px 150px;
 }
 
 #shipBoardPane {
-	-fx-background-image:url('../../../../resources/sea-background.jpg');
+	-fx-background-image:url('/sea-background.jpg');
 	-fx-background-repeat:no-repeat;
 	-fx-background-size:540px 770px;
 }
@@ -105,7 +105,7 @@
 }
 
 #menuBoard {
-	-fx-background-image:url('../cover.jpg');
+	-fx-background-image:url('/cover.jpg');
 }
 
 #cover-button {
@@ -131,7 +131,7 @@
 }
 
 #optionBoard {
-	-fx-background-image:url('../../../../resources/sea-background.jpg');
+	-fx-background-image:url('/sea-background.jpg');
 	-fx-background-repeat:no-repeat;
 	-fx-background-size:540px 920px;
 }

@@ -64,7 +64,7 @@ public class ShipBoard {
 		shipBoardPane.setMaxWidth(Region.USE_PREF_SIZE);
 		shipBoardPane.setAlignment(Pos.TOP_LEFT);
 		
-		Image aircraftImage = new Image("file:///../resources/AIRCRAFT_CARRIER_verti.png");
+		Image aircraftImage = new Image("/aircraft_carrier_verti.png");
 		ImageView aircraftImageView = new ImageView(aircraftImage);
 		aircraftImageView.setFitHeight(210);
 		aircraftImageView.setFitWidth(40);
@@ -85,7 +85,7 @@ public class ShipBoard {
 			}
 		});
 		
-		Image destroyerImage = new Image("file:///../resources/DESTROYER_verti.png");
+		Image destroyerImage = new Image("/destroyer_verti.png");
 		ImageView destroyerImageView = new ImageView(destroyerImage);
 		destroyerImageView.setFitHeight(170);
 		destroyerImageView.setFitWidth(40);
@@ -106,7 +106,7 @@ public class ShipBoard {
 			}
 		});
 
-		Image battleshipImage = new Image("file:///../resources/battleship_verti.png");
+		Image battleshipImage = new Image("/battleship_verti.png");
 		ImageView battleshipImageView = new ImageView(battleshipImage);
 		battleshipImageView.setFitHeight(150);
 		battleshipImageView.setFitWidth(50);
@@ -127,7 +127,7 @@ public class ShipBoard {
 			}
 		});
 		
-		Image submarineImage = new Image("file:///../resources/submarine_verti.png");
+		Image submarineImage = new Image("/submarine_verti.png");
 		ImageView submarineImageView = new ImageView(submarineImage);
 		submarineImageView.setFitHeight(140);
 		submarineImageView.setFitWidth(30);
@@ -148,7 +148,7 @@ public class ShipBoard {
 			}
 		});
 		
-		Image patrolBoatImage = new Image("file:///../resources/patrol_boat_verti.png");
+		Image patrolBoatImage = new Image("/patrol_boat_verti.png");
 		ImageView patrolBoatImageView = new ImageView(patrolBoatImage);
 		patrolBoatImageView.setFitHeight(100);
 		patrolBoatImageView.setFitWidth(50);
@@ -178,7 +178,7 @@ public class ShipBoard {
 		
 		shipBoardPane.getChildren().addAll(aircraftButton,destroyerButton,battleshipButton,submarineButton,patrolBoatButton);
 		
-		Image reverseImage = new Image("file:///../resources/reverse_icon.png");
+		Image reverseImage = new Image("/reverse_icon.png");
 		ImageView reverseImageView = new ImageView(reverseImage);
 		reverseImageView.setFitHeight(30);
 		reverseImageView.setFitWidth(30);
@@ -365,7 +365,7 @@ public class ShipBoard {
 	
 	public void displayShip(Coordinate coor, ShipOrientation orientation, ShipType shipType) {
 		String filepath;
-		filepath = "file:///../resources/" + Configurations.mapShipImage.get(shipType);
+		filepath = "/" + Configurations.mapShipImage.get(shipType);
 		if (orientation == ShipOrientation.HORIZONTAL) {
 			filepath += "_hori.png";
 		}

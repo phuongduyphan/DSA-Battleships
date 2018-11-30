@@ -8,7 +8,6 @@ import gameBoard.weapon.Weapon;
 import gameStage.Stage3;
 
 public class HumanPlayer extends Player{
-	private Strategy mode;
 	
 	public HumanPlayer() {
 		super();

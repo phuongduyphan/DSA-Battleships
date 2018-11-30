@@ -14,6 +14,7 @@ public abstract class Player implements IClickable {
     private Board board;
     private ArrayList<Weapon> listOfWeapon = new ArrayList<Weapon>();
     private UI ui;
+    protected Strategy mode;
     
     public Player() {
     	
